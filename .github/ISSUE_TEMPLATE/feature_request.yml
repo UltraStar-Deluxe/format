@@ -1,0 +1,35 @@
+name: Feature Request
+description: Suggest a new feature or enhancement for UltraStar Format Specification.
+labels: ["Feature request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        #### ADVISORY
+
+        "Please post all details in **English**."
+
+        #### Prerequisites before submitting a feature request!
+        - Read the issue reporting section in the **[contributing guidelines](https://github.com/ultrastar-deluxe/format/blob/master/.github/CONTRIBUTING.md)**, to know how to submit a feature request with the required information.
+        - Perform a **[search of the issue tracker (including closed ones)](https://github.com/ultrastar-deluxe/format/issues)** to avoid posting a duplicate.
+        - Make sure this is not a support request or question, both of which are better suited for the **[Discord - Formate Related channel](https://discord.gg/tNEXZw2QJX)**.
+
+  - type: textarea
+    attributes:
+      label: Suggestion
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: Use case
+      description: Provide a valid usecase in which this new feature can be used. This will help us giving some context to the problem we're trying to solve.
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: Extra info/examples/attachments
+      description: Add screenshots etc. (Anything that will give us more context about what is being requested!)
+    validations:
+      required: false
