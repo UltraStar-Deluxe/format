@@ -13,3 +13,32 @@ The endgoal for this project would be to:
 * [ ] Bring the different communities on par with eachother to increase the quality of the produced textfiles
 * [ ] Versionise the format so we can improve and add features to it
 * [ ] Give each Tag or NoteType a definition and how it should be working
+
+## Involved parties
+Since the text format was introduced a little bit more than a decade ago alot of projects got to know and support it.
+We'd like to give these projects a little bit of appreciation by linking to their respective GitHub page or website.
+
+### Karaoke software
+* [UltraStar Online](http://ultrastaronline.com/)
+* [UltraStar Deluxe](https://github.com/UltraStar-Deluxe/USDX)
+* [Performous](https://github.com/performous/performous)
+* [UltraStar World Party](https://github.com/ultrastares/ultrastar-worldparty)
+* [Vocaluxe](https://github.com/Vocaluxe/Vocaluxe)
+* [MyLittleKaraoke](https://www.mylittlekaraoke.com/)
+* [UltraStar Play / Melody Mania](https://github.com/UltraStar-Deluxe/Play)
+
+### UltraStar Song Creator software
+* [Yass](https://github.com/SarutaSan72/Yass)
+* [Yass Reloaded](https://github.com/DoubleDee73/Yass)
+* [Composer](https://github.com/performous/composer)
+* [Karedi](https://github.com/Nianna/Karedi)
+* [UltraStar Creator](https://github.com/UltraStar-Deluxe/UltraStar-Creator)
+* [UltraSinger](https://github.com/rakuri255/UltraSinger)
+
+### UltraStar Textfiles hosting
+* [USDB](https://usdb.animux.de)
+* [UltraStar-ES](http://ultrastar-es.org/)
+
+### Management Software
+* [USDB Syncer](https://github.com/bohning/usdb_syncer)
+* [UltraStar Manager](https://github.com/UltraStar-Deluxe/UltraStar-Manager)
