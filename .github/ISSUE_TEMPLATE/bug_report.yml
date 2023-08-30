@@ -1,0 +1,40 @@
+name: Bug Report
+description: File a bug report to help improve the UltraStar Format Specification.
+labels: ["Bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        #### ADVISORY
+
+        "Please post all details in **English**."
+
+        #### Prerequisites before submitting an issue!
+        - Read the issue reporting section in the **[contributing guidelines](https://github.com/ultrastar-deluxe/format/blob/master/.github/CONTRIBUTING.md)**, to know how to submit a good bug report with the required information.
+        - Perform a **[search of the issue tracker (including closed ones)](https://github.com/ultrastar-deluxe/format/issues)** to avoid posting a duplicate.
+        - Make sure this is not a support request or question, both of which are better suited for the **[Discord - Formate Related channel](https://discord.gg/tNEXZw2QJX)**.
+
+  - type: textarea
+    attributes:
+      label: What is the problem?
+      description: Please give a clear and concise description of the problem.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      description: Please provide reliable steps to reproduce the problem.
+      placeholder: |
+        1. First step
+        2. Second step
+        3. and so on...
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: Add screenshots etc. (Anything that will provide more context about the problem)
+    validations:
+      required: false

@@ -1,0 +1,14 @@
+blank_issues_enabled: true
+contact_links:
+  # Enable once we have the website up and running.
+  #- name: Website
+  #  url: "https://ultrastar-deluxe.github.io/format/"
+  #  about: "Consult the website first, it might already contain the information you are looking for"
+
+  - name: Question
+    url: "https://github.com/performous/performous/discussions"
+    about: "Please ask questions related to usage/setup/support/non-issue development discussion in the Discussions section"
+
+  - name: Question
+    url: "https://discord.gg/NS3m3ad"
+    about: "Please ask questions in our Discord in the channel format-related"
