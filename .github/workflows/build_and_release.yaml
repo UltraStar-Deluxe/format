@@ -3,7 +3,7 @@ name: Build and Release UltraStar Format Specification Website
 # Controls when the workflow will run
 on:
   # Triggers the workflow on merges to master, release branches,
-  # all PRs, and release tags 
+  # all PRs, and release tags
   push:
     branches:
       - main
@@ -43,4 +43,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-          
