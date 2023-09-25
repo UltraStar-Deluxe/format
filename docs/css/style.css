@@ -751,3 +751,6 @@ font-size:1.15em;
 .navbar-collapse.in {
   overflow-y: visible;
 }
+.text-red{
+    color: #e8617d;
+}

@@ -37,7 +37,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="#"><span class="logo-wraper logo-white">
-                            <img src="images/Logo.png" alt="">ultrastar format
+                            <img src="images/Logo.png" alt="">format
                         </span></a>
                 </div>
 
@@ -47,20 +47,22 @@
                         <li class="active"><a href="#home">Home <span class="sr-only">(current)</span></a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#news">News</a></li>
-                        <li><a href="#who">Who</a></li>
+                        <li><a href="#together-with">Who</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle btn btn-orange border-none btn-rounded-corner btn-navbar"
                                 data-toggle="dropdown" role="button" aria-haspopup="true"
                                 aria-expanded="false">Specifications <span class="caret"></span><span
                                     class="icon-on-button"><i class="glyphicon glyphicon-list-alt"></i></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#encoding">Encoding</a></li>
+                                <li><a href="#encoding-header">Encoding</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#mandatory-attributes">Mandatory Attributes</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#notes">Notes</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#optional-attributes">Optional Attributes</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#deprecated">Deprecated</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#source">Source</a></li>
                             </ul>
@@ -91,7 +93,7 @@
                                         href="https://discord.gg/tNEXZw2QJX">Discord<span class="icon-on-button"><i
                                                 class="ion-ios-arrow-thin-right"></i></span></a>
                                     <a class="btn btn-orange border-none btn-rounded-corner"
-                                        href="#specs">Specifiactions <span class="icon-on-button"><i
+                                        href="#specs">Specifications <span class="icon-on-button"><i
                                                 class=" glyphicon glyphicon-arrow-right"></i></span></a>
                                 </div>
                             </div>
@@ -157,14 +159,14 @@
                             <p>The endgoal for this project would be to:</p>
                             <hr />
                             <h4>1 - Join forces</h4>
-                            <p>Bring the different communities on par with eachother to increase the quality of the
+                            <p>Bring the different communities on par with each other to increase the quality of the
                                 produced textfiles.</p>
                             <hr />
                             <h4>2 - Define and understand</h4>
                             <p>Give each Tag or NoteType a definition and how it should be working. Understand what the
                                 present situation for all softwares is.</p>
                             <hr />
-                            <h4>3 - Versionise and improve</h4>
+                            <h4>3 - Versionize and improve</h4>
                             <p>Versionise the format so we can improve and add features to it.</p>
                         </div>
                     </div>
@@ -253,15 +255,15 @@
     <section id="specs" class="gradient-orange cta padding-top-bottom-90">
         <div class="container">
             <div class="text-center">
-                <h2 class="cta-heading text-white">Specifications</h2>
-                <h4 class="text-center text-white">VERSION: draft <br /> Last update: 20 Sep 2023</h4>
+                <h2 class="text-white">Specifications</h2>
+                <h4 class="text-center text-white">VERSION: draft <br /> Last update: 25 Sep 2023</h4>
                 <hr />
                 <p class="text-white">These are the official UltraStar Format specifications. <br /> It's a set of rules
                     and requirements that dictate what an UltraStar textfile is and how each item should be interpreted.
                 </p>
                 <p class="text-white">The specification is still in drafting phase.</p>
-                <p class="text-white">Below you will find definitions about Encoding, Meta-Tags, Notes and all features
-                </p>
+                <p class="text-white">Below you will find definitions about Encoding, Meta-Tags, Notes and all features.</p>
+                <p class="text-white">Old and deprecated elements are listed too.</p>
 
             </div>
         </div>
@@ -279,7 +281,7 @@
                     <h3 id="encoding-header" class="padding-top-120"><i class="glyphicon glyphicon-cog"></i> Encoding
                     </h3>
                     <hr />
-                    <p>Encoding should be UTF8.</p>
+                    <p>Encoding has to be UTF-8.</p>
                     <p>UTF-8 is a great encoding that can represent a vast number of symbols from all kinds of
                         languages. Other encodings, like Windows code pages, are far more limited and are only suitable
                         for a small family of languages.</p>
@@ -344,6 +346,12 @@
                                                 <td>✔️</td>
                                                 <td></td>
                                             </tr>
+                                            <tr>
+                                                <td>Karedi</td>
+                                                <td>>=1.0.0</td>
+                                                <td>✔️</td>
+                                                <td></td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -404,17 +412,24 @@
                                         <td>✔️</td>
                                         <td></td>
                                     </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </details>
                     <h4><a id="mp3" href="#mp3"></a>MP3</h4>
                     <p>Filename of the audio file. This is the file that contains the sound of the song. It must be in
-                        the same folder as the txt file and should have the same name as the folder. See format support
-                        here: here</p>
+                        the same folder as the txt file and should have the same name as the folder. All software support at least <b>.mp3 (CBR), .wav and .ogg</b> audio files.
+                        </p>
                     <div>
                         <pre class="notranslate"><code>#MP3:Artist - Title.mp3</code></pre>
                     </div>
+                    <p><span class="label label-warning">will be changed to #AUDIO automatically in usdb and your txt-collection</span> </p>
                     <details>
                         <summary>App Support</summary>
                         <div class="table-responsive">
@@ -461,6 +476,12 @@
                                     <tr>
                                         <td>Yass</td>
                                         <td>2.4.3 (2023-03-18)</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
                                         <td>✔️</td>
                                         <td></td>
                                     </tr>
@@ -524,6 +545,12 @@
                                         <td>✔️</td>
                                         <td></td>
                                     </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -535,7 +562,7 @@
                         <code>Length</code>, <code>Pitch</code> and <code>Text</code>.
                     </p>
                     <ul>
-                        <li>For the syles see <a href="#noteTypes">NoteTypes</a>.</li>
+                        <li>For the styles see <a href="#noteTypes">NoteTypes</a>.</li>
                         <li>The <code>StartBeat</code> and <code>Length</code> must be calculated against the
                             <code>BPM</code>, <code>GAP</code> and <code>Relative</code>. Is a beat number.
                         </li>
@@ -544,7 +571,7 @@
                         <li>Text is the part of the lyrics that is sung in this note.</li>
                     </ul>
                     <div>
-                        <pre class="notranslate"><code>NoteType StartBeat Lenght Pitch Text</code></pre>
+                        <pre class="notranslate"><code>NoteType StartBeat Length Pitch Text</code></pre>
                     </div>
                     <div>
                         <pre class="notranslate"><code>: 10 10 10 Text</code></pre>
@@ -612,6 +639,12 @@
                                         <td>✔️</td>
                                         <td></td>
                                     </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                     </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -674,6 +707,12 @@
                                         <td>✔️</td>
                                         <td></td>
                                     </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -730,6 +769,12 @@
                                     <tr>
                                         <td>Yass</td>
                                         <td>2.4.3 (2023-03-18)</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
                                         <td>✔️</td>
                                         <td></td>
                                     </tr>
@@ -797,7 +842,12 @@
                                         <td>2.4.3 (2023-03-18)</td>
                                         <td>✔️</td>
                                         <td></td>
-
+                                    </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.1.0</td>
+                                        <td>✔️</td>
+                                        <td></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -862,7 +912,12 @@
                                         <td>2.4.3 (2023-03-18)</td>
                                         <td>✔️</td>
                                         <td></td>
-
+                                    </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.1.0</td>
+                                        <td>✔️</td>
+                                        <td></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -927,6 +982,12 @@
                                         <td>✔️</td>
                                         <td></td>
                                     </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -934,7 +995,7 @@
                     <h4><a id="cover"></a>COVER</h4>
                     <p>Filename of the cover image. Should end with <code>*[CO].jpg</code>
                         This is an image that shows the album cover or a picture related to the song.
-                        It should be in 1:1 apec ratio.</p>
+                        It should be in 1:1 aspect ratio. It should not be larger than 1920x1920px. All software support at least JPG/JPEG-Files.</p>
                     <div>
                         <pre class="notranslate"><code>#COVER:Artist - Title [CO].jpg</code></pre>
                     </div>
@@ -987,12 +1048,18 @@
                                         <td>✔️</td>
                                         <td></td>
                                     </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </details>
                     <h4><a id="background"></a>BACKGROUND</h4>
-                    <p>Filename of the background image. Is shown when there is no video. Should with
+                    <p>Filename of the background image. Can be shown instead of a video or if no video is available. Should with
                         <code>*[BG].jpg</code>
                         This will be shown when there is no <code>VIDEO</code> available.
                     </p>
@@ -1048,6 +1115,12 @@
                                         <td>✔️</td>
                                         <td></td>
                                     </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -1055,7 +1128,7 @@
                     <h4><a id="video" href="#video"></a>VIDEO</h4>
                     <p>Filename of the video file.
                         This is a video that shows a music video or other visual content related to the song.
-                        The sound of the video is not played.
+                        The sound of the video is generally not played. Exception: If there's no audio file UltraStar Deluxe and Vocaluxe play the audio track from the video.
                         It must be in a format supported by UltraStar, such as MP4 or AVI.
                         See format support here: here</p>
                     <div>
@@ -1111,6 +1184,12 @@
                                     <tr>
                                         <td>Yass</td>
                                         <td>2.4.3 (2023-03-18)</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
                                         <td>✔️</td>
                                         <td></td>
                                     </tr>
@@ -1181,6 +1260,12 @@
                                         <td>✔️</td>
                                         <td></td>
                                     </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -1246,6 +1331,12 @@
                                         <td>✔️</td>
                                         <td></td>
                                     </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -1307,6 +1398,12 @@
                                     <tr>
                                         <td>Yass</td>
                                         <td>2.4.3 (2023-03-18)</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
                                         <td>✔️</td>
                                         <td></td>
                                     </tr>
@@ -1375,6 +1472,12 @@
                                         <td>✔️</td>
                                         <td></td>
                                     </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -1437,6 +1540,12 @@
                                     <tr>
                                         <td>Yass</td>
                                         <td>2.4.3 (2023-03-18)</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
                                         <td>✔️</td>
                                         <td></td>
                                     </tr>
@@ -1505,6 +1614,12 @@
                                         <td>✔️</td>
                                         <td></td>
                                     </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -1514,7 +1629,7 @@
                         starts. This value can be used to skip any silence or intro at the beginning of the audio file.
                         The value should be positive integers that represent the start time of the song in seconds.</p>
                     <div>
-                        <pre class="notranslate"><code>#START:123
+                        <pre class="notranslate"><code>#START:1.5
                     </code></pre>
                         <div>
 
@@ -1566,6 +1681,12 @@
                                     <tr>
                                         <td>Yass</td>
                                         <td>2.4.3 (2023-03-18)</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
                                         <td>✔️</td>
                                         <td></td>
                                     </tr>
@@ -1636,265 +1757,24 @@
                                         <td>✔️</td>
                                         <td></td>
                                     </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </details>
-                    <h4><a id="resolution" href="#resolution"></a>RESOLUTION</h4>
-                    <p>Changes the grid resolution of the editor.
-                        Only for the editor and nothing for singing.</p>
-                    <details>
-                        <summary>App Support</summary>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
                                     <tr>
-                                        <th>App</th>
-                                        <th>Version</th>
-                                        <th>Supported</th>
-                                        <th>Comment</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>UltraStar deluxe </td>
-                                        <td>&gt; 2020.4.0 (2020-04-30)</td>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
                                         <td>✔️</td>
                                         <td></td>
                                     </tr>
-                                    <tr>
-                                        <td>UltraStar World Party</td>
-                                        <td>21.02 (2021-02-07)</td>
-                                        <td>❌</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Vocaluxe</td>
-                                        <td>0.41 (2020-03-10)</td>
-                                        <td>❌</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Performous</td>
-                                        <td>1.2.0 (2022-03-27)</td>
-                                        <td>❔</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>UltraStar Play</td>
-                                        <td>0.9.0 (2023-02-01)</td>
-                                        <td>❌</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Yass</td>
-                                        <td>2.4.3 (2023-03-18)</td>
-                                        <td>❌</td>
-                                        <td></td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </details>
-                    <h4><a id="notesgap" href="#notesgap"></a>NOTESGAP</h4>
-                    <p>Todo: Unknown</p>
-                    <details>
-                        <summary>App Support</summary>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>App</th>
-                                        <th>Version</th>
-                                        <th>Supported</th>
-                                        <th>Comment</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>UltraStar deluxe </td>
-                                        <td>&gt; 2020.4.0 (2020-04-30)</td>
-                                        <td>✔️</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>UltraStar World Party</td>
-                                        <td>21.02 (2021-02-07)</td>
-                                        <td>❌</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Vocaluxe</td>
-                                        <td>0.41 (2020-03-10)</td>
-                                        <td>❌</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Performous</td>
-                                        <td>1.2.0 (2022-03-27)</td>
-                                        <td>❔</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>UltraStar Play</td>
-                                        <td>0.9.0 (2023-02-01)</td>
-                                        <td>❌</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Yass</td>
-                                        <td>2.4.3 (2023-03-18)</td>
-                                        <td>❌</td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </details>
-                    <h4><a id="relative" href="#relative"></a>RELATIVE</h4>
-                    <p>Specifies whether the note timings in the file are relative to the previous note or absolute. If
-                        this attribute is set to yes, the note timings are relative to the previous note. If it is set
-                        to no or not present, the note timings are absolute.
-                        If this line is missing, then the timestamps are absolute.</p>
-                    <div>
-                        <pre class="notranslate"><code>#RELATIVE:yes
-                    </code></pre>
-                        <div>
 
-                        </div>
-                    </div>
-                    <p>Relative timestamps make working on a TXT file much easier, because if you want to insert a
-                        pause, you don't have to adjust all following timestamps, but only the ones until the end of the
-                        line.
-                        If you now want to change from absolute to relative timestamps yourself, this means a lot of
-                        manual work.</p>
-                    <details>
-                        <summary>App Support</summary>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>App</th>
-                                        <th>Version</th>
-                                        <th>Supported</th>
-                                        <th>Comment</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>UltraStar deluxe </td>
-                                        <td>&gt; 2020.4.0 (2020-04-30)</td>
-                                        <td>✔️</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>UltraStar World Party</td>
-                                        <td>21.02 (2021-02-07)</td>
-                                        <td>❔</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Vocaluxe</td>
-                                        <td>0.41 (2020-03-10)</td>
-                                        <td>✔️</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Performous</td>
-                                        <td>1.2.0 (2022-03-27)</td>
-                                        <td>❔</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>UltraStar Play</td>
-                                        <td>0.9.0 (2023-02-01)</td>
-                                        <td>✔️</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Yass</td>
-                                        <td>2.4.3 (2023-03-18)</td>
-                                        <td>✔️</td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </details>
-                    <h4><a id="encoding-tag" href="#encoding"></a>ENCODING</h4>
-                    <p><g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> Deprecated: The games should be able to
-                        detect the encoding themselves.
-                        For Vocaluxe there is a updated version that can detect the encoding itself. <a
-                            href="https://github.com/flokuep/Vocaluxe">Vocaluxe fork by flokuep</a></p>
-                    <p>Specifies the character encoding used in the txt file. This attribute can be used to ensure that
-                        special characters are displayed correctly.</p>
-                    <div>
-                        <pre class="notranslate"><code>#ENCODING:UTF8
-                    </code></pre>
-                        <div>
-
-                        </div>
-                    </div>
-                    <details>
-                        <summary>App Support</summary>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>App</th>
-                                        <th>Version</th>
-                                        <th>Supported</th>
-                                        <th>Comment</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>UltraStar deluxe </td>
-                                        <td>&gt; 2020.4.0 (2020-04-30)</td>
-                                        <td>✔️</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>UltraStar World Party</td>
-                                        <td>21.02 (2021-02-07)</td>
-                                        <td>✔️</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Vocaluxe</td>
-                                        <td>0.41 (2020-03-10)</td>
-                                        <td>✔️</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Performous</td>
-                                        <td>1.2.0 (2022-03-27)</td>
-                                        <td>❔</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>UltraStar Play</td>
-                                        <td>0.9.0 (2023-02-01)</td>
-                                        <td>✔️</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Yass</td>
-                                        <td>2.4.3 (2023-03-18)</td>
-                                        <td>✔️</td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </details>
                     <h4><a id="previewstart" href="#previewstart">
                         </a>PREVIEWSTART</h4>
-                    <p>Specifies the time in milliseconds from the beginning of the audio file at which the preview of
+                    <p>Specifies the time in seconds from the beginning of the audio file at which the preview of
                         the song starts. This value can be used to set the start time of the preview that is played when
                         browsing songs.</p>
                     <div>
-                        <pre class="notranslate"><code>#PREVIEWSTART:12345
+                        <pre class="notranslate"><code>#PREVIEWSTART:12,34
                     </code></pre>
                         <div>
 
@@ -1946,6 +1826,12 @@
                                     <tr>
                                         <td>Yass</td>
                                         <td>2.4.3 (2023-03-18)</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
                                         <td>✔️</td>
                                         <td></td>
                                     </tr>
@@ -2014,6 +1900,12 @@
                                         <td>✔️</td>
                                         <td></td>
                                     </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -2079,6 +1971,12 @@
                                         <td>✔️</td>
                                         <td></td>
                                     </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -2086,7 +1984,7 @@
                     <h4><a id="calcmedley" href="#calcmedley"></a>CALCMEDLEY</h4>
                     <p>Specifies whether UltraStar should automatically calculate the medley section of the song. If
                         this attribute is set to <code>on</code>, UltraStar will automatically determine the most
-                        suitable section of the song for a medley based on the note data.</p>
+                        suitable section of the song for a medley based on the note data. If it is set to <code>off</code>, the automatic medley calculation can be disabled.</p>
                     <div>
                         <pre class="notranslate"><code>#CALCMEDLEY:on
                     </code></pre>
@@ -2141,6 +2039,12 @@
                                         <td>Yass</td>
                                         <td>2.4.3 (2023-03-18)</td>
                                         <td>❌</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
+                                        <td>✔️</td>
                                         <td></td>
                                     </tr>
                                 </tbody>
@@ -2204,6 +2108,12 @@
                                         <td>✔️</td>
                                         <td>up to 4 singers</td>
                                     </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -2259,11 +2169,262 @@
                                         <td>❌</td>
                                         <td></td>
                                     </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </details>
+                    <h3 id="deprecated" class="padding-top-120 text-red"><i class="glyphicon glyphicon-ban-circle"></i> Deprecated</h3>
+                    <hr />
+                    <h4 class="text-red"><a id="resolution" href="#resolution"></a>RESOLUTION</h4>
+                    <p>Changes the grid resolution of the editor.
+                        Only for the editor and nothing for singing.</p>
+                    <details>
+                        <summary>App Support</summary>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>App</th>
+                                        <th>Version</th>
+                                        <th>Supported</th>
+                                        <th>Comment</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>UltraStar deluxe </td>
+                                        <td>&gt; 2020.4.0 (2020-04-30)</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>UltraStar World Party</td>
+                                        <td>21.02 (2021-02-07)</td>
+                                        <td>❌</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vocaluxe</td>
+                                        <td>0.41 (2020-03-10)</td>
+                                        <td>❌</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Performous</td>
+                                        <td>1.2.0 (2022-03-27)</td>
+                                        <td>❔</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>UltraStar Play</td>
+                                        <td>0.9.0 (2023-02-01)</td>
+                                        <td>❌</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Yass</td>
+                                        <td>2.4.3 (2023-03-18)</td>
+                                        <td>❌</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+                    <h4 class="text-red"><a id="notesgap" href="#notesgap"></a>NOTESGAP</h4>
+                    <p>Unknown</p>
+                    <details>
+                        <summary>App Support</summary>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>App</th>
+                                        <th>Version</th>
+                                        <th>Supported</th>
+                                        <th>Comment</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>UltraStar deluxe </td>
+                                        <td>&gt; 2020.4.0 (2020-04-30)</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>UltraStar World Party</td>
+                                        <td>21.02 (2021-02-07)</td>
+                                        <td>❌</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vocaluxe</td>
+                                        <td>0.41 (2020-03-10)</td>
+                                        <td>❌</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Performous</td>
+                                        <td>1.2.0 (2022-03-27)</td>
+                                        <td>❔</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>UltraStar Play</td>
+                                        <td>0.9.0 (2023-02-01)</td>
+                                        <td>❌</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Yass</td>
+                                        <td>2.4.3 (2023-03-18)</td>
+                                        <td>❌</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+                    <h4 class="text-red"><a id="relative" href="#relative"></a>RELATIVE</h4>
+                    <p>Specifies whether the note timings in the file are relative to the previous note or absolute. If
+                        this attribute is set to yes, the note timings are relative to the previous note. If it is set
+                        to no or not present, the note timings are absolute.
+                        If this line is missing, then the timestamps are absolute.</p>
+                    <div>
+                        <pre class="notranslate"><code>#RELATIVE:yes
+                    </code></pre>
+                        <div>
 
+                        </div>
+                    </div>
+                    <p>Relative timestamps make working on a TXT file much easier, because if you want to insert a
+                        pause, you don't have to adjust all following timestamps, but only the ones until the end of the
+                        line.</p>
+                        <p><b>Switching from absolute to relative and back is easy using either UltraStar Manager (two tasks)
+                        or USDX editor (S vs. SHIFT-S in the editor).</b></p>
+                    <details>
+                        <summary>App Support</summary>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>App</th>
+                                        <th>Version</th>
+                                        <th>Supported</th>
+                                        <th>Comment</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>UltraStar deluxe </td>
+                                        <td>&gt; 2020.4.0 (2020-04-30)</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>UltraStar World Party</td>
+                                        <td>21.02 (2021-02-07)</td>
+                                        <td>❔</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vocaluxe</td>
+                                        <td>0.41 (2020-03-10)</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Performous</td>
+                                        <td>1.2.0 (2022-03-27)</td>
+                                        <td>❔</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>UltraStar Play</td>
+                                        <td>0.9.0 (2023-02-01)</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Yass</td>
+                                        <td>2.4.3 (2023-03-18)</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+                    <h4 class="text-red"><a id="encoding-tag" href="#encoding"></a>ENCODING</h4>
+                    <p>Specifies the character encoding used in the txt file. This attribute can be used to ensure that
+                        special characters are displayed correctly. Possible values are UTF-8, CP1252 and CP1250.</p>
+                        <p><span class="label label-warning">Deprecated: All games will have to use UTF-8.</span></p>
+                    <div>
+                        <pre class="notranslate"><code>#ENCODING:UTF8
+                    </code></pre>
+                        <div>
+                        </div>
+                    </div>
+                    <details>
+                        <summary>App Support</summary>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>App</th>
+                                        <th>Version</th>
+                                        <th>Supported</th>
+                                        <th>Comment</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>UltraStar deluxe </td>
+                                        <td>&gt; 2020.4.0 (2020-04-30)</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>UltraStar World Party</td>
+                                        <td>21.02 (2021-02-07)</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vocaluxe</td>
+                                        <td>0.41 (2020-03-10)</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Performous</td>
+                                        <td>1.2.0 (2022-03-27)</td>
+                                        <td>❔</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>UltraStar Play</td>
+                                        <td>0.9.0 (2023-02-01)</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Yass</td>
+                                        <td>2.4.3 (2023-03-18)</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
                     <h3 id="source" class="padding-top-120"><i class="glyphicon glyphicon-book"></i> Source</h3>
                     <hr />
                     <div class="list-group">
@@ -2299,6 +2460,120 @@
         </div>
     </section>
 
+    <section id="together-with" class="padding-top-bottom-90">
+      <div class="container">
+        <div class="heading-wraper text-center margin-bottom-80">
+          <h2>Together with</h2>
+          <hr class="heading-devider gradient-orange">
+        </div>
+        <div class="row">
+        <a href="https://usdx.eu/">
+          <div class="col-md-3">
+            <div class="text-center">
+             <img src="images/logos/usdx.png" alt="">
+              <div class="card-block">
+                <p class="card-text"><small class="text-muted blog-category">Game</small></p>
+                <h4 class="card-title">UltraStar<br/>Deluxe</h4>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="https://github.com/Nianna/Karedi">
+          <div class="col-md-3">
+            <div class="text-center">
+              <img src="images/logos/karedi.png" alt="">
+              <div class="card-block">
+                <p class="card-text"><small class="text-muted blog-category">Song Editor</small></p>
+                <h4 class="card-title">Karedi</h4>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="https://usdb.animux.de/">
+          <div class="col-md-3">
+            <div class="text-center">
+              <img src="images/logos/usdb.png" alt="">
+              <div class="card-block">
+                <p class="card-text"><small class="text-muted blog-category">TXT-file Hosting</small></p>
+                <h4 class="card-title">USDB.animux</h4>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="https://github.com/UltraStar-Deluxe/UltraStar-Manager">
+          <div class="col-md-3">
+            <div class="text-center">
+             <img src="images/logos/ultrastar-manager.png" alt="">
+              <div class="card-block">
+                <p class="card-text"><small class="text-muted blog-category">Tool</small></p>
+                <h4 class="card-title">UltraStar<br/>Manager</h4>
+              </div>
+            </div>
+          </div>
+        </a>
+        </div>
+        <div class="row">
+        <a href="https://github.com/rakuri255/UltraSinger">
+          <div class="col-md-3">
+            <div class="text-center">
+             <img src="images/logos/ultrasinger-logo.jpeg" alt="">
+              <div class="card-block">
+                <p class="card-text"><small class="text-muted blog-category">Tool</small></p>
+                <h4 class="card-title">UltraSinger</h4>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="https://melodymania.org">
+          <div class="col-md-3">
+            <div class="text-center">
+              <img src="images/logos/mm.png" alt="">
+              <div class="card-block">
+                <p class="card-text"><small class="text-muted blog-category">Game</small></p>
+                <h4 class="card-title">Melody<br/> Mania</h4>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="https://github.com/bohning/usdb_syncer">
+          <div class="col-md-3">
+            <div class="text-center">
+              <img src="images/logos/usdb-syncer-logo.png" alt="">
+              <div class="card-block">
+                <p class="card-text"><small class="text-muted blog-category">Tool</small></p>
+                <h4 class="card-title">USDB<br/>SYNCER</h4>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="https://performous.org/">
+          <div class="col-md-3">
+            <div class="text-center">
+             <img src="images/logos/performous.png" alt="">
+              <div class="card-block">
+                <p class="card-text"><small class="text-muted blog-category">Game</small></p>
+                <h4 class="card-title">Performous</h4>
+              </div>
+            </div>
+          </div>
+        </a>
+        </div>
+        <div class="row">
+        <a href="https://github.com/DoubleDee73/Yass">
+          <div class="col-md-3">
+            <div class="text-center">
+             <img src="images/logos/yass-reloaded-logo.png" alt="">
+              <div class="card-block">
+                <p class="card-text"><small class="text-muted blog-category">Song Editor</small></p>
+                <h4 class="card-title">YASS reloaded</h4>
+              </div>
+            </div>
+          </div>
+        </a>
+        </div>
+      </div>
+    </section>
+
     <section id="who" class="padding-top-120">
         <div class="container">
             <div class="row">
@@ -2306,7 +2581,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="heading-wraper text-center margin-bottom-80">
-                                <h2>Involved Parties</h2>
+                                <h2>Join us all!</h2>
                                 <hr class="heading-devider gradient-orange">
                             </div>
                         </div>
@@ -2317,7 +2592,7 @@
                                 <p>Since the text format was introduced a little bit more than a decade ago a lot of
                                     projects got to know and support it.
                                     We'd like to give these projects a little bit of appreciation by linking to their
-                                    respective GitHub page or website.</p>
+                                    respective GitHub page or website. <b>Please join us! Togehter we can do better.</b></p>
                             </div>
                         </div>
                     </div>
@@ -2378,108 +2653,6 @@
             </div>
         </div>
     </section>
-
-    <!--
-    <section id="used-by" class="padding-top-bottom-90">
-      <div class="container">
-        <div class="heading-wraper text-center margin-bottom-80">
-          <h2>Used by (Draft)</h2>
-          <hr class="heading-devider gradient-orange">
-        </div>
-        <div class="row">
-          <div class="col-md-3">
-            <div class="text-center">
-             <img src="images/logos/usdx.png" alt="">
-              <div class="card-block">
-                <p class="card-text"><small class="text-muted blog-category">Game</small></p>
-                <h4 class="card-title">UltraStar<br/>Deluxe</h4>
-                <p class="card-text">Version XYZ</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="text-center">
-              <img src="images/logos/karedi.png" alt="">
-              <div class="card-block">
-                <p class="card-text"><small class="text-muted blog-category">Song Editor</small></p>
-                <h4 class="card-title">Karedi</h4>
-                <p class="card-text">Version XYZ</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="text-center">
-              <img src="images/logos/usdb.png" alt="">
-              <div class="card-block">
-                <p class="card-text"><small class="text-muted blog-category">TXT-file Hosting</small></p>
-                <h4 class="card-title">USDB</h4>
-                <p class="card-text">Version XYZ</p>
-              </div>
-            </div>
-          </div>
-          <a href="https://github.com/UltraStar-Deluxe/UltraStar-Manager">
-          <div class="col-md-3">
-            <div class="text-center">
-             <img src="images/logos/ultrastar-manager.png" alt="">
-              <div class="card-block">
-                <p class="card-text"><small class="text-muted blog-category">Tool</small></p>
-                <h4 class="card-title">UltraStar<br/>Manager</h4>
-                <p class="card-text">Version XYZ</p>
-              </div>
-            </div>
-          </div>
-          </a>
-        </div>
-        <div class="row">
-          <div class="col-md-3">
-            <div class="text-center">
-             <img src="images/logos/vocaluxe.png" alt="">
-              <div class="card-block">
-                <p class="card-text"><small class="text-muted blog-category">Game</small></p>
-                <h4 class="card-title">Vocaluxe</h4>
-                <p class="card-text">Version XYZ</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="text-center">
-              <img src="images/logos/mm.png" alt="">
-              <div class="card-block">
-                <p class="card-text"><small class="text-muted blog-category">Game</small></p>
-                <h4 class="card-title">Melody<br/> Mania</h4>
-                <p class="card-text">Version XYZ</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="text-center">
-              <img src="images/logos/us-world.png" alt="">
-              <div class="card-block">
-                <p class="card-text"><small class="text-muted blog-category">Game</small></p>
-                <h4 class="card-title">UltraStar<br/>World Party</h4>
-                <p class="card-text">Version XYZ </p>
-              </div>
-            </div>
-          </div>
-          <a href="https://github.com/UltraStar-Deluxe/UltraStar-Manager">
-          <div class="col-md-3">
-            <div class="text-center">
-             <img src="images/logos/performous.png" alt="">
-              <div class="card-block">
-                <p class="card-text"><small class="text-muted blog-category">Game</small></p>
-                <h4 class="card-title">Performous</h4>
-                <p class="card-text">Version XYZ</p>
-              </div>
-            </div>
-          </div>
-          </a>
-
-        </div>
-
-      </div>
-    </section>
-    -->
-
 
     <!--
     <section id="testimonial" class="testimonial-section padding-top-bottom-90 gradient-violat">
@@ -2569,11 +2742,11 @@
                 <div class="col-md-3">
                     <div class="footer-left-content">
                         <div class="logo-colored">
-                            <img src="images/Logo_color.png" alt="">US FORMAT
+                            <img src="images/Logo_color.png" alt="">FORMAT
                         </div>
                         <div class="content">
-                            <p class="margin-bottom-30 margin-top-30">US FORMAT is a co-op meta-project for open source
-                                karaoke scene powered by different karaoke communities. Founded in 2023.</p>
+                            <p class="margin-bottom-30 margin-top-30">FORMAT is a co-op meta-project for open source
+                                karaoke scene powered by different karaoke communities. Started in 2023.</p>
                         </div>
                     </div>
                 </div>
