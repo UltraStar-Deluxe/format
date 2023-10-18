@@ -116,7 +116,7 @@
                                     <a class="btn btn-white gradient-white border-none btn-rounded-corner"
                                         href="https://github.com/UltraStar-Deluxe/format">GitHub<span
                                             class="icon-on-button"><i class="ion-ios-arrow-thin-right"></i></span></a>
-                                    <a class="btn btn-orange border-none btn-rounded-corner" href="#who">who<span
+                                    <a class="btn btn-orange border-none btn-rounded-corner" href="#together-with">who<span
                                             class="icon-on-button"><i
                                                 class=" glyphicon glyphicon-question-sign"></i></span></a>
                                     <!--<a class="btn btn-white border-none btn-rounded-corner" href="https://github.com/UltraStar-Deluxe/format">Go To GitHub<span class="icon-on-button"><i class="ion-ios-arrow-thin-right"></i></span></a>-->
@@ -429,7 +429,6 @@
                     <div>
                         <pre class="notranslate"><code>#MP3:Artist - Title.mp3</code></pre>
                     </div>
-                    <p><span class="label label-warning">will be changed to #AUDIO automatically in usdb and your txt-collection</span> </p>
                     <details>
                         <summary>App Support</summary>
                         <div class="table-responsive">
@@ -576,13 +575,19 @@
                     <div>
                         <pre class="notranslate"><code>: 10 10 10 Text</code></pre>
                     </div>
-                    <h4><a id="end-of-phrase" href="#end-of-phrase"></a>End of phrase</h4>
+                    <h4 style="padding-top:40px"><a id="end-of-phrase" href="#end-of-phrase"></a>End of phrase</h4>
                     <p><code>-</code> represents the end of a phrase and how long it lasts by the
                         <code>StartBeat</code>. The length is calculated against the <code>BPM</code>, <code>GAP</code>
                         and <code>Relative</code>. Is a beat number.
                     </p>
                     <div>
                         <pre class="notranslate"><code>- StartBeat</code></pre>
+                    </div>
+                    <h4 style="padding-top:40px"><a id="end-of-phrase" href="#end-of-phrase"></a>End of file</h4>
+                    <p><code>E</code> represents the end of a file.
+                    </p>
+                    <div>
+                        <pre class="notranslate"><code>E</code></pre>
                     </div>
                     <h4 style="padding-top:40px"><a id="notetypes" href="#notetypes"></a>NoteTypes</h4>
                     <h5><a id="normal-" href="#normal-"></a>Normal <code>:</code></h5>
@@ -2051,12 +2056,11 @@
                             </table>
                         </div>
                     </details>
-                    <h4><a id="duetsingerp1--duetsingerp2" href="#duetsingerp1--duetsingerp2"></a>DUETSINGERP1 &
-                        DUETSINGERP2</h4>
+                    <h4><a id="p1-and-p2" href="#p1-and-p2"></a>P1 and P2</h4>
                     <p>Specify the names of the singers for a duet song. These values can be used to display the names
                         of the singers on screen during a duet.</p>
                     <div>
-                        <pre class="notranslate"><code>#DUETSINGERP1:John
+                        <pre class="notranslate"><code>#P1:John
                     </code></pre>
                     </div>
                     <details>
@@ -2081,67 +2085,6 @@
                                     <tr>
                                         <td>UltraStar World Party</td>
                                         <td>21.02 (2021-02-07)</td>
-                                        <td>✔️</td>
-                                        <td>up to 2 singers</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Vocaluxe</td>
-                                        <td>0.41 (2020-03-10)</td>
-                                        <td>✔️</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Performous</td>
-                                        <td>1.2.0 (2022-03-27)</td>
-                                        <td>❔</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>UltraStar Play</td>
-                                        <td>0.9.0 (2023-02-01)</td>
-                                        <td>✔️</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Yass</td>
-                                        <td>2.4.3 (2023-03-18)</td>
-                                        <td>✔️</td>
-                                        <td>up to 4 singers</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Karedi</td>
-                                        <td>>=1.0.0</td>
-                                        <td>✔️</td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </details>
-                    <h4><a id="p1-and-p2" href="#p1-and-p2"></a>P1 and P2</h4>
-                    <p>Same as <code>DUETSINGERP1</code> and <code>DUETSINGERP2</code></p>
-                    <details>
-                        <summary>App Support</summary>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>App</th>
-                                        <th>Version</th>
-                                        <th>Supported</th>
-                                        <th>Comment</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>UltraStar deluxe </td>
-                                        <td>&gt; 2020.4.0 (2020-04-30)</td>
-                                        <td>✔️</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>UltraStar World Party</td>
-                                        <td>21.02 (2021-02-07)</td>
                                         <td>❌</td>
                                         <td></td>
                                     </tr>
@@ -2179,6 +2122,12 @@
                             </table>
                         </div>
                     </details>
+                    <h4><a id="comment" href="#comment"></a>Comment</h4>
+                    <p>Use comment to write any important information in the text file that might be interesting for song creators. Right now there is no definition for what this attribute should be used excactly. It's not displayed in the games.</p>
+                    <div>
+                        <pre class="notranslate"><code>#COMMENT:made with Karedi and YASS Editor
+                    </code></pre>
+                    </div>
                     <h3 id="deprecated" class="padding-top-120 text-red"><i class="glyphicon glyphicon-ban-circle"></i> Deprecated</h3>
                     <hr />
                     <h4 class="text-red"><a id="resolution" href="#resolution"></a>RESOLUTION</h4>
@@ -2362,10 +2311,76 @@
                             </table>
                         </div>
                     </details>
+                    <h4 class="text-red"><a id="duetsingerp1--duetsingerp2" href="#duetsingerp1--duetsingerp2"></a>DUETSINGERP1 &
+                        DUETSINGERP2</h4>
+                    <p>Specify the names of the singers for a duet song. These values can be used to display the names
+                        of the singers on screen during a duet.</p>
+                    <div>
+                        <pre class="notranslate"><code>#DUETSINGERP1:John
+                    </code></pre>
+                    </div>
+                    <details>
+                        <summary>App Support</summary>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>App</th>
+                                        <th>Version</th>
+                                        <th>Supported</th>
+                                        <th>Comment</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>UltraStar deluxe </td>
+                                        <td>&gt; 2020.4.0 (2020-04-30)</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>UltraStar World Party</td>
+                                        <td>21.02 (2021-02-07)</td>
+                                        <td>✔️</td>
+                                        <td>up to 2 singers</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vocaluxe</td>
+                                        <td>0.41 (2020-03-10)</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Performous</td>
+                                        <td>1.2.0 (2022-03-27)</td>
+                                        <td>❔</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>UltraStar Play</td>
+                                        <td>0.9.0 (2023-02-01)</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Yass</td>
+                                        <td>2.4.3 (2023-03-18)</td>
+                                        <td>✔️</td>
+                                        <td>up to 4 singers</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Karedi</td>
+                                        <td>>=1.0.0</td>
+                                        <td>✔️</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
                     <h4 class="text-red"><a id="encoding-tag" href="#encoding"></a>ENCODING</h4>
                     <p>Specifies the character encoding used in the txt file. This attribute can be used to ensure that
                         special characters are displayed correctly. Possible values are UTF-8, CP1252 and CP1250.</p>
-                        <p><span class="label label-warning">Deprecated: All games will have to use UTF-8.</span></p>
                     <div>
                         <pre class="notranslate"><code>#ENCODING:UTF8
                     </code></pre>
@@ -2570,172 +2585,83 @@
             </div>
           </div>
         </a>
+        <a href="https://ultrastar-play.com/de">
+          <div class="col-md-3">
+            <div class="text-center">
+             <img src="images/logos/usp.png" alt="">
+              <div class="card-block">
+                <p class="card-text"><small class="text-muted blog-category">Game</small></p>
+                <h4 class="card-title">UltraStar Play</h4>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="https://www.mylittlekaraoke.com/">
+          <div class="col-md-3">
+            <div class="text-center">
+             <img src="images/logos/mylittlekaraoke.png" alt="">
+              <div class="card-block">
+                <p class="card-text"><small class="text-muted blog-category">Game</small></p>
+                <h4 class="card-title">My Little Karaoke</h4>
+              </div>
+            </div>
+          </div>
+        </a>
         </div>
       </div>
     </section>
 
-    <section id="who" class="padding-top-120">
+    <section id="who">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="heading-wraper text-center margin-bottom-80">
-                                <h2>Join us all!</h2>
+                                <h2>Join us!</h2>
                                 <hr class="heading-devider gradient-orange">
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="heading-wraper text-left margin-bottom-80">
-                                <p>Since the text format was introduced a little bit more than a decade ago a lot of
-                                    projects got to know and support it.
-                                    We'd like to give these projects a little bit of appreciation by linking to their
-                                    respective GitHub page or website. <b>Please join us! Togehter we can do better.</b></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <h5 class="service-title">Karaoke software</h5>
-                            <p class="services-content margin-bottom-25">
-                            <div class="list-group">
-                                <a href="http://ultrastaronline.com/" class="list-group-item">UltraStar Online </a>
-                                <a href="https://github.com/UltraStar-Deluxe/USDX" class="list-group-item">UltraStar
-                                    Deluxe</a>
-                                <a href="https://github.com/performous/performous"
-                                    class="list-group-item">Performous</a>
-                                <a href="https://github.com/ultrastares/ultrastar-worldparty"
-                                    class="list-group-item">UltraStar World Party</a>
-                                <a href="https://github.com/Vocaluxe/Vocaluxe" class="list-group-item">Vocaluxe</a>
-                                <a href="https://www.mylittlekaraoke.com/" class="list-group-item">MyLittleKaraoke</a>
-                                <a href="https://github.com/UltraStar-Deluxe/Play" class="list-group-item">UltraStar
-                                    Play / Melody Mania</a>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6">
-                            <h5 class="service-title">UltraStar Song Creator software</h5>
-                            <p class="services-content margin-bottom-25">
-                            <div class="list-group">
-                                <a href="https://github.com/SarutaSan72/Yass" class="list-group-item">Yass</a>
-                                <a href="https://github.com/DoubleDee73/Yass" class="list-group-item">Yass Reloaded</a>
-                                <a href="https://github.com/performous/composer" class="list-group-item">Composer</a>
-                                <a href="https://github.com/Nianna/Karedi" class="list-group-item">Karedi</a>
-                                <a href="https://github.com/UltraStar-Deluxe/UltraStar-Creator"
-                                    class="list-group-item">UltraStar Creator</a>
-                                <a href="https://github.com/rakuri255/UltraSinger"
-                                    class="list-group-item">UltraSinger</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <h5 class="service-title">UltraStar Textfiles hosting</h5>
-                            <p class="services-content margin-bottom-25">
-                            <div class="list-group">
-                                <a href="https://usdb.animux.de" rel="nofollow" class="list-group-item">USDB</a>
-                                <a href="http://ultrastar-es.org/" rel="nofollow"
-                                    class="list-group-item">UltraStar-ES</a>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6">
-                            <h5 class="service-title">Management Software</h5>
-                            <p class="services-content margin-bottom-25">
-                            <div class="list-group">
-                                <a href="https://github.com/bohning/usdb_syncer" class="list-group-item">USDB Syncer</a>
-                                <a href="https://github.com/UltraStar-Deluxe/UltraStar-Manager"
-                                    class="list-group-item">UltraStar Manager</a>
-                            </div>
-                        </div>
+                            <a href="http://ultrastaronline.com/">
+                              <div class="col-md-4">
+                                <div class="text-center">
+                                 <img src="images/logos/ultrastaronline.png" alt="">
+                                  <div class="card-block">
+                                    <p class="card-text"><small class="text-muted blog-category">Game</small></p>
+                                    <h4 class="card-title">UltraStar<br/>Online</h4>
+                                  </div>
+                                </div>
+                              </div>
+                            </a>
+                            <a href="https://www.vocaluxe.org/">
+                              <div class="col-md-4">
+                                <div class="text-center">
+                                  <img src="images/logos/vocaluxe.png" alt="">
+                                  <div class="card-block">
+                                    <p class="card-text"><small class="text-muted blog-category">Game</small></p>
+                                    <h4 class="card-title">Vocaluxe</h4>
+                                  </div>
+                                </div>
+                              </div>
+                            </a>
+                            <a href="https://github.com/ultrastares/ultrastar-worldparty">
+                              <div class="col-md-4">
+                                <div class="text-center">
+                                  <img src="images/logos/us-world.png" alt="">
+                                  <div class="card-block">
+                                    <p class="card-text"><small class="text-muted blog-category">Game</small></p>
+                                    <h4 class="card-title">UltraStar Worldparty</h4>
+                                  </div>
+                                </div>
+                              </div>
+                            </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!--
-    <section id="testimonial" class="testimonial-section padding-top-bottom-90 gradient-violat">
-      <div class="container">
-        <div class="heading-wraper text-center">
-          <h2 class="text-white">Contributors (draft)</h2>
-          <hr class="heading-devider gradient-orange">
-        </div>
-        <div class="row">
-          <div class="col-md-8 col-md-offset-2">
-            <div id="testimonial-carousel" class="owl-carousel">
-              <div>
-                <div class="testimonial-container">
-                  <div class="client-details text-center">
-                    <img src="images/contributors/asgard-sings.png" alt="">
-                    <h5 class="client-name">Asgard Sings</h5>
-                    <p class="client-designation">Developer Performous</p>
-                    <ul class="social-list">
-                      <li><a href=""><i class="ion-social-github"></i></a></li>
-                    </ul>
-                  </div>
-
-                  <div class="testimonial-content" style="display:none">
-                    <p><i class="ion-quote"></i></p>
-                    <p class="testimonial-speech">Statement here</p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div class="testimonial-container">
-                  <div class="client-details text-center">
-                    <img src="images/contributors/bohning.png" alt="">
-                    <h5 class="client-name">Bohning</h5>
-                    <p class="client-designation">Developer Ultrastar Manager, USDB Sync</p>
-                    <ul class="social-list">
-                      <li><a href=""><i class="ion-social-github"></i></a></li>
-                    </ul>
-                  </div>
-                  <div class="testimonial-content" style="display:none">
-                    <p><i class="ion-quote"></i></p>
-                    <p class="testimonial-speech">Statement here</p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div class="testimonial-container">
-                  <div class="client-details text-center">
-                    <img src="images/contributors/basisbit.jpg" alt="">
-                    <h5 class="client-name">basisbit</h5>
-                    <p class="client-designation">Developer UltraStar Deluxe</p>
-                    <ul class="social-list">
-                      <li><a href=""><i class="ion-social-github"></i></a></li>
-                    </ul>
-                  </div>
-                  <div class="testimonial-content" style="display:none">
-                    <p><i class="ion-quote"></i></p>
-                    <p class="testimonial-speech">Statement here</p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div class="testimonial-container">
-                  <div class="client-details text-center">
-                    <img src="images/contributors/you.png" alt="">
-                    <h5 class="client-name">You?</h5>
-                    <p class="client-designation">Be part of the format future!</p>
-                    <ul class="social-list">
-                      <li><a href="https://github.com/UltraStar-Deluxe/format"><i class="ion-social-github"></i></a></li>
-                    </ul>
-                  </div>
-                  <div class="testimonial-content" style="display:none">
-                    <p><i class="ion-quote"></i></p>
-                    <p class="testimonial-speech">Statement here</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    -->
-
     <footer class="padding-top-120">
         <div class="container">
             <div class="row">
