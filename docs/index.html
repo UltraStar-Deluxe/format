@@ -397,8 +397,8 @@
                     <h3 id="encoding-header" class="padding-top-120"><i class="glyphicon glyphicon-cog"></i>Encoding & TXT
                     </h3>
                     <hr />
-                    <p>Encoding has to be UTF-8.</p>
-                    <p><b>Why?</b> UTF-8 is a great encoding that can represent a vast number of symbols from all kinds of
+                    <p>Encoding has to be UTF-8 (without BOM).</p>
+                    <p><b>Why?</b> UTF-8 (without BOM) is a great encoding that can represent a vast number of symbols from all kinds of
                         languages. Other encodings, like Windows code pages, are far more limited and are only suitable
                         for a small family of languages.</p>
                     <p>File-Container has to be TXT.</p>
@@ -2929,7 +2929,7 @@
                     </details>
                     <h4 style="color:grey"><a id="encoding-tag" href="#encoding"></a>ENCODING</h4>
                     <p>Specifies the character encoding used in the txt file. This attribute can be used to ensure that
-                        special characters are displayed correctly. Possible values are UTF-8, CP1252 and CP1250.<b>This is not needed. All TXT should be UTF-8.</b></p>
+                        special characters are displayed correctly. Possible values are UTF-8, CP1252 and CP1250.<b>This is not needed. All TXT should be UTF-8 (without BOM).</b></p>
                     <div>
                         <pre class="notranslate"><code>#ENCODING:UTF8
                     </code></pre>
