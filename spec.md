@@ -474,13 +474,14 @@ An end-of-phrase SHOULD NOT appear between the start beat (inclusive) of a note 
 A player change is indicated by a `P` (the letter P, `%x50`), immediately followed by a number.
 
 ```abnf
-player-change = p player-numer
+player-change  = p player-numer
                 *WSP line-break
-p             = %x50    ; P
-player-number = "1" / "2"
+p              = %x50    ; P
+player-number  = positive-digit *DIGIT
+positive-digit = %x31-39  ; 1-9
 ```
 
-A player change indicates that all notes and end-of-phrase markers following this line belong to the player, indicated by the `player-number`. This allows inclusion of up to 2 voices. If the body of a song does not start with a player change, `P1` is assumed implicitly. Implementations SHOULD NOT include the same player change more than once (i.e. notes for different players should not be interlaced).
+A player change indicates that all notes and end-of-phrase markers following this line belong to the player indicated by the `player-number`. Implementations MAY choose to limit the number of voices. If the body of a song does not start with a player change, `P1` is assumed implicitly. To improve readablility notes for different players should not be interlaced.
 
 > [!NOTE]
 >
