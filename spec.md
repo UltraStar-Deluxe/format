@@ -148,7 +148,19 @@ Multi-valued headers can contain multiple values separated by a comma (`%x2C`). 
 >
 > The use of multi-valued headers has not been decided yet ([#22](https://github.com/UltraStar-Deluxe/format/issues/22)).
 
-### 3.2. The `VERSION` Header
+### 3.2. File References
+
+Some headers reference other files, most notably `AUDIO`, `VIDEO`, `COVER`, and `BACKGROUND`. These file references are always relative to the UltraStar file from which they are referenced. As a security measure file references MUST NOT use absolute paths. Implementations SHOULD refuse to load absolutely referenced files.
+
+> [!CAUTION]
+>
+> Whether absolute paths are allowed or not has not been decided yet.
+
+> [!IMPORTANT]
+>
+> In Windows file names are case-insensitive (i.e. there cannot be two files in a folder that differ only by their case). Linux and macOS however, use fully case-sensitive file systems. Implementations might need to pay special attention to this fact to ensure that files are compatible across all systems.
+
+### 3.3. The `VERSION` Header
 
 ```
 Required:     Yes
@@ -162,7 +174,7 @@ In absence of the `VERSION` header implementations SHOULD assume the version 0.3
 
 The `VERSION` header SHOULD be the first header in a file.
 
-### 3.3. The `BPM` Header
+### 3.4. The `BPM` Header
 
 ```
 Required:     Yes
@@ -192,7 +204,7 @@ The `BPM` header indicates the number of beats per minute. The notes in a song a
 >
 > The removal of the comma as a valid decimal separator has not been decided yet.
 
-### 3.4. The `AUDIO` Header
+### 3.5. The `AUDIO` Header
 
 ```
 Required:     Yes
@@ -200,9 +212,9 @@ Multi-Valued: No
 Since:        1.1.0
 ```
 
-The `AUDIO` header indicates the location of an audio file relative to the UltraStar file. This file contains the full version of a song (including instrumentals and vocals).
+The `AUDIO` header contains a file reference (as defined in section 3.2.) to an audio file. This file contains the full version of a song (including instrumentals and vocals). Supported audio formats are an implementation detail.
 
-### 3.5. The `MP3` Header
+### 3.6. The `MP3` Header
 
 ```
 Required:     No (Version 2.x), Yes (Versions 0.x and 1.x)
@@ -212,9 +224,9 @@ Deprecated:   1.1.0
 Removed:      2.0.0
 ```
 
-The `MP3` header indicates the location of an audio file relative to the UltraStar file. This header has been replaced by the `AUDIO` header. Implementations MUST disregard the `MP3` header if an `AUDIO` header is present (even if the specified file cannot be found or processed).
+The `MP3` header contains a file reference (as defined in section 3.2.) to an audio file. This header has been replaced by the `AUDIO` header. Implementations MUST disregard the `MP3` header if an `AUDIO` header is present (even if the specified file cannot be found or processed).
 
-### 3.6. The `GAP` Header
+### 3.7. The `COVER`, `BACKGROUND`, and `VIDEO` Headers
 
 ```
 Required:     No
@@ -222,7 +234,17 @@ Multi-Valued: No
 Since:        0.2.0
 ```
 
-The `GAP` header indicates an amount of time in milliseconds from the beginning of the audio track until beat 0. This effectively offsets all notes in a song by this amount of time relative to the audio track. The `GAP` value must be an integer.
+The headers `COVER`, `BACKGROUND`, and `VIDEO` contain file references to image files or in case of `VIDEO` video files. Implementations MAY use these files to display cover artwork and background graphics during gameplay. Supported image and video formats are an implementation detail.
+
+### 3.8. The `GAP` Header
+
+```
+Required:     No
+Multi-Valued: No
+Since:        0.2.0
+```
+
+The `GAP` header indicates an amount of time in milliseconds from the beginning of the audio track until beat 0. This effectively offsets all notes in a song by this amount of time relative to the audio track. The `GAP` value is an integer.
 
 > [!WARNING]
 >
@@ -230,7 +252,23 @@ The `GAP` header indicates an amount of time in milliseconds from the beginning 
 >
 > In versions 0.x and 1.x the value of `GAP` could also be a floating point number. Since version 2.0.0 this is not allowed anymore.
 
-### 3.7. The `NOTESGAP` Header
+### 3.9. The `VIDEOGAP` Header
+
+```
+Required:     No
+Multi-Valued: No
+Since:        0.2.0
+```
+
+The `VIDEOGAP` header indicates an amount of time in milliseconds that the background video will be delayed relative to the audio of a song. The `VIDEOGAP` value is an integer.
+
+> [!WARNING]
+>
+> **Breaking Change** in version 2.0.0
+>
+> In versions 0.x and 1.x the value of `VIDEOGAP` was specified in seconds as a floating point number. Version 2.0.0 changes this to an integer and milliseconds.
+
+### 3.10. The `NOTESGAP` Header
 
 ```
 Required:     No
@@ -246,7 +284,27 @@ The `NOTESGAP` header is deprecated and MUST NOT be used. Implementations MUST i
 >
 > The `NOTESGAP` header was defined in version 0.1.0 But its semantics were never fully specified.
 
-### 3.8. The `TITLE` Header
+### 3.11. The `START` and `END` Headers
+
+```
+Required:     No
+Multi-Valued: No
+Since:        0.2.0
+```
+
+The `START` and `END` header specify two time points in milliseconds relative to the start of the audio data that indicate a start and end point for the song. Game implementations SHOULD start and end the song at the specified points and scale scoring accordingly. Both `START` and `END` values are integers.
+
+> [!NOTE]
+>
+> The `START` and `END` values do not affect the placement of notes relative to the audio. They simply skip a certain amount of time from the beginning or towards the end of a song.
+
+> [!WARNING]
+>
+> **Breaking Change** in version 2.0.0
+>
+> In versions 0.x and 1.x `START` was specified in seconds as a floating point number. Version 2.0.0 changes this to an integer and milliseconds.
+
+### 3.12. The `TITLE` Header
 
 ```
 Required:     Yes
@@ -256,7 +314,7 @@ Since:        0.1.0
 
 The `TITLE` header contains the title of the song.
 
-### 3.9. The `Artist` Header
+### 3.13. The `ARTIST` Header
 
 ```
 Required:     No
@@ -266,7 +324,7 @@ Since:        0.1.0
 
 The `ARTIST` header contains the artist of the song.
 
-### 3.10. The `GENRE` Header
+### 3.14. The `GENRE` Header
 
 ```
 Required:     No
@@ -280,7 +338,7 @@ The `GENRE` defines the genre(s) of the song. Individual genre values MUST be co
 >
 > Whether genres should be compared case-insensitively or not has not yet been decided.
 
-### 3.11. The `P1` and `P2` Headers
+### 3.15. The `P1` and `P2` Headers
 
 ```
 Required:     No
@@ -290,7 +348,7 @@ Since:        0.2.0
 
 The headers `P1` and `P2` indicate the names of the artists that originally sang the song. `P1` is the name of the singer of first voice and `P2` is the name of the singer of the second voice. Usually `P2` is only included for duets.
 
-### 3.12. The `DUETSINGER1` and `DUETSINGER2` Headers
+### 3.16. The `DUETSINGER1` and `DUETSINGER2` Headers
 
 ```
 Required:     No
