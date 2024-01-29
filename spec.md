@@ -45,7 +45,7 @@ UltraStar files are plain text files. The UTF-8 encoding MUST be used. Implement
 
 The canonical file extension for the UltraStar file format is `.txt`.
 
-UltraStar files consist of a header and a body. The header contains metadata about the song and the file. The body contains the musical data. A file SHOULD end with an `E` on a single line. Everything After a trailing `E` MUST be ignored.
+UltraStar files consist of a header and a body. The header contains metadata about the song and the file. The body contains the musical data. A file SHOULD end with an `E` on a single line. Everything after a trailing `E` MUST be ignored.
 
 > [!CAUTION]
 >
