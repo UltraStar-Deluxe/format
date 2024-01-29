@@ -388,13 +388,13 @@ note = note-type
        WSP note-text
        line-break
 
-note-type  = %x21-22 / %x24-7E  ; ASCII-characters except space and #
+note-type  = %x21-22 / %x24-7E  ; Visible ASCII-characters except space and #
 start-beat = *DIGIT
 duration   = *DIGIT
 pitch      = [ minus ] *DIGIT
 note-text  = 1*( %x20-10FFFF )
 
-minus   = %x2D    ; -
+minus   = %x2D  ; -
 ```
 
 > [!CAUTION]
@@ -476,7 +476,7 @@ A player change is indicated by a `P` (the letter P, `%x50`), immediately follow
 ```abnf
 player-change  = p player-numer
                 *WSP line-break
-p              = %x50    ; P
+p              = %x50  ; P
 player-number  = positive-digit *DIGIT
 positive-digit = %x31-39  ; 1-9
 ```
@@ -497,7 +497,7 @@ A player change indicates that all notes and end-of-phrase markers following thi
 >
 > In version 0.1.0 only single-player songs were defined. Player changes are specified since version 0.2.0.
 
-> [!WARNING]
+> [!Note]
 >
 > There exists a legacy behavior where an indicated `P3` would start a sequence of notes that apply to both players. This behavior is explicitly NOT compliant with this specification.
 
