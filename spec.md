@@ -12,8 +12,6 @@ This document aims to describe the UltraStar File Format in its most recent vers
 
 GitHub Issues are preferred for discussion of this specification. Alternatively, you can discuss comments on our Discord server.
 
-[toc]
-
 ## 1. Introduction
 
 The UltraStar file format provides a standardized representation of karaoke songs. The format has been used for a long time by numerous karaoke games such as UltraStar Deluxe, Performous, or Vocaluxe. There exists an ecosystem of supporting applications for hosting, editing, and managing songs. However due to the lack of an official file format specification implementations differ and new features cannot be added in a consistent manner. This document aims to fix this problem by providing a formal specification for the syntax and semantics of the UltraStar file format.
