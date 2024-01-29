@@ -41,7 +41,7 @@ UltraStar files are plain text files. The UTF-8 encoding MUST be used. Implement
 
 > [!CAUTION]
 >
-> Whether files with a BOM may be accepted is an open discussion (#46).
+> Whether files with a BOM may be accepted is an open discussion ([#46](https://github.com/UltraStar-Deluxe/format/issues/46)).
 
 The canonical file extension for the UltraStar file format is `.txt`.
 
@@ -49,7 +49,7 @@ UltraStar files consist of a header and a body. The header contains metadata abo
 
 > [!CAUTION]
 >
-> Whether the trailing `E` is optional or not is open for discussion (#44).
+> Whether the trailing `E` is optional or not is open for discussion ([#44](https://github.com/UltraStar-Deluxe/format/issues/44)).
 
 ```abnf
 UltraStar-file = file-header
@@ -71,11 +71,11 @@ Implementations SHOULD use a single Line Feed (`%x0A`) as line terminator. Imple
 
 > [!CAUTION]
 >
-> The allowed end-of-line sequences as well as potential recommendations for implementations are currently open for discussion (#43).
+> The allowed end-of-line sequences as well as potential recommendations for implementations are currently open for discussion ([#43](https://github.com/UltraStar-Deluxe/format/issues/43)).
 
 > [!CAUTION]
 >
-> Whether empty lines are allowed or not is currently open for discussion (#43). Whether a line that consists only of whitespace is recognized as an empty line is not yet decided.
+> Whether empty lines are allowed or not is currently open for discussion ([#43](https://github.com/UltraStar-Deluxe/format/issues/43)). Whether a line that consists only of whitespace is recognized as an empty line is not yet decided.
 
 Whitespace is used as a separator in many places of the format. Only space (`%x20`) and horizontal tab (`%x09`) are recognized as whitespace characters. In particular other unicode characters with the property `White_Space=yes` MUST NOT be treated as whitespace characters in the context of this specification.
 
@@ -85,7 +85,7 @@ WSP = ( SP / HTAB )
 
 > [!CAUTION]
 >
-> Definition and handling of whitespace characters is currently open for discussion (#46).
+> Definition and handling of whitespace characters is currently open for discussion ([#46](https://github.com/UltraStar-Deluxe/format/issues/46)).
 
 ## 2. The File Header
 
@@ -146,7 +146,7 @@ Multi-valued headers can contain multiple values separated by a comma (`%x2C`). 
 
 >  [!CAUTION]
 >
-> The use of multi-valued headers has not been decided yet (#22).
+> The use of multi-valued headers has not been decided yet ([#22](https://github.com/UltraStar-Deluxe/format/issues/22)).
 
 ### 3.2. The `VERSION` Header
 
@@ -341,7 +341,7 @@ minus   = %x2D    ; -
 
 > [!CAUTION]
 >
-> Whether only a single or multiple whitespaces in a row are allowed is currently up for discussion (#46).
+> Whether only a single or multiple whitespaces in a row are allowed is currently up for discussion ([#46](https://github.com/UltraStar-Deluxe/format/issues/46)).
 
 The note type indicates how singing the correct or wrong note should affect scoring. The following sections define standard note types. Implementations MAY substitute unknown note types with freestyle notes (`F`). Implementations MUST NOT attach semantics to note types not covered by this specification.
 
@@ -405,7 +405,7 @@ An end-of-phrase SHOULD NOT appear between the start beat (inclusive) of a note 
 
 > [!CAUTION]
 >
-> Whether leading or trailing end-of-phrase markers are allowed is currently up for discussion (#44).
+> Whether leading or trailing end-of-phrase markers are allowed is currently up for discussion ([#44](https://github.com/UltraStar-Deluxe/format/issues/44)).
 
 > [!CAUTION]
 >
