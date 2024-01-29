@@ -116,7 +116,7 @@ comma = %x2C  ; ,
 >
 > The use of trailing commas in comma-separated header lists has not been decided yet.
 
-Comparisons of header keys is case-insensitive. For the sake of consistency header keys SHOULD be capitalized. Header values are generally case-sensitive unless otherwise specified. An empty value is equivalent to the header being absent.
+Comparisons of header keys is case-insensitive. For the sake of consistency header keys SHOULD use only capital letters. Header values are generally case-sensitive unless otherwise specified. An empty value is equivalent to the header being absent.
 
 Implementations MAY define application-specific headers but SHOULD prefix those headers with the application name to avoid conflicts with future standardized headers. Implementations MUST ignore headers they do not recognize. The order of headers is irrelevant (note the exception in section 3.1.) although standardized headers should precede any application-specific headers.
 
@@ -452,7 +452,7 @@ A player change indicates that all notes and end-of-phrase markers following thi
 
 > [!CAUTION]
 >
-> Whether there may be a whitespace between the “P” and the indicated player is not yet decided.
+> Whether there may be a whitespace between the `P` and the indicated player is currently open for discussion ([#46](https://github.com/UltraStar-Deluxe/format/issues/46)).
 
 ## Appendix
 
