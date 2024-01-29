@@ -439,7 +439,7 @@ A rap note is indicated by the note type `R` (the letter R, `%x52`). Rap notes h
 
 A golden rap note is indicated by the note type `G` (the letter G, `%x47`). Golden rap notes have the same semantics as rap notes. However, during scoring game implementations SHOULD award more points for golden rap notes. The exact scoring behavior is an implementation detail.
 
-#### 3.1.5. Freestyle Notes
+#### 3.1.5. Freestyle Notes `F`
 
 >  [!WARNING]
 >
