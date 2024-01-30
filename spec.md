@@ -591,6 +591,19 @@ The `ENCODING` header specifies the encoding used for text values in an UltraSta
 >
 > The use of the `ENCODING` tag is highly discouraged. UltraStar files must always use the UTF-8 encoding.
 
+### 3.31. The `RELATIVE` Header
+
+```
+Required:     No
+Multi-Valued: No
+Syntax:       "yes" / "no"
+Since:         0.2.0
+Deprecated:    0.3.0
+Removed:       1.0.0
+```
+
+The `RELATIVE` header enables [Relative Mode](#a-relative-mode) (see Appendix A).
+
 ## 3. The File Body
 
 The body of a file consists of a sequence of notes, end-of-phrase markers, and player changes.
@@ -752,6 +765,38 @@ Player changes SHOULD appear in ascending order of `player-number` and there SHO
 
 ## Appendix
 
-### A. Relative mode
+### A. Relative Mode
 
-How does player change work in relative mode?
+> [!WARNING]
+>
+> Relative mode is deprecated and has been removed in version 1.0.0 of this specification.
+
+Relative mode is a special input mode that affects parsing and interpreting UltraStar files significantly. Relative mode is enabled by the `RELATIVE` header being set to `yes` (case-insensitive).
+
+### Syntax
+
+When relative mode is enabled, the syntax of end-of-phrase markers changes:
+
+```abnf
+end-of-phrase = dash
+                WSP start-beat
+                WSP rel-offset
+                *WSP line-break
+rel-offset    = *DIGIT
+```
+
+Note that the syntax in relative mode is incompatible with the normal syntax. Implementations MUST NOT try to rectify a missing `RELATIVE` header based on the end-of-phrase markers encountered.
+
+### Semantics
+
+In relative mode the semantics of start times changes for notes and end-of-phrase markers. 
+
+- At the start of the body a relative offset `rel` is initialized to the value of the `GAP` header (or `0` if no `GAP` header exists).
+- The start times of notes and end-of-phrase markers are relative to the current `rel` value. The absolute start time is calculated as `rel + start-beat`.
+- End-of-phrase markers in relative mode include a `rel-offset`. After the start time of the end-of-phrase marker has been interpreted, the `rel-offset` value is added to `rel`.
+
+> [!IMPORTANT]
+>
+> In relative mode the order of notes and end-of-phrase markers within a file is significant.
+
+In files with multiple voices each voice has its own `rel` value which is independent of other voices. The `rel` value for a voice does not reset when a player change is encountered.
