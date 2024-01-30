@@ -536,6 +536,10 @@ Since:        0.2.0
 
 The `CREATOR` indicates who created the UltraStar version of a song. Values are usually usernames or gamer tags.
 
+> [!NOTE]
+>
+> Some implementations are known to use an application-specific header `AUTHOR` in place of `CREATOR`. The semantics of the `AUTHOR` header are not part of this specification.
+
 ### 3.28. The `PROVIDEDBY` Header
 
 ```
@@ -545,6 +549,10 @@ Since:        1.1.0
 ```
 
 The `PROVIDEDBY` header indicates the source of a particular UltraStar file. Implementations concerned with providing UltraStar files to many users (sometimes referred to as “hosters”) SHOULD set this value automatically. Values SHOULD be valid URLs according to [RFC 1738](https://datatracker.ietf.org/doc/html/rfc1738) using the HTTP or HTTPS scheme.
+
+> [!NOTE]
+>
+> Some implementations are known to use an application-specific header `SOURCE` in place of `PROVIDEDBY`. The semantics of the `SOURCE` header are not part of this specification.
 
 ### 3.29. The `COMMENT` Header
 
