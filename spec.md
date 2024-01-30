@@ -512,9 +512,9 @@ Multi-Valued: No
 Since:        0.2.0
 ```
 
-The headers `P1`, `P2`, … indicate the names of the voices of a song. These names correspond to the voices indicated by the `P1`, `P2`, … player changes (see [section 3.3](#33-player-changes)). If the voices correspond to different singers in the original song, the header values often indicate the names of the original singers.
+The headers `P1`, `P2`, … indicate the names of the voices of a song. These names correspond to the voices indicated by the `P1`, `P2`, … voice changes (see [section 3.3](#33-voice-changes)). If the voices correspond to different singers in the original song, the header values often indicate the names of the original singers.
 
-The association of header values to voices is defined by the numerical value after each `P` respectively, i.e. the header `P2` indicates the name of the voice whose notes are introduced by the `P2` player change. Leading zeroes are insignificant, i.e. the headers `P1` and `P001` both refer to the same voice.
+The association of header values to voices is defined by the numerical value after each `P` respectively, i.e. the header `P2` indicates the name of the voice whose notes are introduced by the `P2` voice change. Leading zeroes are insignificant, i.e. the headers `P1` and `P001` both refer to the same voice.
 
 > [!CAUTION]
 >
@@ -606,12 +606,12 @@ The `RELATIVE` header enables [Relative Mode](#a-relative-mode) (see Appendix A)
 
 ## 3. The File Body
 
-The body of a file consists of a sequence of notes, end-of-phrase markers, and player changes.
+The body of a file consists of a sequence of notes, end-of-phrase markers, and voice changes.
 
 ```abnf
 body = *( note /
           end-of-phrase /
-          player-change /
+          voice-change /
           empty-line )
 ```
 The sequence of notes and end-of-phrase markers SHOULD appear in ascending order by their start beats.
@@ -713,55 +713,55 @@ An end-of-phrase SHOULD NOT appear between the start beat (inclusive) of a note 
 >
 > Whether there can be non-whitespace text following an end-of-phrase indicator is not yet decided.
 
-### 3.3. Player Changes
+### 3.3. Voice Changes
 
 > [!WARNING]
 >
 > **Breaking Change** in version 0.2.0
 >
-> In version 0.1.0 only single-player songs were defined. Player changes are specified since version 0.2.0.
+> In version 0.1.0 only single-voice songs were defined. Voice changes are specified since version 0.2.0.
 
-A player change is indicated by a `P` (the letter P, `%x50`), immediately followed by a number.
+A voice change (also referred to as a “player change”) is indicated by a `P` (the letter P, `%x50`), immediately followed by a number.
 
 ```abnf
-player-change  = p player-numer
+voice-change  = p voice-numer
                 *WSP line-break
 p              = %x50  ; P
-player-number  = positive-digit *DIGIT
+voice-number  = positive-digit *DIGIT
 positive-digit = %x31-39  ; 1-9
 ```
 
-A player change indicates that all notes and end-of-phrase markers following this line belong to the player indicated by the `player-number`. Implementations MAY choose to limit the number of voices. If the body of a song does not start with a player change, `P1` is assumed implicitly. To improve readablility notes for different players should not be interlaced.
+A voice change indicates that all notes and end-of-phrase markers following this line belong to the voice indicated by the `voice-number`. Implementations MAY choose to limit the number of voices. If the body of a song does not start with a voice change, `P1` is assumed implicitly. To improve readablility notes for different voices should not be interlaced.
 
 > [!NOTE]
 >
-> A player change does NOT implicitly add an end-of-phrase indicator.
+> A voice change does NOT implicitly add an end-of-phrase indicator.
 
-Player changes SHOULD appear in ascending order of `player-number` and there SHOULD be no gaps (i.e. a song having notes for `P1` and `P3`, but not `P2`). The exact `player-number` carries no semantics other than its relative order with other `player-number` and its association with the corresponding header (see [section 3.25](#325-the-p1-and-p2-headers)). In particular a file that uses `P3` and `P5` can be rewritten using `P1` and `P2` with no change in semantics.
+Voice changes SHOULD appear in ascending order of `voice-number` and there SHOULD be no gaps (i.e. a song having notes for `P1` and `P3`, but not `P2`). The exact `voice-number` carries no semantics other than its relative order with other `voice-number` and its association with the corresponding header (see [section 3.25](#325-the-p1-and-p2-headers)). In particular a file that uses `P3` and `P5` can be rewritten using `P1` and `P2` with no change in semantics.
 
 > [!TIP]
 >
-> An UltraStar file that makes use of player changes is referred to as a “duet”.
+> An UltraStar file that makes use of voice changes is referred to as a “duet”.
 
 > [!Note]
 >
-> There exists a legacy behavior where an indicated `P3` would start a sequence of notes that apply to both players. This behavior is explicitly NOT compliant with this specification.
+> There exists a legacy behavior where an indicated `P3` would start a sequence of notes that apply to both voices. This behavior is explicitly NOT compliant with this specification.
 
 > [!CAUTION]
 >
-> Whether songs that make use of player changes need to start their body with a player change is not yet decided.
+> Whether songs that make use of voice changes need to start their body with a voice change is not yet decided.
 
 > [!CAUTION]
 >
-> Whether single-voice songs can have player changes (only `P1`) is not yet decided.
+> Whether single-voice songs can have voice changes (only `P1`) is not yet decided.
 
 > [!CAUTION]
 >
-> Whether gaps in `player-number`s are allowed is not yet decided.
+> Whether gaps in `voice-number`s are allowed is not yet decided.
 
 > [!CAUTION]
 >
-> Whether there may be a whitespace between the `P` and the indicated player is currently open for discussion ([#46](https://github.com/UltraStar-Deluxe/format/issues/46)).
+> Whether there may be a whitespace between the `P` and the indicated voice is currently open for discussion ([#46](https://github.com/UltraStar-Deluxe/format/issues/46)).
 
 ## Appendix
 
@@ -799,4 +799,4 @@ In relative mode the semantics of start times changes for notes and end-of-phras
 >
 > In relative mode the order of notes and end-of-phrase markers within a file is significant.
 
-In files with multiple voices each voice has its own `rel` value which is independent of other voices. The `rel` value for a voice does not reset when a player change is encountered.
+In files with multiple voices each voice has its own `rel` value which is independent of other voices. The `rel` value for a voice does not reset when a voice change is encountered.
