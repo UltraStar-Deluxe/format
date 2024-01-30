@@ -124,7 +124,7 @@ Implementations MAY define application-specific headers but SHOULD prefix those 
 >
 > Handling of application-specific headers has not been decided yet.
 
-The following sections describe the standardized headers that have been defined. Some headers are marked as deprecated or removed from a certain version onward. Implementations MUST continue to apply the defined semantics to a headers if it has been deprecated in the file format version indicated by the file. Implementations MUST NOT apply semantics to a header if a file indicates a version where the header has been removed.
+The following sections describe the standardized headers that have been defined. If a syntax for a header is specified it applies to the `single-value`. If no syntax is specified any valid `single-value` is valid. Some headers are marked as deprecated or removed from a certain version onward. Implementations MUST continue to apply the defined semantics to a headers if it has been deprecated in the file format version indicated by the file. Implementations MUST NOT apply semantics to a header if a file indicates a version where the header has been removed.
 
 ### 3.1. Single-Valued and Multi-Valued Headers
 
@@ -165,6 +165,7 @@ Some headers reference other files, most notably `AUDIO`, `VIDEO`, `COVER`, and 
 ```
 Required:     Yes
 Multi-Valued: No
+Syntax:       <valid semver>
 Since:        1.0.0
 ```
 
@@ -179,6 +180,7 @@ The `VERSION` header SHOULD be the first header in a file.
 ```
 Required:     Yes
 Multi-Valued: No
+Syntax:       1*DIGIT
 Since:        0.1.0
 ```
 
@@ -214,6 +216,10 @@ Since:        1.1.0
 
 The `AUDIO` header contains a file reference (as defined in section 3.2.) to an audio file. This file contains the full version of a song (including instrumentals and vocals). Supported audio formats are an implementation detail.
 
+> [!CAUTION]
+>
+> If media files should follow a specific naming scheme has not been decided yet.
+
 ### 3.6. The `MP3` Header
 
 ```
@@ -236,15 +242,44 @@ Since:        0.2.0
 
 The headers `COVER`, `BACKGROUND`, and `VIDEO` contain file references to image files or in case of `VIDEO` video files. Implementations MAY use these files to display cover artwork and background graphics during gameplay. Supported image and video formats are an implementation detail.
 
-### 3.8. The `GAP` Header
+For the best compatibility `COVER` images should be square and be no larger than 1920 pixels in width and height.
+
+> [!CAUTION]
+>
+> If a minimum requirement concerning media types should be part of the spec has not been decided yet.
+
+> [!CAUTION]
+>
+> If media files should follow a specific naming scheme has not been decided yet.
+
+### 3.8. The `VOCALS` and `INSTRUMENTAL` Headers
 
 ```
 Required:     No
 Multi-Valued: No
+Since:        1.1.0
+```
+
+The `VOCALS` and `INSTRUMENTAL` header contain file references to audio files. These files contain the acapella and instrumental versions of the song respectively. Implementations MAY use these instead of `AUDIO` to give users the option of changing the volume of vocal and instrumental tracks separately.
+
+> [!CAUTION]
+>
+> Whether the inclusion of `VOCALS` requires the inclusion of `INSTRUMENTAL` is currently not decided.
+
+### 3.9. The `GAP` Header
+
+```
+Required:     No
+Multi-Valued: No
+Syntax:       1*DIGIT
 Since:        0.2.0
 ```
 
 The `GAP` header indicates an amount of time in milliseconds from the beginning of the audio track until beat 0. This effectively offsets all notes in a song by this amount of time relative to the audio track. The `GAP` value is an integer.
+
+> [!CAUTION]
+>
+> Whether negative `GAP` values are allowed or disallowed is not decided yet.
 
 > [!WARNING]
 >
@@ -252,15 +287,20 @@ The `GAP` header indicates an amount of time in milliseconds from the beginning 
 >
 > In versions 0.x and 1.x the value of `GAP` could also be a floating point number. Since version 2.0.0 this is not allowed anymore.
 
-### 3.9. The `VIDEOGAP` Header
+### 3.10. The `VIDEOGAP` Header
 
 ```
 Required:     No
 Multi-Valued: No
+Syntax:       [ minus ] 1*DIGIT
 Since:        0.2.0
 ```
 
 The `VIDEOGAP` header indicates an amount of time in milliseconds that the background video will be delayed relative to the audio of a song. The `VIDEOGAP` value is an integer.
+
+> [!NOTE]
+>
+> 
 
 > [!WARNING]
 >
@@ -268,11 +308,12 @@ The `VIDEOGAP` header indicates an amount of time in milliseconds that the backg
 >
 > In versions 0.x and 1.x the value of `VIDEOGAP` was specified in seconds as a floating point number. Version 2.0.0 changes this to an integer and milliseconds.
 
-### 3.10. The `NOTESGAP` Header
+### 3.11. The `NOTESGAP` Header
 
 ```
 Required:     No
 Multi-Valued: No
+Syntax:       [ minus ] 1*DIGIT
 Since:        0.2.0
 Deprecated:   0.3.0
 Removed:      1.0.0
@@ -284,11 +325,30 @@ The `NOTESGAP` header is deprecated and MUST NOT be used. Implementations MUST i
 >
 > The `NOTESGAP` header was defined in version 0.1.0 But its semantics were never fully specified.
 
-### 3.11. The `START` and `END` Headers
+### 3.12. The `RESOLUTION` Header
 
 ```
 Required:     No
 Multi-Valued: No
+Since:        0.2.0
+Deprecated:   0.3.0
+Removed:      1.0.0
+```
+
+The `RESOLUTION` header is used by [UltraStar Deluxe](https://github.com/UltraStar-Deluxe/USDX) exclusively to change the resolution of the built-in song editor.
+
+> [!WARNING]
+>
+> **Breaking Change** in version 1.0.0
+>
+> The `RESOLUTION` header was removed in version 1.0.0 of this specification.
+
+### 3.13. The `START` and `END` Headers
+
+```
+Required:     No
+Multi-Valued: No
+Syntax:       1*DIGIT
 Since:        0.2.0
 ```
 
@@ -296,7 +356,7 @@ The `START` and `END` header specify two time points in milliseconds relative to
 
 > [!NOTE]
 >
-> The `START` and `END` values do not affect the placement of notes relative to the audio. They simply skip a certain amount of time from the beginning or towards the end of a song.
+> The `START` and `END` values do not affect the placement of notes nor any other time codes relative to the audio. They simply indicate that a song should be started or stopped a certain amount of time into the audio file.
 
 > [!WARNING]
 >
@@ -304,7 +364,68 @@ The `START` and `END` header specify two time points in milliseconds relative to
 >
 > In versions 0.x and 1.x `START` was specified in seconds as a floating point number. Version 2.0.0 changes this to an integer and milliseconds.
 
-### 3.12. The `TITLE` Header
+### 3.14. The `PREVIEWSTART` Header
+
+```
+Required:     No
+Multi-Valued: No
+Syntax:       1*DIGIT
+Since:        0.2.0
+```
+
+The `PREVIEWSTART` header indicates a time offset in milliseconds relative to the start of the audio where the preview starts. Implementations MAY use this value when playing a song in a preview setting (e.g. during song selection). In its absence implementations SHOULD default to the start of the medley section (if available).
+
+> [!WARNING]
+>
+> **Breaking Change** in version 2.0.0
+>
+> In versions 0.x and 1.x `PREVIEWSTART` was specified in seconds as a floating point number. Version 2.0.0 of this specification changes this to an integer and milliseconds.
+
+### 3.15. The `MEDLEYSTART` and `MEDLEYEND` Headers
+
+```
+Required:     No
+Multi-Valued: No
+Syntax:       1*DIGIT
+Since:        2.0.0
+```
+
+The `MEDLEYSTART` and `MEDLEYEND` headers indicate in milliseconds the start and end of the medley section of a song relative to the start of the audio. These tags replace `MEDLEYSTARTBEAT` and `MEDLEYENDBEAT` in version 2.0.0 of this specification.
+
+### 3.16. The `MEDLEYSTARTBEAT` and `MEDLEYENDBEAT` Headers
+
+```
+Required:     No
+Multi-Valued: No
+Syntax:       1*DIGIT
+Since:        0.2.0
+Removed:      2.0.0
+```
+
+The `MEDLEYSTARTBEAT` and `MEDLEYENDBEAT` headers indicate in beats the start and end of the medley section of a song. Implementations MUST respect the `GAP` value when calculating the medley start and end times.
+
+> [!WARNING]
+>
+> **Breaking Change** in version 2.0.0
+>
+> The headers `MEDLEYSTARTBEAT` and `MEDLEYENDBEAT` have been replaced by `MEDLEYSTART` and `MEDLEYEND` in version 2.0.0 of this specification.
+
+### 3.17. The `CALCMEDLEY` Header
+
+```
+Required:     No
+Multi-Valued: No
+Syntax:       %x6F %x6E / %x6F %x66 %x66  ; on / off
+Since:        0.2.0
+```
+
+If `MEDLEYSTART` or `MEDLEYEND` (`MEDLEYSTARTBEAT` or `MEDLEYENDBEAT` for versions before 2.0.0) are not specified, the `CALCMEDLEY` header indicates whether an implementation is supposed to determine the start and end of the medley section automatically.
+
+> [!CAUTION]
+>
+> The exact semantics of the `CALCMEDLEY` header have not been defined yet.
+
+### 3.18. The `TITLE` Header
 
 ```
 Required:     Yes
@@ -314,17 +435,28 @@ Since:        0.1.0
 
 The `TITLE` header contains the title of the song.
 
-### 3.13. The `ARTIST` Header
+### 3.19. The `ARTIST` Header
 
 ```
-Required:     No
+Required:     Yes
 Multi-Valued: No
 Since:        0.1.0
 ```
 
 The `ARTIST` header contains the artist of the song.
 
-### 3.14. The `GENRE` Header
+### 3.20. The `YEAR` Header
+
+```
+Required:     No
+Multi-Valued: No
+Syntax:       4DIGIT
+Since:        0.2.0
+```
+
+The `YEAR` indicates the year in which the song was released. The value must be a positive integer.
+
+### 3.21. The `GENRE` Header
 
 ```
 Required:     No
@@ -338,7 +470,41 @@ The `GENRE` defines the genre(s) of the song. Individual genre values MUST be co
 >
 > Whether genres should be compared case-insensitively or not has not yet been decided.
 
-### 3.15. The `P1` and `P2` Headers
+### 3.22. The `LANGUAGE` Header
+
+```
+Required:     No
+Multi-Valued: Yes
+Since:        0.2.0
+```
+
+The `LANGUAGE` header indicates the spoken or sung language(s) of a song.
+
+### 3.23. The `EDITION` Header
+
+```
+Required:     No
+Multi-Valued: Yes
+Since:        0.2.0
+```
+
+The `EDITION` indicates what edition of games a song belongs to. While this header is intended to hold commercially available editions (e.g. SingStar Pop Hits, GuitarHero Live) implementations MUST NOT reject a file based on the value of this header. A list of SingStar editions is avaliable [here](https://github.com/bohning/usdb_syncer/wiki/SingStar-Editions). For arbitrary keywords see the `TAGS` header.
+
+### 3.24. The `TAGS` Header
+
+```
+Required:     No
+Multi-Valued: Yes
+Since:        1.1.0
+```
+
+The `TAGS` allow association of any reasonable keyword with a song. Implementations SHOULD compare tags in a case-insensitive manner.
+
+> [!CAUTION]
+>
+> Whether tags should be compared case-insensitively or not has not yet been decided.
+
+### 3.25. The `P1` and `P2` Headers
 
 ```
 Required:     No
@@ -348,7 +514,7 @@ Since:        0.2.0
 
 The headers `P1` and `P2` indicate the names of the artists that originally sang the song. `P1` is the name of the singer of first voice and `P2` is the name of the singer of the second voice. Usually `P2` is only included for duets.
 
-### 3.16. The `DUETSINGER1` and `DUETSINGER2` Headers
+### 3.26. The `DUETSINGER1` and `DUETSINGER2` Headers
 
 ```
 Required:     No
@@ -359,6 +525,57 @@ Removed:      1.0.0
 ```
 
 The headers `DUETSINGER1` and `DUETSINGER2` are aliases for `P1` and `P2`. If both are specified `P1` and `P2` take precedence.
+
+### 3.27. The `CREATOR` Header
+
+```
+Required:     No
+Multi-Valued: Yes
+Since:        0.2.0
+```
+
+The `CREATOR` indicates who created the UltraStar version of a song. Values are usually usernames or gamer tags.
+
+### 3.28. The `PROVIDEDBY` Header
+
+```
+Required:     No
+Multi-Valued: No
+Since:        1.1.0
+```
+
+The `PROVIDEDBY` header indicates the source of a particular UltraStar file. Implementations concerned with providing UltraStar files to many users (sometimes referred to as “hosters”) SHOULD set this value automatically. Values SHOULD be valid URLs according to [RFC 1738](https://datatracker.ietf.org/doc/html/rfc1738) using the HTTP or HTTPS scheme.
+
+### 3.29. The `COMMENT` Header
+
+```
+Required:     No
+Multi-Valued: No
+Since:        0.2.0
+```
+
+The `COMMENT` header can include arbitrary text.
+
+### 3.30. The `ENCODING` Header
+
+```
+Required:     No
+Multi-Valued: No
+Syntax:       "UTF-8" / "CP1252" / "CP1250"
+Since:        0.2.0
+Deprecated:   0.3.0
+Removed:      1.0.0
+```
+
+The `ENCODING` header specifies the encoding used for text values in an UltraStar file. If present implementations MUST apply this encoding to all header values and all note texts. Implementations MAY support additional encodings. Names of encodings are compared in a case-insensitive manner.
+
+> [!IMPORTANT]
+>
+> Many implementations only apply the specified encoding to **subsequent** headers and note texts. Although this is technically not spec-compliant it is usually best to put the `ENCODING` header first.
+
+> [!WARNING]
+>
+> The use of the `ENCODING` tag is highly discouraged. UltraStar files must always use the UTF-8 encoding.
 
 ## 3. The File Body
 
