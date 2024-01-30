@@ -20,9 +20,9 @@ The UltraStar file format is designed to be edited by machines and humans alike 
 
 ### 1.1. Conventions in this Document
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC2119](https://datatracker.ietf.org/doc/html/rfc2119).
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
 
-The grammatical rules in this document are to be interpreted as described in [RFC5234](https://datatracker.ietf.org/doc/html/rfc5234). We are using the following core rules:
+The grammatical rules in this document are to be interpreted as described in [RFC 5234](https://datatracker.ietf.org/doc/html/rfc5234). We are using the following core rules:
 
 ```abnf
 CR    = %x0D     ; carriage return
@@ -116,7 +116,7 @@ comma = %x2C  ; ,
 >
 > The use of trailing commas in comma-separated header lists has not been decided yet.
 
-Comparisons of header keys is case-insensitive. For the sake of consistency header keys SHOULD use only capital letters. Header values are generally case-sensitive unless otherwise specified. An empty value is equivalent to the header being absent.
+Comparisons of header keys is case-insensitive. For the sake of consistency header keys SHOULD use only capital letters. Header values are generally case-sensitive unless otherwise specified. An empty value is equivalent to the header being absent. Header values may not exceed 255 characters.
 
 Implementations MAY define application-specific headers but SHOULD prefix those headers with the application name to avoid conflicts with future standardized headers. Implementations MUST ignore headers they do not recognize. The order of headers is irrelevant (note the exception in section 3.1.) although standardized headers should precede any application-specific headers.
 
