@@ -128,9 +128,11 @@ The following sections describe the standardized headers that have been defined.
 
 ### 3.1. Single-Valued and Multi-Valued Headers
 
-Headers can be single-valued or multi-valued. Single-valued headers can only be specified once and can only contain a single value. For the sake of robustness implementations SHOULD ignore multiple occurrences of single-valued headers (the selected header value is implementation specific in this case).
+Headers can be single-valued or multi-valued. Single-valued headers can only be specified once and can only contain a single value. For the sake of robustness implementations SHOULD ignore multiple occurrences of single-valued headers (which value is chosen in such a case is an implementation detail).
 
-Multi-valued headers can contain multiple values separated by a comma (`%x2C`). Additionally multiple occurrences of a multi-valued header are semantically equivalent to a single occurrence where all values are concatenated by a comma. In this way the order of multi-valued headers is significant.
+Multi-valued headers can contain multiple values separated by a comma (`%x2C`). Additionally multiple occurrences of a multi-valued header are semantically equivalent to a single occurrence where all values are concatenated by commas in order of occurrence. In this way the order of multi-valued headers is significant.
+
+Empty values within a multi-valued header can be removed without changing sematics.
 
 > [!WARNING]
 >
