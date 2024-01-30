@@ -504,7 +504,7 @@ The `TAGS` allow association of any reasonable keyword with a song. Implementati
 >
 > Whether tags should be compared case-insensitively or not has not yet been decided.
 
-### 3.25. The `P1` and `P2` Headers
+### 3.25. The `P1`, `P2`, … Headers
 
 ```
 Required:     No
@@ -512,9 +512,15 @@ Multi-Valued: No
 Since:        0.2.0
 ```
 
-The headers `P1` and `P2` indicate the names of the artists that originally sang the song. `P1` is the name of the singer of first voice and `P2` is the name of the singer of the second voice. Usually `P2` is only included for duets.
+The headers `P1`, `P2`, … indicate the names of the voices of a song. These names correspond to the voices indicated by the `P1`, `P2`, … player changes (see [section 3.3](#33-player-changes)). If the voices correspond to different singers in the original song, the header values often indicate the names of the original singers.
 
-### 3.26. The `DUETSINGER1` and `DUETSINGER2` Headers
+The association of header values to voices is defined by the numerical value after each `P` respectively, i.e. the header `P2` indicates the name of the voice whose notes are introduced by the `P2` player change. Leading zeroes are insignificant, i.e. the headers `P1` and `P001` both refer to the same voice.
+
+> [!CAUTION]
+>
+> The exact semantics of the `P` headers have not yet been decided.
+
+### 3.26. The `DUETSINGER1`, `DUETSINGER2`, … Headers
 
 ```
 Required:     No
@@ -524,7 +530,7 @@ Deprecated:   0.3.0
 Removed:      1.0.0
 ```
 
-The headers `DUETSINGER1` and `DUETSINGER2` are aliases for `P1` and `P2`. If both are specified `P1` and `P2` take precedence.
+The headers `DUETSINGER1`, `DUETSINGER2`, etc. are aliases for `P1`,  `P2`, etc. If both are specified `P1`, `P2`, etc. take precedence.
 
 ### 3.27. The `CREATOR` Header
 
@@ -696,6 +702,12 @@ An end-of-phrase SHOULD NOT appear between the start beat (inclusive) of a note 
 
 ### 3.3. Player Changes
 
+> [!WARNING]
+>
+> **Breaking Change** in version 0.2.0
+>
+> In version 0.1.0 only single-player songs were defined. Player changes are specified since version 0.2.0.
+
 A player change is indicated by a `P` (the letter P, `%x50`), immediately followed by a number.
 
 ```abnf
@@ -712,15 +724,11 @@ A player change indicates that all notes and end-of-phrase markers following thi
 >
 > A player change does NOT implicitly add an end-of-phrase indicator.
 
+Player changes SHOULD appear in ascending order of `player-number` and there SHOULD be no gaps (i.e. a song having notes for `P1` and `P3`, but not `P2`). The exact `player-number` carries no semantics other than its relative order with other `player-number` and its association with the corresponding header (see [section 3.25](#325-the-p1-and-p2-headers)). In particular a file that uses `P3` and `P5` can be rewritten using `P1` and `P2` with no change in semantics.
+
 > [!TIP]
 >
 > An UltraStar file that makes use of player changes is referred to as a “duet”.
-
-> [!WARNING]
->
-> **Breaking Change** in version 0.2.0
->
-> In version 0.1.0 only single-player songs were defined. Player changes are specified since version 0.2.0.
 
 > [!Note]
 >
@@ -733,6 +741,10 @@ A player change indicates that all notes and end-of-phrase markers following thi
 > [!CAUTION]
 >
 > Whether single-voice songs can have player changes (only `P1`) is not yet decided.
+
+> [!CAUTION]
+>
+> Whether gaps in `player-number`s are allowed is not yet decided.
 
 > [!CAUTION]
 >
