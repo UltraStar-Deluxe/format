@@ -14,13 +14,13 @@ GitHub Issues are preferred for discussion of this specification. Alternatively,
 
 ## 1. Introduction
 
-The UltraStar file format provides a standardized representation of karaoke songs. The format has been used for a long time by numerous karaoke games such as [UltraStar Deluxe](https://github.com/UltraStar-Deluxe/USDX), [Performous](https://github.com/performous/performous), or [Vocaluxe](https://github.com/Vocaluxe/Vocaluxe). There exists an ecosystem of supporting applications for hosting, editing, and managing songs. However due to the lack of an official file format specification implementations differ and new features cannot be added in a consistent manner. This document aims to fix this problem by providing a formal specification for the syntax and semantics of the UltraStar file format.
+The UltraStar file format provides a standardized representation of karaoke songs. The format has been used for a long time by numerous karaoke games such as [UltraStar Deluxe](https://github.com/UltraStar-Deluxe/USDX), [Performous](https://github.com/performous/performous), or [Vocaluxe](https://github.com/Vocaluxe/Vocaluxe). There exists an ecosystem of supporting applications for hosting, editing, and managing songs. However, due to the lack of an official file format specification implementations differ and new features cannot be added consistently. This document aims to fix this problem by providing a formal specification for the syntax and semantics of the UltraStar file format.
 
 The UltraStar file format is designed to be edited by machines and humans alike and is intended to be easily understood and edited by technical and non-technical users. This guiding principle is influential for many decisions made during the design process.
 
 ### 1.1. Conventions in this Document
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
+The keywords "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
 
 The grammatical rules in this document are to be interpreted as described in [RFC 5234](https://datatracker.ietf.org/doc/html/rfc5234). We are using the following core rules:
 
@@ -75,7 +75,7 @@ Implementations SHOULD use a single Line Feed (`%x0A`) as line terminator. Imple
 
 > [!CAUTION]
 >
-> Whether empty lines are allowed or not is currently open for discussion ([#43](https://github.com/UltraStar-Deluxe/format/issues/43)). Whether a line that consists only of whitespace is recognized as an empty line is not yet decided.
+> Whether empty lines are allowed or not is currently open for discussion ([#43](https://github.com/UltraStar-Deluxe/format/issues/43)). Whether a line that consists only of whitespace is recognized as an empty line has not been decided yet.
 
 Whitespace is used as a separator in many places of the format. Only space (`%x20`) and horizontal tab (`%x09`) are recognized as whitespace characters. In particular other unicode characters with the property `White_Space=yes` MUST NOT be treated as whitespace characters in the context of this specification.
 
@@ -124,15 +124,15 @@ Implementations MAY define application-specific headers but SHOULD prefix those 
 >
 > Handling of application-specific headers has not been decided yet.
 
-The following sections describe the standardized headers that have been defined. If a syntax for a header is specified it applies to the `single-value`. If no syntax is specified any valid `single-value` is valid. Some headers are marked as deprecated or removed from a certain version onward. Implementations MUST continue to apply the defined semantics to a headers if it has been deprecated in the file format version indicated by the file. Implementations MUST NOT apply semantics to a header if a file indicates a version where the header has been removed.
+The following sections describe the standardized headers that have been defined. If a syntax for a header is specified it applies to the `single-value`. If no syntax is specified any valid `single-value` is valid. Some headers are marked as deprecated or removed from a certain version onward. Implementations MUST continue to apply the defined semantics to a header if it has been deprecated in the file format version indicated by the file. Implementations MUST NOT apply semantics to a header if a file indicates a version where the header has been removed.
 
 ### 3.1. Single-Valued and Multi-Valued Headers
 
 Headers can be single-valued or multi-valued. Single-valued headers can only be specified once and can only contain a single value. For the sake of robustness implementations SHOULD ignore multiple occurrences of single-valued headers (which value is chosen in such a case is an implementation detail).
 
-Multi-valued headers can contain multiple values separated by a comma (`%x2C`). Additionally multiple occurrences of a multi-valued header are semantically equivalent to a single occurrence where all values are concatenated by commas in order of occurrence. In this way the order of multi-valued headers is significant.
+Multi-valued headers can contain multiple values separated by a comma (`%x2C`). Additionally, multiple occurrences of a multi-valued header are semantically equivalent to a single occurrence where all values are concatenated by commas in order of occurrence. In this way the order of multi-valued headers is significant.
 
-Empty values within a multi-valued header can be removed without changing sematics.
+Empty values within a multi-valued header can be removed without changing semantics.
 
 > [!WARNING]
 >
@@ -156,7 +156,7 @@ Some headers reference other files, most notably `AUDIO`, `VIDEO`, `COVER`, and 
 
 > [!CAUTION]
 >
-> Whether absolute paths are allowed or not has not been decided yet.
+> Whether absolute paths are allowed or not hasn't been decided yet.
 
 > [!IMPORTANT]
 >
@@ -262,7 +262,7 @@ Multi-Valued: No
 Since:        1.1.0
 ```
 
-The `VOCALS` and `INSTRUMENTAL` header contain file references to audio files. These files contain the acapella and instrumental versions of the song respectively. Implementations MAY use these instead of `AUDIO` to give users the option of changing the volume of vocal and instrumental tracks separately.
+The `VOCALS` and `INSTRUMENTAL` header contain file references to audio files. These files contain the a cappella and instrumental versions of the song respectively. Implementations MAY use these instead of `AUDIO` to give users the option of changing the volume of vocal and instrumental tracks separately.
 
 > [!CAUTION]
 >
@@ -299,10 +299,6 @@ Since:        0.2.0
 ```
 
 The `VIDEOGAP` header indicates an amount of time in milliseconds that the background video will be delayed relative to the audio of a song. The `VIDEOGAP` value is an integer.
-
-> [!NOTE]
->
-> 
 
 > [!WARNING]
 >
@@ -466,11 +462,11 @@ Multi-Valued: Yes
 Since:        0.2.0
 ```
 
-The `GENRE` defines the genre(s) of the song. Individual genre values MUST be compared case-insensitively. For consistency it is usually best to capitalize genres.
+The `GENRE` defines the genre(s) of the song. Individual genre values MUST be compared case-insensitively. For consistency, it is usually best to capitalize genres.
 
 > [!CAUTION]
 >
-> Whether genres should be compared case-insensitively or not has not yet been decided.
+> Whether genres should be compared case-insensitively or not hasn't been decided yet.
 
 ### 3.22. The `LANGUAGE` Header
 
@@ -490,7 +486,7 @@ Multi-Valued: Yes
 Since:        0.2.0
 ```
 
-The `EDITION` indicates what edition of games a song belongs to. While this header is intended to hold commercially available editions (e.g. SingStar Pop Hits, GuitarHero Live) implementations MUST NOT reject a file based on the value of this header. A list of SingStar editions is avaliable [here](https://github.com/bohning/usdb_syncer/wiki/SingStar-Editions). For arbitrary keywords see the `TAGS` header.
+The `EDITION` indicates what edition of games a song belongs to. While this header is intended to hold commercially available editions (e.g. SingStar Pop Hits, GuitarHero Live) implementations MUST NOT reject a file based on the value of this header. A list of SingStar editions is available [here](https://github.com/bohning/usdb_syncer/wiki/SingStar-Editions). For arbitrary keywords see the `TAGS` header.
 
 ### 3.24. The `TAGS` Header
 
@@ -504,7 +500,7 @@ The `TAGS` allow association of any reasonable keyword with a song. Implementati
 
 > [!CAUTION]
 >
-> Whether tags should be compared case-insensitively or not has not yet been decided.
+> Whether tags should be compared case-insensitively or not hasn't been decided yet.
 
 ### 3.25. The `P1`, `P2`, … Headers
 
@@ -520,7 +516,7 @@ The association of header values to voices is defined by the numerical value aft
 
 > [!CAUTION]
 >
-> The exact semantics of the `P` headers have not yet been decided.
+> The exact semantics of the `P` headers have not been decided yet.
 
 ### 3.26. The `DUETSINGER1`, `DUETSINGER2`, … Headers
 
@@ -532,7 +528,7 @@ Deprecated:   0.3.0
 Removed:      1.0.0
 ```
 
-The headers `DUETSINGER1`, `DUETSINGER2`, etc. are aliases for `P1`,  `P2`, etc. If both are specified `P1`, `P2`, etc. take precedence.
+The headers `DUETSINGER1`, `DUETSINGER2`, etc. are aliases for `P1`, `P2`, etc. If both are specified `P1`, `P2`, etc. take precedence.
 
 ### 3.27. The `CREATOR` Header
 
@@ -556,7 +552,7 @@ Multi-Valued: No
 Since:        1.1.0
 ```
 
-The `PROVIDEDBY` header indicates the source of a particular UltraStar file. Implementations concerned with providing UltraStar files to many users (sometimes referred to as “hosters”) SHOULD set this value automatically. Values SHOULD be valid URLs according to [RFC 1738](https://datatracker.ietf.org/doc/html/rfc1738) using the HTTP or HTTPS scheme.
+The `PROVIDEDBY` header indicates the source of a particular UltraStar file. Implementations concerned with providing UltraStar files to many users (sometimes referred to as "hosters") SHOULD set this value automatically. Values SHOULD be valid URLs according to [RFC 1738](https://datatracker.ietf.org/doc/html/rfc1738) using the HTTP or HTTPS scheme.
 
 > [!NOTE]
 >
@@ -620,7 +616,7 @@ The sequence of notes and end-of-phrase markers SHOULD appear in ascending order
 
 > [!CAUTION]
 >
-> Whether the body of a file must or may be sorted is not yet decided.
+> Whether the body of a file must or may be sorted is not decided yet.
 
 ### 3.1. Notes
 
@@ -645,7 +641,7 @@ minus   = %x2D  ; -
 
 > [!CAUTION]
 >
-> Whether only a single or multiple whitespaces in a row are allowed is currently up for discussion ([#46](https://github.com/UltraStar-Deluxe/format/issues/46)).
+> Whether only a single or multiple whitespace character in a row are allowed is currently up for discussion ([#46](https://github.com/UltraStar-Deluxe/format/issues/46)).
 
 The note type indicates how singing the correct or wrong note should affect scoring. The following sections define standard note types. Implementations MAY substitute unknown note types with freestyle notes (`F`). Implementations MUST NOT attach semantics to note types not covered by this specification.
 
@@ -653,21 +649,21 @@ The start beat and duration define the time when a note appears in a song. Both 
 
 > [!CAUTION]
 >
-> Whether and how applications may define custom note types is not yet decided.
+> Whether and how applications may define custom note types hasn't been decided yet.
 
 > [!CAUTION]
 >
-> Whether negative note starts and/or durations are valid is not yet decided.
+> Whether negative note starts and/or durations are valid is, hasn't been decided yet.
 
 The pitch of a note is encoded as the number of half-steps relative to middle C or C4. So a pitch of `5` represent an F4 and a pitch of `-2` represents an A#3.
 
 #### 3.1.1. Regular Notes `:`
 
-A regular note is indicated by the note type `:` (colon, `%x3A`). A regular note indicates that a certail pitch is to be held for a certain duration. Game implementations MAY decide to compare pitches independently of the octave (i.e. compare pitches module 12).
+A regular note is indicated by the note type `:` (colon, `%x3A`). A regular note indicates that a certain pitch is to be held for a certain duration. Game implementations MAY decide to compare pitches independently of the octave (i.e. compare pitches module 12).
 
 #### 3.1.2. Golden Notes `*`
 
-A golden note is indicated by the note type `*` (asterist, `%x2A`). Golden note have the same semantics as regular notes. However, during scoring game implementations SHOULD award more points for golden notes. The exact scoring behavior is an implementation detail.
+A golden note is indicated by the note type `*` (asterisk, `%x2A`). Golden note have the same semantics as regular notes. However, during scoring game implementations SHOULD award more points for golden notes. The exact scoring behavior is an implementation detail.
 
 #### 3.1.3. Rap Notes `R`
 
@@ -691,7 +687,7 @@ A golden rap note is indicated by the note type `G` (the letter G, `%x47`). Gold
 >
 > Freestyle notes are standardized in version 0.2.0 of this specification.
 
-A freestyle note is indicated by the note type `F` (the letter F, `%x46`). Similar to rap notes, freestyle notes do not carry pitch information. Additionally game implementations MUST NOT award points for freestyle notes.
+A freestyle note is indicated by the note type `F` (the letter F, `%x46`). Similar to rap notes, freestyle notes do not carry pitch information. Additionally, game implementations MUST NOT award points for freestyle notes.
 
 ### 3.2. End-of-Phrase Markers
 
@@ -713,7 +709,7 @@ An end-of-phrase SHOULD NOT appear between the start beat (inclusive) of a note 
 
 > [!CAUTION]
 >
-> Whether there can be non-whitespace text following an end-of-phrase indicator is not yet decided.
+> Whether there can be non-whitespace text following an end-of-phrase indicator has not been decided yet.
 
 ### 3.3. Voice Changes
 
@@ -733,7 +729,7 @@ voice-number  = positive-digit *DIGIT
 positive-digit = %x31-39  ; 1-9
 ```
 
-A voice change indicates that all notes and end-of-phrase markers following this line belong to the voice indicated by the `voice-number`. Implementations MAY choose to limit the number of voices. If the body of a song does not start with a voice change, `P1` is assumed implicitly. To improve readablility notes for different voices should not be interlaced.
+A voice change indicates that all notes and end-of-phrase markers following this line belong to the voice indicated by the `voice-number`. Implementations MAY choose to limit the number of voices. If the body of a song does not start with a voice change, `P1` is assumed implicitly. To improve readability notes for different voices should not be interlaced.
 
 > [!NOTE]
 >
@@ -745,21 +741,21 @@ Voice changes SHOULD appear in ascending order of `voice-number` and there SHOUL
 >
 > An UltraStar file that makes use of voice changes is referred to as a “duet”.
 
-> [!Note]
+> [!NOTE]
 >
 > There exists a legacy behavior where an indicated `P3` would start a sequence of notes that apply to both voices. This behavior is explicitly NOT compliant with this specification.
 
 > [!CAUTION]
 >
-> Whether songs that make use of voice changes need to start their body with a voice change is not yet decided.
+> Whether songs that make use of voice changes need to start their body with a voice change has not been decided yet.
 
 > [!CAUTION]
 >
-> Whether single-voice songs can have voice changes (only `P1`) is not yet decided.
+> Whether single-voice songs can have voice changes (only `P1`) has not been decided yet.
 
 > [!CAUTION]
 >
-> Whether gaps in `voice-number`s are allowed is not yet decided.
+> Whether gaps in `voice-number`s are allowed has not been decided yet.
 
 > [!CAUTION]
 >
@@ -791,7 +787,7 @@ Note that the syntax in relative mode is incompatible with the normal syntax. Im
 
 ### Semantics
 
-In relative mode the semantics of start times changes for notes and end-of-phrase markers. 
+In relative mode the semantics of start times changes for notes and end-of-phrase markers.
 
 - At the start of the body a relative offset `rel` is initialized to the value of the `GAP` header (or `0` if no `GAP` header exists).
 - The start times of notes and end-of-phrase markers are relative to the current `rel` value. The absolute start time is calculated as `rel + start-beat`.
