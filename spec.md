@@ -415,11 +415,11 @@ The `MEDLEYSTARTBEAT` and `MEDLEYENDBEAT` headers indicate in beats the start an
 ```
 Required:     No
 Multi-Valued: No
-Syntax:       %x6F %x6E / %x6F %x66 %x66  ; on / off
+Syntax:       "on" / "off"
 Since:        0.2.0
 ```
 
-If `MEDLEYSTART` or `MEDLEYEND` (`MEDLEYSTARTBEAT` or `MEDLEYENDBEAT` for versions before 2.0.0) are not specified, the `CALCMEDLEY` header indicates whether an implementation is supposed to determine the start and end of the medley section automatically.
+If `MEDLEYSTART` or `MEDLEYEND` (`MEDLEYSTARTBEAT` or `MEDLEYENDBEAT` for versions before 2.0.0) are not specified, the `CALCMEDLEY` header indicates whether an implementation is supposed to determine the start and end of the medley section automatically. The value of this header is compared case-insensitively.
 
 > [!CAUTION]
 >
