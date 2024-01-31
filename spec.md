@@ -52,6 +52,11 @@ In some contexts **song** can refer to linked media files as well. In those case
 **Medley**: A medley is a short, recognizable excerpt from a song.
 Many games include a designated medley mode.
 
+**Implementation**: An implementation is any program or software that interacts with the file format.
+
+**Game Implementation**: A game implementation is an implementation that allows users to sing karaoke songs
+and potentially scores singing performance.
+
 > [!CAUTION]
 >
 > The exact terminology has not been decided yet.
