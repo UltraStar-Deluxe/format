@@ -33,32 +33,42 @@ HTAB  = %x09     ; horizontal tab
 SP    = %x20     ; space
 ```
 
+### 1.2. Terminology
 
+The following terminology is used throughout this document:
+
+**Song**: A song refers to a file in the UltraStar file format. In some contexts **song** can refer to linked media files as well. In those cases **textfile** is used to disambiguate individual files.
+
+**Medley**: A medley is a short, recognizable excerpt from a song. Many games include a designated medley mode.
+
+> [!CAUTION]
+>
+> The exact terminology has not been decided yet.
 
 ## 2. General Structure
 
-UltraStar files are plain text files. The UTF-8 encoding MUST be used. Implementations MUST NOT add a byte order mark to the beginning of a file. In the interests of interoperability, implementations MAY ignore the presence of a byte order mark rather than treating it as an error.
+Songs are plain text files. The UTF-8 encoding MUST be used. Implementations MUST NOT add a byte order mark to the beginning of a file. In the interests of interoperability, implementations MAY ignore the presence of a byte order mark rather than treating it as an error.
 
 > [!CAUTION]
 >
 > Whether files with a BOM may be accepted is an open discussion ([#46](https://github.com/UltraStar-Deluxe/format/issues/46)).
 
-The canonical file extension for the UltraStar file format is `.txt`.
+The canonical file extension for textfiles is `.txt`.
 
-UltraStar files consist of a header and a body. The header contains metadata about the song and the file. The body contains the musical data. A file SHOULD end with an `E` on a single line. Everything after a trailing `E` MUST be ignored.
+Songs consist of a header and a body. The header contains metadata about the song. The body contains the musical data. A file SHOULD end with an `E` on a single line. Everything after a trailing `E` MUST be ignored.
 
 > [!CAUTION]
 >
 > Whether the trailing `E` is optional or not is open for discussion ([#44](https://github.com/UltraStar-Deluxe/format/issues/44)).
 
 ```abnf
-UltraStar-file = file-header
-                 file-body
-                 [ %x45 *char ]  ; E
-char           = %x00-10FFFF
+song = file-header
+       file-body
+       [ %x45 *char ]  ; E
+char = %x00-10FFFF
 ```
 
-### 2.1. Line Endings and White Space
+### 2.1. Line Endings and Whitespace
 
 Both the header and the body of a file are defined in terms of lines. A line is a string of text that is terminated with an end-of-line sequence.
 
@@ -89,7 +99,7 @@ WSP = ( SP / HTAB )
 
 ## 2. The File Header
 
-The header of an UltraStar file consists of a sequence of key-value pairs. Each line in the header section starts with a hash. The key and value of a header are separated by a colon. Whitespace around key and value is ignored.
+The header of a song consists of a sequence of key-value pairs. Each line in the header section starts with a hash. The key and value of a header are separated by a colon. Whitespace around key and value is ignored.
 
 > [!CAUTION]
 >
@@ -112,6 +122,7 @@ header-char  = %x00-09 /  ; exclude line feed
 hash         = %x23  ; #
 colon        = %x3A  ; :
 comma        = %x2C  ; ,
+period       = %x2E  ; .
 ```
 
 > [!CAUTION]
@@ -154,7 +165,7 @@ Empty values within a multi-valued header can be removed without changing semant
 
 ### 3.2. File References
 
-Some headers reference other files, most notably `AUDIO`, `VIDEO`, `COVER`, and `BACKGROUND`. These file references are always relative to the UltraStar file from which they are referenced. As a security measure file references MUST NOT use absolute paths. Implementations SHOULD refuse to load absolutely referenced files.
+Some headers reference other files, most notably `AUDIO`, `VIDEO`, `COVER`, and `BACKGROUND`. These file references are always relative to the textfile from which they are referenced. As a security measure file references MUST NOT use absolute paths. Implementations SHOULD refuse to load absolutely referenced files.
 
 > [!CAUTION]
 >
@@ -184,7 +195,7 @@ The `VERSION` header SHOULD be the first header in a file.
 ```
 Required:     Yes
 Multi-Valued: No
-Syntax:       1*DIGIT
+Syntax:       1*DIGIT [ period 1*DIGIT ]
 Since:        0.1.0
 ```
 
@@ -540,7 +551,7 @@ Multi-Valued: Yes
 Since:        0.2.0
 ```
 
-The `CREATOR` indicates who created the UltraStar version of a song. Values are usually usernames or gamer tags.
+The `CREATOR` indicates who created the textfile. Values are usually usernames or gamer tags.
 
 > [!NOTE]
 >
@@ -554,7 +565,7 @@ Multi-Valued: No
 Since:        1.1.0
 ```
 
-The `PROVIDEDBY` header indicates the source of a particular UltraStar file. Implementations concerned with providing UltraStar files to many users (sometimes referred to as "hosters") SHOULD set this value automatically. Values SHOULD be valid URLs according to [RFC 1738](https://datatracker.ietf.org/doc/html/rfc1738) using the HTTP or HTTPS scheme.
+The `PROVIDEDBY` header indicates the source of a particular textfile. Implementations concerned with providing textfiles to many users (sometimes referred to as "hosters") SHOULD set this value automatically. Values SHOULD be valid URLs according to [RFC 1738](https://datatracker.ietf.org/doc/html/rfc1738) using the HTTP or HTTPS scheme.
 
 > [!NOTE]
 >
@@ -581,7 +592,7 @@ Deprecated:   0.3.0
 Removed:      1.0.0
 ```
 
-The `ENCODING` header specifies the encoding used for text values in an UltraStar file. If present implementations MUST apply this encoding to all header values and all note texts. Implementations MAY support additional encodings. Names of encodings are compared in a case-insensitive manner.
+The `ENCODING` header specifies the encoding used for text values in a textfile. If present implementations MUST apply this encoding to all header values and all note texts. Implementations MAY support additional encodings. Names of encodings are compared in a case-insensitive manner.
 
 > [!IMPORTANT]
 >
@@ -589,7 +600,7 @@ The `ENCODING` header specifies the encoding used for text values in an UltraSta
 
 > [!WARNING]
 >
-> The use of the `ENCODING` tag is highly discouraged. UltraStar files must always use the UTF-8 encoding.
+> The use of the `ENCODING` tag is highly discouraged. Songs must always use the UTF-8 encoding.
 
 ### 3.31. The `RELATIVE` Header
 
@@ -741,7 +752,7 @@ Voice changes SHOULD appear in ascending order of `voice-number` and there SHOUL
 
 > [!TIP]
 >
-> An UltraStar file that makes use of voice changes is referred to as a “duet”.
+> A song that makes use of voice changes is referred to as a “duet”.
 
 > [!NOTE]
 >
@@ -771,7 +782,7 @@ Voice changes SHOULD appear in ascending order of `voice-number` and there SHOUL
 >
 > Relative mode is deprecated and has been removed in version 1.0.0 of this specification.
 
-Relative mode is a special input mode that affects parsing and interpreting UltraStar files significantly. Relative mode is enabled by the `RELATIVE` header being set to `yes` (case-insensitive).
+Relative mode is a special input mode that affects parsing and interpreting songs significantly. Relative mode is enabled by the `RELATIVE` header being set to `yes` (case-insensitive).
 
 ### Syntax
 
