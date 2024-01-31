@@ -98,25 +98,27 @@ The header of an UltraStar file consists of a sequence of key-value pairs. Each 
 ```abnf
 file-header  = *( header / empty-line )
 header       = hash *WSP header-key *WSP colon *WSP header-value *WSP line-break
-header-key   = header-key-char
-               [ *( HTAB / SP / header-key-char )
-                 header-key-char ]
+header-key   = header-char
+               [ *( WSP / header-char )
+                 header-char ]
 header-value = single-value / multi-value
 multi-value  = single-value [ comma single-value ] [ comma ]
+single-value = *( header-char / colon )
 
-single-value    = *( %x20-10FFFF )
-header-key-char = %x21-3A / %x3B-10FFFF  ; does not include space, tab, or colon
-
-hash  = %x23  ; #
-colon = %x3A  ; :
-comma = %x2C  ; ,
+header-char  = %x00-09 /  ; exclude line feed
+               %x0B-0C /  ; exclude carriage return
+               %x0E-39 /  ; exclude colon
+               %x3B-10FFFF
+hash         = %x23  ; #
+colon        = %x3A  ; :
+comma        = %x2C  ; ,
 ```
 
 > [!CAUTION]
 >
 > The use of trailing commas in comma-separated header lists has not been decided yet.
 
-Comparisons of header keys is case-insensitive. For the sake of consistency header keys SHOULD use only capital letters. Header values are generally case-sensitive unless otherwise specified. An empty value is equivalent to the header being absent. Header values may not exceed 255 characters.
+Comparisons of header keys is case-insensitive. For the sake of consistency header keys SHOULD use only capital letters. Header values are generally case-sensitive unless otherwise specified. An empty value is equivalent to the header being absent. Implementations MAY remove leading and trailing whitespace in header keys and values without changing semantics. Header values may not exceed 255 characters.
 
 Implementations MAY define application-specific headers but SHOULD prefix those headers with the application name to avoid conflicts with future standardized headers. Implementations MUST ignore headers they do not recognize. The order of headers is irrelevant (note the exception in section 3.1.) although standardized headers should precede any application-specific headers.
 
@@ -776,10 +778,10 @@ Relative mode is a special input mode that affects parsing and interpreting Ultr
 When relative mode is enabled, the syntax of end-of-phrase markers changes:
 
 ```abnf
-end-of-phrase = dash
-                WSP start-beat
-                WSP rel-offset
-                *WSP line-break
+end-of-phrase =/ dash
+                 WSP start-beat
+                 WSP rel-offset
+                 *WSP line-break
 rel-offset    = *DIGIT
 ```
 
