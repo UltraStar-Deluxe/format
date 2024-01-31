@@ -336,25 +336,7 @@ The `NOTESGAP` header is deprecated and MUST NOT be used. Implementations MUST i
 >
 > The `NOTESGAP` header was defined in version 0.1.0 But its semantics were never fully specified.
 
-### 3.12. The `RESOLUTION` Header
-
-```
-Required:     No
-Multi-Valued: No
-Since:        0.2.0
-Deprecated:   0.3.0
-Removed:      1.0.0
-```
-
-The `RESOLUTION` header is used by [UltraStar Deluxe](https://github.com/UltraStar-Deluxe/USDX) exclusively to change the resolution of the built-in song editor.
-
-> [!WARNING]
->
-> **Breaking Change** in version 1.0.0
->
-> The `RESOLUTION` header was removed in version 1.0.0 of this specification.
-
-### 3.13. The `START` and `END` Headers
+### 3.12. The `START` and `END` Headers
 
 ```
 Required:     No
@@ -375,7 +357,7 @@ The `START` and `END` header specify two time points in milliseconds relative to
 >
 > In versions 0.x and 1.x `START` was specified in seconds as a floating point number. Version 2.0.0 changes this to an integer and milliseconds.
 
-### 3.14. The `PREVIEWSTART` Header
+### 3.13. The `PREVIEWSTART` Header
 
 ```
 Required:     No
@@ -392,7 +374,7 @@ The `PREVIEWSTART` header indicates a time offset in milliseconds relative to th
 >
 > In versions 0.x and 1.x `PREVIEWSTART` was specified in seconds as a floating point number. Version 2.0.0 of this specification changes this to an integer and milliseconds.
 
-### 3.15. The `MEDLEYSTART` and `MEDLEYEND` Headers
+### 3.14. The `MEDLEYSTART` and `MEDLEYEND` Headers
 
 ```
 Required:     No
@@ -403,7 +385,7 @@ Since:        2.0.0
 
 The `MEDLEYSTART` and `MEDLEYEND` headers indicate in milliseconds the start and end of the medley section of a song relative to the start of the audio. These tags replace `MEDLEYSTARTBEAT` and `MEDLEYENDBEAT` in version 2.0.0 of this specification.
 
-### 3.16. The `MEDLEYSTARTBEAT` and `MEDLEYENDBEAT` Headers
+### 3.15. The `MEDLEYSTARTBEAT` and `MEDLEYENDBEAT` Headers
 
 ```
 Required:     No
@@ -421,7 +403,7 @@ The `MEDLEYSTARTBEAT` and `MEDLEYENDBEAT` headers indicate in beats the start an
 >
 > The headers `MEDLEYSTARTBEAT` and `MEDLEYENDBEAT` have been replaced by `MEDLEYSTART` and `MEDLEYEND` in version 2.0.0 of this specification.
 
-### 3.17. The `CALCMEDLEY` Header
+### 3.16. The `CALCMEDLEY` Header
 
 ```
 Required:     No
@@ -436,7 +418,7 @@ If `MEDLEYSTART` or `MEDLEYEND` (`MEDLEYSTARTBEAT` or `MEDLEYENDBEAT` for versio
 >
 > The exact semantics of the `CALCMEDLEY` header have not been defined yet.
 
-### 3.18. The `TITLE` Header
+### 3.17. The `TITLE` Header
 
 ```
 Required:     Yes
@@ -446,7 +428,7 @@ Since:        0.1.0
 
 The `TITLE` header contains the title of the song.
 
-### 3.19. The `ARTIST` Header
+### 3.18. The `ARTIST` Header
 
 ```
 Required:     Yes
@@ -456,7 +438,7 @@ Since:        0.1.0
 
 The `ARTIST` header contains the artist of the song.
 
-### 3.20. The `YEAR` Header
+### 3.19. The `YEAR` Header
 
 ```
 Required:     No
@@ -467,7 +449,7 @@ Since:        0.2.0
 
 The `YEAR` indicates the year in which the song was released. The value must be a positive integer.
 
-### 3.21. The `GENRE` Header
+### 3.20. The `GENRE` Header
 
 ```
 Required:     No
@@ -481,7 +463,7 @@ The `GENRE` defines the genre(s) of the song. Individual genre values MUST be co
 >
 > Whether genres should be compared case-insensitively or not hasn't been decided yet.
 
-### 3.22. The `LANGUAGE` Header
+### 3.21. The `LANGUAGE` Header
 
 ```
 Required:     No
@@ -491,7 +473,7 @@ Since:        0.2.0
 
 The `LANGUAGE` header indicates the spoken or sung language(s) of a song.
 
-### 3.23. The `EDITION` Header
+### 3.22. The `EDITION` Header
 
 ```
 Required:     No
@@ -501,7 +483,7 @@ Since:        0.2.0
 
 The `EDITION` indicates what edition of games a song belongs to. While this header is intended to hold commercially available editions (e.g. SingStar Pop Hits, GuitarHero Live) implementations MUST NOT reject a file based on the value of this header. A list of SingStar editions is available [here](https://github.com/bohning/usdb_syncer/wiki/SingStar-Editions). For arbitrary keywords see the `TAGS` header.
 
-### 3.24. The `TAGS` Header
+### 3.23. The `TAGS` Header
 
 ```
 Required:     No
@@ -515,7 +497,7 @@ The `TAGS` allow association of any reasonable keyword with a song. Implementati
 >
 > Whether tags should be compared case-insensitively or not hasn't been decided yet.
 
-### 3.25. The `P1`, `P2`, … Headers
+### 3.24. The `P1`, `P2`, … Headers
 
 ```
 Required:     No
@@ -531,7 +513,7 @@ The association of header values to voices is defined by the numerical value aft
 >
 > The exact semantics of the `P` headers have not been decided yet.
 
-### 3.26. The `DUETSINGER1`, `DUETSINGER2`, … Headers
+### 3.25. The `DUETSINGER1`, `DUETSINGER2`, … Headers
 
 ```
 Required:     No
@@ -543,7 +525,7 @@ Removed:      1.0.0
 
 The headers `DUETSINGER1`, `DUETSINGER2`, etc. are aliases for `P1`, `P2`, etc. If both are specified `P1`, `P2`, etc. take precedence.
 
-### 3.27. The `CREATOR` Header
+### 3.26. The `CREATOR` Header
 
 ```
 Required:     No
@@ -557,7 +539,7 @@ The `CREATOR` indicates who created the textfile. Values are usually usernames o
 >
 > Some implementations are known to use an application-specific header `AUTHOR` in place of `CREATOR`. The semantics of the `AUTHOR` header are not part of this specification.
 
-### 3.28. The `PROVIDEDBY` Header
+### 3.27. The `PROVIDEDBY` Header
 
 ```
 Required:     No
@@ -571,7 +553,7 @@ The `PROVIDEDBY` header indicates the source of a particular textfile. Implement
 >
 > Some implementations are known to use an application-specific header `SOURCE` in place of `PROVIDEDBY`. The semantics of the `SOURCE` header are not part of this specification.
 
-### 3.29. The `COMMENT` Header
+### 3.28. The `COMMENT` Header
 
 ```
 Required:     No
@@ -581,7 +563,7 @@ Since:        0.2.0
 
 The `COMMENT` header can include arbitrary text.
 
-### 3.30. The `ENCODING` Header
+### 3.29. The `ENCODING` Header
 
 ```
 Required:     No
@@ -602,7 +584,7 @@ The `ENCODING` header specifies the encoding used for text values in a textfile.
 >
 > The use of the `ENCODING` tag is highly discouraged. Songs must always use the UTF-8 encoding.
 
-### 3.31. The `RELATIVE` Header
+### 3.30. The `RELATIVE` Header
 
 ```
 Required:     No
