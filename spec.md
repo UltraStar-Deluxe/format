@@ -916,7 +916,7 @@ In particular a file that uses `P3` and `P5` can be rewritten using `P1` and `P2
 Relative mode is a special input mode that affects parsing and interpreting songs significantly.
 Relative mode is enabled by the `RELATIVE` header being set to `yes` (case-insensitive).
 
-### Syntax
+#### Syntax
 
 When relative mode is enabled, the syntax of end-of-phrase markers changes:
 
@@ -931,7 +931,7 @@ rel-offset    = *DIGIT
 Note that the syntax in relative mode is incompatible with the normal syntax.
 Implementations MUST NOT try to rectify a missing `RELATIVE` header based on the end-of-phrase markers encountered.
 
-### Semantics
+#### Semantics
 
 In relative mode the semantics of start times changes for notes and end-of-phrase markers.
 
