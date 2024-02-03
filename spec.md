@@ -779,8 +779,12 @@ Notes SHOULD NOT overlap, i.e. the start beat of a note being between the start 
 >
 > Whether negative note starts and/or durations are valid is, hasn't been decided yet.
 
-The pitch of a note is encoded as the number of half-steps relative to C4 (also referred to as middle C).
-So a pitch of `5` represent an F4 and a pitch of `-2` represents an A#3.
+The pitch of a note is encoded as the number of half-steps relative to `C4` (also referred to as middle C).
+So a pitch of `5` represent an `F4` and a pitch of `-2` represents an `A#3`.
+
+> [!NOTE]
+>
+> The pitches in this paragraph use [scientific pitch notation](https://en.wikipedia.org/wiki/Scientific_pitch_notation).
 
 #### 3.1.1. Regular Notes `:`
 
