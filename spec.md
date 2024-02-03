@@ -334,8 +334,6 @@ The headers `COVER`, `BACKGROUND`, and `VIDEO` contain file references to image 
 Implementations MAY use these files to display cover artwork and background graphics during gameplay.
 Supported image and video formats are an implementation detail.
 
-For the best compatibility `COVER` images should be square and be no larger than 1920 pixels in width and height.
-
 > [!CAUTION]
 >
 > If a minimum requirement concerning media types should be part of the spec has not been decided yet.
