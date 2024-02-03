@@ -607,7 +607,7 @@ Implementations SHOULD compare tags in a case-insensitive manner.
 ### 3.24. The `P1` thru `P9` Headers
 
 ```
-Required:     Header Pn is required if the Pn voice change is used
+Required:     Yes for multi-voice songs
 Multi-Valued: No
 Since:        0.2.0
 ```
@@ -618,6 +618,7 @@ If the voices correspond to different singers in the original song, the header v
 
 The association of header values to voices is defined by the numerical value after each `P` respectively,
 i.e. the header `P2` indicates the name of the voice whose notes are introduced by the `P2` voice change.
+If a song uses the voice change `Pn` the corresponding `Pn` header is required.
 
 > [!NOTE]
 >
@@ -863,14 +864,13 @@ An end-of-phrase marker SHOULD NOT appear before the start time of the first not
 > In version 0.1.0 only single-voice songs were defined.
 > Voice changes are specified since version 0.2.0.
 
-A voice change (also referred to as a “player change”) is indicated by a `P` (the letter P, `%x50`), immediately followed by a number.
+A voice change (also referred to as a “player change”) is indicated by a `P` (the letter P, `%x50`), immediately followed by a single digit.
 
 ```abnf
-voice-change  = p voice-numer
+voice-change   = p voice-numer
                 *WSP line-break
 p              = %x50  ; P
-voice-number  = positive-digit *DIGIT
-positive-digit = %x31-39  ; 1-9
+voice-number   = DIGIT
 ```
 
 A voice change indicates that all notes and end-of-phrase markers following this line belong to the voice indicated by the `voice-number`.
@@ -894,6 +894,8 @@ In particular a file that uses `P3` and `P5` can be rewritten using `P1` and `P2
 >
 > There exists a legacy behavior where an indicated `P3` would start a sequence of notes that apply to both voices.
 > This behavior is explicitly NOT compliant with this specification.
+
+A song that uses voice changes MUST also include the appropriate [`P1`](#324-the-p1-thru-p9-headers) thru [`P9`](#324-the-p1-thru-p9-headers) headers indicating the names of the voices.
 
 > [!CAUTION]
 >
