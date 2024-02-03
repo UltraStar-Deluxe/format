@@ -570,6 +570,11 @@ Since:        0.2.0
 ```
 
 The `LANGUAGE` header indicates the spoken or sung language(s) of a song.
+Valid values for this header are the english language names according to [ISO 639-2](https://www.loc.gov/standards/iso639-2/php/code_list.php). `LANGUAGE` values are compared case-insensitively.
+
+> [!CAUTION]
+>
+> The set of valid values for the `LANGUAGE` header has not been decided yet.
 
 ### 3.22. The `EDITION` Header
 
