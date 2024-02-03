@@ -599,27 +599,30 @@ Implementations SHOULD compare tags in a case-insensitive manner.
 >
 > Whether tags should be compared case-insensitively or not hasn't been decided yet.
 
-### 3.24. The `P1`, `P2`, … Headers
+### 3.24. The `P1` thru `P9` Headers
 
 ```
-Required:     No
+Required:     Header Pn is required if the Pn voice change is used
 Multi-Valued: No
 Since:        0.2.0
 ```
 
-The headers `P1`, `P2`, … indicate the names of the voices of a song.
-These names correspond to the voices indicated by the `P1`, `P2`, … voice changes (see [section 3.3](#33-voice-changes)).
+The headers `P1`, `P2`, …, `P9` indicate the names of the voices of a song.
+These names correspond to the voices indicated by the `P1`, `P2`, …, `P9` voice changes (see [section 3.3](#33-voice-changes)).
 If the voices correspond to different singers in the original song, the header values often indicate the names of the original singers.
 
 The association of header values to voices is defined by the numerical value after each `P` respectively,
 i.e. the header `P2` indicates the name of the voice whose notes are introduced by the `P2` voice change.
-Leading zeroes are insignificant, i.e. the headers `P1` and `P001` both refer to the same voice.
+
+> [!NOTE]
+>
+> As `P0` is not a valid voice change, the header `P0` is not specified.
 
 > [!CAUTION]
 >
 > The exact semantics of the `P` headers have not been decided yet.
 
-### 3.25. The `DUETSINGER1`, `DUETSINGER2`, … Headers
+### 3.25. The `DUETSINGER1` thru `DUETSINGER9` Headers
 
 ```
 Required:     No
@@ -629,8 +632,8 @@ Deprecated:   0.3.0
 Removed:      1.0.0
 ```
 
-The headers `DUETSINGER1`, `DUETSINGER2`, etc. are aliases for [`P1`](#324-the-p1-p2--headers), [`P2`](#324-the-p1-p2--headers), etc.
-If both are specified [`P1`](#324-the-p1-p2--headers), [`P2`](#324-the-p1-p2--headers), etc. take precedence.
+The headers `DUETSINGER1`, `DUETSINGER2`, …, `DUETSINGER9` are aliases for [`P1`](#324-the-p1-thru-p9-headers) thru [`P9`](#324-the-p1-thru-p9-headers), etc.
+If both are specified [`P1`](#324-the-p1-thru-p9-headers) thru [`P9`](#324-the-p1-thru-p9-headers), headers take precedence.
 
 ### 3.26. The `CREATOR` Header
 
