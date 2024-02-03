@@ -303,7 +303,7 @@ Since:        1.1.0
 The `AUDIO` header contains a file reference (as defined in section 3.2.) to an audio file.
 This file contains the full version of a song (including instrumentals and vocals).
 Supported audio formats are an implementation detail.
-Implementations MUST disregard the `MP3` header if an `AUDIO` header is present (even if the specified file cannot be found or processed).
+Implementations MUST disregard the [`MP3`](#36-the-mp3-header) header if an `AUDIO` header is present (even if the specified file cannot be found or processed).
 
 > [!CAUTION]
 >
@@ -340,6 +340,8 @@ Multi-Valued: No
 Since:        0.1.0
 ```
 
+The `ARTIST` header contains the artist of the song.
+
 ### 3.9. The `COVER`, `BACKGROUND`, and `VIDEO` Headers
 
 ```
@@ -370,7 +372,7 @@ Since:        1.1.0
 
 The `VOCALS` and `INSTRUMENTAL` header contain file references to audio files.
 These files contain the a cappella and instrumental versions of the song respectively.
-Implementations MAY use these instead of `AUDIO`
+Implementations MAY use these instead of [`AUDIO`](#35-the-audio-header)
 to give users the option of changing the volume of vocal and instrumental tracks separately.
 
 > [!CAUTION]
@@ -523,15 +525,13 @@ Syntax:       "on" / "off"
 Since:        0.2.0
 ```
 
-If `MEDLEYSTART` or `MEDLEYEND` (`MEDLEYSTARTBEAT` or `MEDLEYENDBEAT` for versions before 2.0.0) are not specified,
+If [`MEDLEYSTART`](#316-the-medleystart-and-medleyend-headers) or [`MEDLEYEND`](#316-the-medleystart-and-medleyend-headers) ([`MEDLEYSTARTBEAT`](#317-the-medleystartbeat-and-medleyendbeat-headers) or [`MEDLEYENDBEAT`](#317-the-medleystartbeat-and-medleyendbeat-headers) for versions before 2.0.0) are not specified,
 the `CALCMEDLEY` header indicates whether an implementation is supposed to determine the start and end of the medley section automatically.
 The value of this header is compared case-insensitively.
 
 > [!CAUTION]
 >
 > The exact semantics of the `CALCMEDLEY` header have not been defined yet.
-
-The `ARTIST` header contains the artist of the song.
 
 ### 3.19. The `YEAR` Header
 
@@ -582,7 +582,7 @@ Since:        0.2.0
 The `EDITION` indicates what edition of games a song belongs to.
 While this header is intended to hold commercially available editions (e.g. SingStar Pop Hits, GuitarHero Live) implementations MUST NOT reject a file based on the value of this header.
 A list of SingStar editions is available [here](https://github.com/bohning/usdb_syncer/wiki/SingStar-Editions).
-For arbitrary keywords see the `TAGS` header.
+For arbitrary keywords see the [`TAGS`](#323-the-tags-header) header.
 
 ### 3.23. The `TAGS` Header
 
@@ -629,8 +629,8 @@ Deprecated:   0.3.0
 Removed:      1.0.0
 ```
 
-The headers `DUETSINGER1`, `DUETSINGER2`, etc. are aliases for `P1`, `P2`, etc.
-If both are specified `P1`, `P2`, etc. take precedence.
+The headers `DUETSINGER1`, `DUETSINGER2`, etc. are aliases for [`P1`](#324-the-p1-p2--headers), [`P2`](#324-the-p1-p2--headers), etc.
+If both are specified [`P1`](#324-the-p1-p2--headers), [`P2`](#324-the-p1-p2--headers), etc. take precedence.
 
 ### 3.26. The `CREATOR` Header
 
@@ -912,7 +912,7 @@ In particular a file that uses `P3` and `P5` can be rewritten using `P1` and `P2
 > Relative mode is deprecated and has been removed in version 1.0.0 of this specification.
 
 Relative mode is a special input mode that affects parsing and interpreting songs significantly.
-Relative mode is enabled by the `RELATIVE` header being set to `yes` (case-insensitive).
+Relative mode is enabled by the [`RELATIVE`](#330-the-relative-header) header being set to `yes` (case-insensitive).
 
 #### Syntax
 
