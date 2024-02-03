@@ -538,7 +538,7 @@ The value of this header is compared case-insensitively.
 ```
 Required:     No
 Multi-Valued: No
-Syntax:       4DIGIT
+Syntax:       4*DIGIT
 Since:        0.2.0
 ```
 
