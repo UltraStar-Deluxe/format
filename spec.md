@@ -669,11 +669,6 @@ The `PROVIDEDBY` header indicates the source of a particular textfile.
 Implementations concerned with providing textfiles to many users (sometimes referred to as "hosters") SHOULD set this value automatically.
 Values SHOULD be valid URLs according to [RFC 1738](https://datatracker.ietf.org/doc/html/rfc1738) using the HTTP or HTTPS scheme.
 
-> [!NOTE]
->
-> Some implementations are known to use an application-specific header `SOURCE` in place of `PROVIDEDBY`.
-> The semantics of the `SOURCE` header are not part of this specification.
-
 ### 3.28. The `COMMENT` Header
 
 ```
