@@ -197,7 +197,7 @@ Additionally, multiple occurrences of a multi-valued header are semantically equ
 where all values are concatenated by commas in order of occurrence.
 In this way the order of multi-valued headers is significant.
 
-Implementations MAY remove whitespace around individual values of a multi-valued header without changing sematics. Implementations MAY also remove empty values in a multi-valued header without changing semantics.
+Implementations MAY remove leading and trailing whitespace of individual values of a multi-valued header without changing sematics. Implementations MAY also remove empty values in a multi-valued header without changing semantics.
 
 > [!WARNING]
 >
