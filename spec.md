@@ -322,7 +322,25 @@ Removed:      2.0.0
 The `MP3` header contains a file reference (as defined in section 3.2.) to an audio file.
 This header has been replaced by the `AUDIO` header.
 
-### 3.7. The `COVER`, `BACKGROUND`, and `VIDEO` Headers
+### 3.7. The `TITLE` Header
+
+```
+Required:     Yes
+Multi-Valued: No
+Since:        0.1.0
+```
+
+The `TITLE` header contains the title of the song.
+
+### 3.8. The `ARTIST` Header
+
+```
+Required:     Yes
+Multi-Valued: No
+Since:        0.1.0
+```
+
+### 3.9. The `COVER`, `BACKGROUND`, and `VIDEO` Headers
 
 ```
 Required:     No
@@ -342,7 +360,7 @@ Supported image and video formats are an implementation detail.
 >
 > If media files should follow a specific naming scheme has not been decided yet.
 
-### 3.8. The `VOCALS` and `INSTRUMENTAL` Headers
+### 3.10. The `VOCALS` and `INSTRUMENTAL` Headers
 
 ```
 Required:     No
@@ -359,7 +377,7 @@ to give users the option of changing the volume of vocal and instrumental tracks
 >
 > Whether the inclusion of `VOCALS` requires the inclusion of `INSTRUMENTAL` is currently not decided.
 
-### 3.9. The `GAP` Header
+### 3.11. The `GAP` Header
 
 ```
 Required:     No
@@ -383,7 +401,7 @@ The `GAP` value is an integer.
 > In versions 0.x and 1.x the value of `GAP` could also be a floating point number.
 > Since version 2.0.0 this is not allowed anymore.
 
-### 3.10. The `VIDEOGAP` Header
+### 3.12. The `VIDEOGAP` Header
 
 ```
 Required:     No
@@ -402,7 +420,7 @@ The `VIDEOGAP` value is an integer.
 > In versions 0.x and 1.x the value of `VIDEOGAP` was specified in seconds as a floating point number.
 > Version 2.0.0 changes this to an integer and milliseconds.
 
-### 3.11. The `NOTESGAP` Header
+### 3.13. The `NOTESGAP` Header
 
 ```
 Required:     No
@@ -420,7 +438,7 @@ Implementations MUST ignore the field if present.
 >
 > The `NOTESGAP` header was defined in version 0.1.0 But its semantics were never fully specified.
 
-### 3.12. The `START` and `END` Headers
+### 3.14. The `START` and `END` Headers
 
 ```
 Required:     No
@@ -445,7 +463,7 @@ Both `START` and `END` values are integers.
 > In versions 0.x and 1.x `START` was specified in seconds as a floating point number.
 > Version 2.0.0 changes this to an integer and milliseconds.
 
-### 3.13. The `PREVIEWSTART` Header
+### 3.15. The `PREVIEWSTART` Header
 
 ```
 Required:     No
@@ -465,7 +483,7 @@ In its absence implementations SHOULD default to the start of the medley section
 > In versions 0.x and 1.x `PREVIEWSTART` was specified in seconds as a floating point number.
 > Version 2.0.0 of this specification changes this to an integer and milliseconds.
 
-### 3.14. The `MEDLEYSTART` and `MEDLEYEND` Headers
+### 3.16. The `MEDLEYSTART` and `MEDLEYEND` Headers
 
 ```
 Required:     No
@@ -477,7 +495,7 @@ Since:        2.0.0
 The `MEDLEYSTART` and `MEDLEYEND` headers indicate in milliseconds the start and end of the medley section of a song relative to the start of the audio.
 These tags replace `MEDLEYSTARTBEAT` and `MEDLEYENDBEAT` in version 2.0.0 of this specification.
 
-### 3.15. The `MEDLEYSTARTBEAT` and `MEDLEYENDBEAT` Headers
+### 3.17. The `MEDLEYSTARTBEAT` and `MEDLEYENDBEAT` Headers
 
 ```
 Required:     No
@@ -496,7 +514,7 @@ Implementations MUST respect the `GAP` value when calculating the medley start a
 >
 > The headers `MEDLEYSTARTBEAT` and `MEDLEYENDBEAT` have been replaced by `MEDLEYSTART` and `MEDLEYEND` in version 2.0.0 of this specification.
 
-### 3.16. The `CALCMEDLEY` Header
+### 3.18. The `CALCMEDLEY` Header
 
 ```
 Required:     No
@@ -512,24 +530,6 @@ The value of this header is compared case-insensitively.
 > [!CAUTION]
 >
 > The exact semantics of the `CALCMEDLEY` header have not been defined yet.
-
-### 3.17. The `TITLE` Header
-
-```
-Required:     Yes
-Multi-Valued: No
-Since:        0.1.0
-```
-
-The `TITLE` header contains the title of the song.
-
-### 3.18. The `ARTIST` Header
-
-```
-Required:     Yes
-Multi-Valued: No
-Since:        0.1.0
-```
 
 The `ARTIST` header contains the artist of the song.
 
