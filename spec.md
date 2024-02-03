@@ -303,6 +303,7 @@ Since:        1.1.0
 The `AUDIO` header contains a file reference (as defined in section 3.2.) to an audio file.
 This file contains the full version of a song (including instrumentals and vocals).
 Supported audio formats are an implementation detail.
+Implementations MUST disregard the `MP3` header if an `AUDIO` header is present (even if the specified file cannot be found or processed).
 
 > [!CAUTION]
 >
@@ -311,7 +312,7 @@ Supported audio formats are an implementation detail.
 ### 3.6. The `MP3` Header
 
 ```
-Required:     No (Version 2.x), Yes (Versions 0.x and 1.x)
+Required:     Yes (Versions 0.x and 1.x)
 Multi-Valued: No
 Since:        0.1.0
 Deprecated:   1.1.0
@@ -320,7 +321,6 @@ Removed:      2.0.0
 
 The `MP3` header contains a file reference (as defined in section 3.2.) to an audio file.
 This header has been replaced by the `AUDIO` header.
-Implementations MUST disregard the `MP3` header if an `AUDIO` header is present (even if the specified file cannot be found or processed).
 
 ### 3.7. The `COVER`, `BACKGROUND`, and `VIDEO` Headers
 
