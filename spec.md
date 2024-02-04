@@ -2,7 +2,7 @@
 
 The UltraStar file format is a timed text format for describing karaoke songs where singing performance is scored by the karaoke software.
 
-## Status of this document
+## Status of this Document
 
 This document aims to describe the UltraStar File Format in its most recent version 2.0.0.
 
