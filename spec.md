@@ -267,7 +267,7 @@ Since:        0.1.0
 The `BPM` header indicates the number of beats per minute.
 The notes in a song are quantized in beats.
 A single beat is the smallest unit of time that can be present in a song.
-The value is a 32 bit floating point number.
+The value is floating point number.
 The value of this tag is arbitrary in the sense that it is usually 4 to 8 times higher than the actual BPM of a song.
 
 > [!WARNING]
