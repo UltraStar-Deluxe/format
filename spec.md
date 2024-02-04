@@ -145,7 +145,7 @@ header-key   = header-char
                [ *( WSP / header-char )
                  header-char ]
 header-value = single-value / multi-value
-multi-value  = single-value [ comma multi-value ] [ comma ]
+multi-value  = single-value *[ comma single-value ] [ comma ]
 single-value = *( header-char / colon )
 
 header-char  = %x00-09 /  ; exclude line feed
