@@ -139,13 +139,13 @@ Whitespace around key and value is ignored.
 > Other terms used for the same concept are “tag”, “attribute” or “field”.
 
 ```abnf
-file-header  = *( header / empty-line )
-header       = hash *WSP header-key *WSP colon *WSP header-value *WSP line-break
+file-header  = *( header-line / empty-line )
+header-line  = hash *WSP header-key *WSP colon *WSP header-value *WSP line-break
 header-key   = header-char
                [ *( WSP / header-char )
                  header-char ]
 header-value = single-value / multi-value
-multi-value  = single-value [ comma single-value ] [ comma ]
+multi-value  = single-value [ comma multi-value ] [ comma ]
 single-value = *( header-char / colon )
 
 header-char  = %x00-09 /  ; exclude line feed
