@@ -162,6 +162,10 @@ period       = %x2E  ; .
 >
 > The use of trailing commas in comma-separated header lists has not been decided yet.
 
+> [!CAUTION]
+>
+> The allowed character sets for header keys and values have not been decided yet.
+
 Comparisons of header keys is case-insensitive.
 For the sake of consistency header keys SHOULD use only capital letters.
 Header values are generally case-sensitive unless otherwise specified.
