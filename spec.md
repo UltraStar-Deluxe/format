@@ -141,9 +141,7 @@ Whitespace around key and value is ignored.
 ```abnf
 file-header  = *( header-line / empty-line )
 header-line  = hash *WSP header-key *WSP colon *WSP header-value *WSP line-break
-header-key   = header-char
-               [ *( WSP / header-char )
-                 header-char ]
+header-key   = 1*header-char
 header-value = single-value / multi-value
 multi-value  = single-value *( comma single-value ) [ comma ]
 single-value = *( header-char / colon )
