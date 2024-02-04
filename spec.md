@@ -266,10 +266,9 @@ Syntax:       1*DIGIT [ period 1*DIGIT ]
 Since:        0.1.0
 ```
 
-The `BPM` header indicates the number of beats per minute.
+The `BPM` header indicates the number of beats per minute as a decimal value.
 The notes in a song are quantized in beats.
 A single beat is the smallest unit of time that can be present in a song.
-The value is floating point number.
 The value of this tag is arbitrary in the sense that it is usually 4 to 8 times higher than the actual BPM of a song.
 
 > [!WARNING]
@@ -402,7 +401,7 @@ The `GAP` value is an integer.
 >
 > **Breaking Change** in version 2.0.0
 >
-> In versions 0.x and 1.x the value of `GAP` could also be a floating point number.
+> In versions 0.x and 1.x the value of `GAP` could also be a decimal value.
 > Since version 2.0.0 this is not allowed anymore.
 
 ### 3.12. The `VIDEOGAP` Header
@@ -421,7 +420,7 @@ The `VIDEOGAP` value is an integer.
 >
 > **Breaking Change** in version 2.0.0
 >
-> In versions 0.x and 1.x the value of `VIDEOGAP` was specified in seconds as a floating point number.
+> In versions 0.x and 1.x the value of `VIDEOGAP` was specified in seconds as a decimal value.
 > Version 2.0.0 changes this to an integer and milliseconds.
 
 ### 3.13. The `NOTESGAP` Header
@@ -464,7 +463,7 @@ Both `START` and `END` values are integers.
 >
 > **Breaking Change** in version 2.0.0
 >
-> In versions 0.x and 1.x `START` was specified in seconds as a floating point number.
+> In versions 0.x and 1.x `START` was specified in seconds as a decimal value.
 > Version 2.0.0 changes this to an integer and milliseconds.
 
 ### 3.15. The `PREVIEWSTART` Header
@@ -484,7 +483,7 @@ In its absence implementations SHOULD default to the start of the medley section
 >
 > **Breaking Change** in version 2.0.0
 >
-> In versions 0.x and 1.x `PREVIEWSTART` was specified in seconds as a floating point number.
+> In versions 0.x and 1.x `PREVIEWSTART` was specified in seconds as a decimal value.
 > Version 2.0.0 of this specification changes this to an integer and milliseconds.
 
 ### 3.16. The `MEDLEYSTART` and `MEDLEYEND` Headers
