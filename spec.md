@@ -539,12 +539,16 @@ The value of this header is compared case-insensitively.
 ```
 Required:     No
 Multi-Valued: No
-Syntax:       4*DIGIT
+Syntax:       4DIGIT
 Since:        0.2.0
 ```
 
 The `YEAR` indicates the year in which the song was released.
 The value must be a positive integer.
+
+> [!CAUTION]
+>
+> The exact syntax of the `YEAR` header has not been decided yet.
 
 ### 3.20. The `GENRE` Header
 
