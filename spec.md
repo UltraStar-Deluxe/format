@@ -754,9 +754,9 @@ note = note-type
        line-break
 
 note-type  = %x21-22 / %x24-7E  ; Visible ASCII-characters except space and #
-start-beat = *DIGIT
-duration   = *DIGIT
-pitch      = [ minus ] *DIGIT
+start-beat = 1*DIGIT
+duration   = 1*DIGIT
+pitch      = [ minus ] 1*DIGIT
 note-text  = 1*( %x20-10FFFF )
 
 minus   = %x2D  ; -
@@ -937,7 +937,7 @@ end-of-phrase =/ dash
                  WSP start-beat
                  WSP rel-offset
                  *WSP line-break
-rel-offset    = *DIGIT
+rel-offset    = 1*DIGIT
 ```
 
 Note that the syntax in relative mode is incompatible with the normal syntax.
