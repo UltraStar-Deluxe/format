@@ -107,11 +107,7 @@ Empty lines are ignored throughout the entire file.
 
 > [!CAUTION]
 >
-> The allowed end-of-line sequences as well as potential recommendations for implementations are currently open for discussion ([#43](https://github.com/UltraStar-Deluxe/format/issues/43)).
-
-> [!CAUTION]
->
-> Whether empty lines are allowed or not is currently open for discussion ([#43](https://github.com/UltraStar-Deluxe/format/issues/43)).
+> Whether empty lines are allowed or not is currently open for discussion ([#50](https://github.com/UltraStar-Deluxe/format/issues/50)).
 > Whether a line that consists only of whitespace is recognized as an empty line has not been decided yet.
 
 Whitespace is used as a separator in many places of the format.
