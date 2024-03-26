@@ -1,0 +1,65 @@
+name: Post Discord Notification
+on:
+  issues:
+    types: [labeled, unlabeled]
+  pull_request:
+    types: [labeled, unlabeled]
+
+jobs:
+  vote-start:
+    name: Send Vote Start Notification
+    runs-on: ubuntu-latest
+    if: github.event.action == 'labeled' && github.event.label.name == 'vote now'
+    steps:
+      - name: Trigger Webhook
+        uses: tsickert/discord-webhook@v5.3.0
+        with:
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
+          content:
+            Voting on [#${{github.event.issue.number || github.event.pull_request.number}}](${{ github.event.issue.html_url || github.event.pull_request.html_url }})
+            has started. Head over to GitHub to cast your vote.
+            By voting on an issue you contribute to the improvement of the specification.
+          username: GitHub Actions
+          avatar-url: https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png
+          embed-author-name: UltraStar Format Specification
+          embed-author-url: ${{ github.event.repository.html_url }}
+          embed-author-icon-url: https://usdx.eu/format/images/Logo_color.png
+          embed-color: 39423 # Light Blue
+          embed-title:
+            ${{ github.event.issue.title || github.event.pull_request.title }}
+            (#${{github.event.issue.number || github.event.pull_request.number}})
+          embed-url: ${{ github.event.issue.html_url || github.event.pull_request.html_url }}
+          embed-image-url: https://opengraph.githubassets.com/${{ github.run_id }}/${{ github.repository }}/${{ github.event.issue && 'issues' || 'pull' }}/${{ github.event.issue.number || github.event.pull_request.number }}
+          embed-description:
+            To view details about this issue, view it on [GitHub](${{ github.event.issue.html_url || github.event.pull_request.html_url }}).
+          embed-footer-text:
+            This is an automatic message sent via GitHub Actions.
+          embed-footer-icon-url: https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png
+  vote-end:
+    name: Send Vote End Notification
+    runs-on: ubuntu-latest
+    if: github.event.action == 'unlabeled' && github.event.label.name == 'vote now'
+    steps:
+      - name: Trigger Webhook
+        uses: tsickert/discord-webhook@v5.3.0
+        with:
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
+          content:
+            Voting on [#${{github.event.issue.number || github.event.pull_request.number}}](${{ github.event.issue.html_url || github.event.pull_request.html_url }})
+            has ended. Head over to GitHub to see the results.
+          username: GitHub Actions
+          avatar-url: https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png
+          embed-author-name: UltraStar Format Specification
+          embed-author-url: ${{ github.event.repository.html_url }}
+          embed-author-icon-url: https://usdx.eu/format/images/Logo_color.png
+          embed-color: 9852622 # Purple
+          embed-title:
+            ${{ github.event.issue.title || github.event.pull_request.title }}
+            (#${{github.event.issue.number || github.event.pull_request.number}})
+          embed-url: ${{ github.event.issue.html_url || github.event.pull_request.html_url }}
+          embed-image-url: https://opengraph.githubassets.com/${{ github.run_id }}/${{ github.repository }}/${{ github.event.issue && 'issues' || 'pull' }}/${{ github.event.issue.number || github.event.pull_request.number }}
+          embed-description:
+            To view details about this issue, view it on [GitHub](${{ github.event.issue.html_url || github.event.pull_request.html_url }}).
+          embed-footer-text:
+            This is an automatic message sent via GitHub Actions.
+          embed-footer-icon-url: https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png
