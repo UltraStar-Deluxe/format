@@ -38,8 +38,6 @@ CR    = %x0D     ; carriage return
 LF    = %x0A     ; line feed
 CRLF  = CR LF
 DIGIT = %x30-39  ; 0-9
-HTAB  = %x09     ; horizontal tab
-SP    = %x20     ; space
 ```
 
 ### 1.2. Terminology
@@ -111,16 +109,12 @@ Empty lines are ignored throughout the entire file.
 > Whether a line that consists only of whitespace is recognized as an empty line has not been decided yet.
 
 Whitespace is used as a separator in many places of the format.
-Only space (`%x20`) and horizontal tab (`%x09`) are recognized as whitespace characters.
-In particular other unicode characters with the property `White_Space=yes` MUST NOT be treated as whitespace characters in the context of this specification.
+Any unicode character with the property `White_Space=yes` is a valid whitespace character (except for the carriage return `%x0D` and line feed `%x0A` both of which are considered line breaks). See [Wikipedia](https://en.wikipedia.org/wiki/Whitespace_character) for a list of whitespace characters.
+In the interests of interoperability implementations SHOULD use ASCII spaces (`%x20`) as whitespace.
 
 ```abnf
-WSP = ( SP / HTAB )
+WSP = <any unicode character with White_Space=yes>
 ```
-
-> [!CAUTION]
->
-> Definition and handling of whitespace characters is currently open for discussion ([#46](https://github.com/UltraStar-Deluxe/format/issues/46)).
 
 ## 2. The File Header
 
