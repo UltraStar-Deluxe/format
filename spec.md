@@ -231,19 +231,19 @@ Implementations SHOULD refuse to load absolutely referenced files.
 ```
 Required:     Yes
 Multi-Valued: No
-Syntax:       <valid semver>
+Syntax:       1*DIGIT period 1*DIGIT period 1*DIGIT
 Since:        1.0.0
 ```
 
 The `VERSION` header indicates the version of this specification that a file complies to.
-The value of the tag is a [semantic version](https://semver.org),
-meaning that an implementation supporting version 1.0.0 of this spec should be able to process files using a version of 1.1.0 without any changes (although new features might not be supported).
+The value of the header is a triplet of numbers separated by periods.
+Similar to [semantic versioning ´](https://semver.org) the version number implicates a certain level of compatibility.
+In particular an implementation supporting version 1.0.0 of this spec should be able to process files using a version of 1.1.0 without any changes (although new features might not be supported).
 Implementations SHOULD NOT attempt to process files with a higher major version than they were designed to work with.
 
 In absence of the `VERSION` header implementations SHOULD assume the version 0.3.0.
 Implementations SHOULD reject a file based on the value of the `VERSION` header,
 in particular if the value is syntactically invalid.
-Applications MAY reject prerelease-versions altogether.
 
 The `VERSION` header SHOULD be the first header in a file.
 
