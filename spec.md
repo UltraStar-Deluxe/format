@@ -623,7 +623,7 @@ If a song uses the voice change `Pn` the corresponding `Pn` header is required.
 >
 > The exact semantics of the `P` headers have not been decided yet.
 
-### 3.25. The `DUETSINGER1` thru `DUETSINGER9` Headers
+### 3.25. The `DUETSINGERP1` thru `DUETSINGERP9` Headers
 
 ```
 Required:     No
@@ -633,7 +633,7 @@ Deprecated:   0.3.0
 Removed:      1.0.0
 ```
 
-The headers `DUETSINGER1`, `DUETSINGER2`, …, `DUETSINGER9` are aliases for [`P1`](#324-the-p1-thru-p9-headers) thru [`P9`](#324-the-p1-thru-p9-headers), etc.
+The headers `DUETSINGERP1`, `DUETSINGERP2`, …, `DUETSINGERP9` are aliases for [`P1`](#324-the-p1-thru-p9-headers) thru [`P9`](#324-the-p1-thru-p9-headers), etc.
 If both are specified [`P1`](#324-the-p1-thru-p9-headers) thru [`P9`](#324-the-p1-thru-p9-headers), headers take precedence.
 
 ### 3.26. The `CREATOR` Header
