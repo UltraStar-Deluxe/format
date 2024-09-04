@@ -579,9 +579,45 @@ Multi-Valued: Yes
 Since:        0.2.0
 ```
 
-The `EDITION` indicates what edition of games a song belongs to.
-While this header is intended to hold commercially available editions (e.g. SingStar Pop Hits, GuitarHero Live) implementations MUST NOT reject a file based on the value of this header.
-A list of SingStar editions is available [here](https://github.com/bohning/usdb_syncer/wiki/SingStar-Editions).
+The `EDITION` indicates a curated list of where a song belongs to.
+Implementations MUST NOT reject a file based on the value of this header.
+The curated list contains:
+
+- Charts
+- Christmas
+- Club
+- Cover
+- Disney
+- Duet
+- Eurovision Song Contest
+- Explicit
+- Fan Song
+- Feel-Good
+- Funny
+- Guilty Pleasure
+- Halloween
+- Heartbreak
+- Live
+- Love Song
+- Mainstream
+- Movies
+- Musical
+- Party
+- Pride/LGBTQ
+- Relaxed
+- Slow
+- Song-checked
+- Special interest
+- Summer
+- TV Show
+- Underground
+- Underrated
+- Video Game
+- Viral Hit
+ 
+A list of eligable SingStar editions is available [here](https://github.com/bohning/usdb_syncer/wiki/SingStar-Editions).
+A list of eligable RockBand editions is available [here](https://github.com/bohning/usdb_syncer/wiki/RockBand-Editions).
+A list of eligable Guitar Hero editions is available [here](https://github.com/bohning/usdb_syncer/wiki/GuitarHero-Editions).
 For arbitrary keywords see the [`TAGS`](#323-the-tags-header) header.
 
 ### 3.23. The `TAGS` Header
