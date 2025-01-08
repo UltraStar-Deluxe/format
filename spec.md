@@ -750,6 +750,17 @@ Removed:       1.0.0
 
 The `RELATIVE` header enables [Relative Mode](#a-relative-mode) (see Appendix A).
 
+### 3.31. The `AUDIOURL`, `VIDEOURL`, `COVERURL` and `BACKGROUNDURL` Header
+
+```
+Required:     No
+Multi-Valued: No
+Syntax:       URL
+Since:        1.2.0
+```
+
+The `AUDIOURL`, `VIDEOURL`, `COVERURL` and `BACKGROUNDURL` headers are OPTIONAL. They MAY be used to refer to online ressources, webservices or online stores for various reasons. Each implementation or game implementation MUST define use cases on their own discretion. Value MUST be a complete URL.
+
 ## 3. The File Body
 
 The body of a file consists of a sequence of notes, end-of-phrase markers, and voice changes.
