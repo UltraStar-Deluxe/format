@@ -123,11 +123,6 @@ Each line in the header section starts with a hash.
 The key and value of a header are separated by a colon.
 Whitespace around key and value is ignored.
 
-> [!CAUTION]
->
-> The terminology “header” is not decided yet.
-> Other terms used for the same concept are “tag”, “attribute” or “field”.
-
 ```abnf
 file-header  = *( header-line / empty-line )
 header-line  = hash *WSP header-key *WSP colon *WSP header-value *WSP line-break
@@ -614,7 +609,7 @@ The curated list contains:
 - Underrated
 - Video Game
 - Viral Hit
- 
+
 A list of eligable SingStar editions is available [here](https://github.com/bohning/usdb_syncer/wiki/SingStar-Editions).
 A list of eligable RockBand editions is available [here](https://github.com/bohning/usdb_syncer/wiki/RockBand-Editions).
 A list of eligable Guitar Hero editions is available [here](https://github.com/bohning/usdb_syncer/wiki/GuitarHero-Editions).
