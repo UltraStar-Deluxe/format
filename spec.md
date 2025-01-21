@@ -95,26 +95,18 @@ Both the header and the body of a file are defined in terms of lines.
 A line is a string of text that is terminated with an end-of-line sequence.
 
 ```abnf
+WSP         = <any unicode character with White_Space=yes>
 end-of-line = ( CR / LF / CRLF )
-empty-line  = end-of-line
+empty-line  = *WSP end-of-line
 ```
 
 Implementations SHOULD use a single Line Feed (`%x0A`) as line terminator.
 Implementations MUST accept the end of input (`EOF`) as a valid line terminator.
-Empty lines are ignored throughout the entire file.
-
-> [!CAUTION]
->
-> Whether empty lines are allowed or not is currently open for discussion ([#50](https://github.com/UltraStar-Deluxe/format/issues/50)).
-> Whether a line that consists only of whitespace is recognized as an empty line has not been decided yet.
+Empty lines are ignored throughout the entire file (note that a line consisting only of whitespace characters is considered empty).
 
 Whitespace is used as a separator in many places of the format.
 Any unicode character with the property `White_Space=yes` is a valid whitespace character (except for the carriage return `%x0D` and line feed `%x0A` both of which are considered line breaks). See [Wikipedia](https://en.wikipedia.org/wiki/Whitespace_character) for a list of whitespace characters.
 In the interests of interoperability implementations SHOULD use ASCII spaces (`%x20`) as whitespace.
-
-```abnf
-WSP = <any unicode character with White_Space=yes>
-```
 
 ## 2. The File Header
 
