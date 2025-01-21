@@ -85,7 +85,7 @@ Everything after a trailing `E` MUST be ignored.
 ```abnf
 song = file-header
        file-body
-       [ %x45 *char ]  ; E
+       [ %x45 end-of-line *char ]  ; E
 char = %x00-10FFFF
 ```
 
@@ -888,9 +888,8 @@ This is usually interpreted as a line break in the lyrics.
 An end-of-phrase SHOULD NOT appear between the start beat (inclusive) of a note and its end beat (exclusive).
 An end-of-phrase marker SHOULD NOT appear before the start time of the first note or after the start time of the last note.
 
-> [!CAUTION]
->
-> Whether leading or trailing end-of-phrase markers are allowed is currently up for discussion ([#44](https://github.com/UltraStar-Deluxe/format/issues/44)).
+An end-of-phrase marker MUST NOT immediately follow another end-of-phrase marker.
+In the interests of interoperability implementations MAY ignore subsequent end-of-phrase markers.
 
 > [!CAUTION]
 >
