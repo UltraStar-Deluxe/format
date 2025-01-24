@@ -149,14 +149,13 @@ Implementations MAY remove leading and trailing whitespace in header keys and va
 Header values may not exceed 255 characters.
 
 Implementations MAY define application-specific headers
-but SHOULD prefix those headers with the application name to avoid conflicts with future standardized headers.
+but SHOULD prefix those headers with the application name and a hyphen (`%x2D`) to avoid conflicts with future standardized headers.
+For example an application `Foo Bar` might use the application-specific header `#FOO_BAR-SPEED`.
+Standardized headers are guaranteed to not include a hyphen.
+If an application-specific header at some point becomes standardized, the standardized header takes precedence.
 Implementations MUST ignore headers they do not recognize.
 The order of headers is irrelevant (note the exception in section 3.1.)
 although standardized headers should precede any application-specific headers.
-
->  [!CAUTION]
->
-> Handling of application-specific headers has not been decided yet.
 
 The following sections describe the standardized headers that have been defined.
 If a syntax for a header is specified it applies to the `single-value`.
