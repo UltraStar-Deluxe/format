@@ -42,3 +42,7 @@ We'd like to give these projects a little bit of appreciation by linking to thei
 ### Management Software
 * [USDB Syncer](https://github.com/bohning/usdb_syncer)
 * [UltraStar Manager](https://github.com/UltraStar-Deluxe/UltraStar-Manager)
+
+## Public Status Board
+Do you wanna take part? Or monitor the progress?
+Then check out our [public status and release board](https://github.com/orgs/UltraStar-Deluxe/projects/3/views/1) and [milestones](https://github.com/UltraStar-Deluxe/format/milestones)!
