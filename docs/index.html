@@ -829,6 +829,17 @@
                     <div>
                         <pre class="notranslate"><code>: 10 10 10 Text</code></pre>
                     </div>
+                    <h4 style="padding-top:40px"><a id="word-separators" href="#word-separators"></a>Word Separators</h4>
+                    <p>Words are separated via a space in the <code>Text</code> part of a note. The separating space may come at the end of
+                        the previous note, or at the start of the next note, see before:</p>
+                    <div>
+                        <pre class="notranslate"><code>0 4 0 Hello|<br>8 4 0  World|</code></pre>
+                    </div>
+                    <p>and after:</p>
+                    <div>
+                        <pre class="notranslate"><code>0 4 0 Hello |<br>8 4 0 World|</code></pre>
+                    </div>
+                    <p>The <code>|</code> is used to mark the end of the line for visualization purposes in the above example.</p>
                     <h4 style="padding-top:40px"><a id="end-of-phrase" href="#end-of-phrase"></a>End of phrase</h4>
                     <p><code>-</code> represents the end of a phrase and how long it lasts by the
                         <code>StartBeat</code>. The length is calculated against the <code>BPM</code>, <code>GAP</code>
