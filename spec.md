@@ -146,7 +146,8 @@ For the sake of consistency header keys SHOULD use only capital letters.
 Header values are generally case-sensitive unless otherwise specified.
 An empty value is equivalent to the header being absent.
 Implementations MAY remove leading and trailing whitespace in header keys and values without changing semantics.
-Header values may not exceed 255 characters.
+This specification imposes no limit on the size of a single header value.
+Note that implementations may have technical limitations so it is recommended that neither a header key nor a header value exceeds 2048 bytes.
 
 Implementations MAY define application-specific headers
 but SHOULD prefix those headers with the application name and a hyphen (`%x2D`) to avoid conflicts with future standardized headers.
