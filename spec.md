@@ -814,7 +814,7 @@ So a pitch of `5` represent an `F4` and a pitch of `-2` represents an `A#3`.
 >
 > The pitches in this paragraph use [scientific pitch notation](https://en.wikipedia.org/wiki/Scientific_pitch_notation).
 
-Tools and games are expected to allow spaces to separate words both before and after the note text.
+The text of a note contain the spoken words of that note (usually a single syllable). There are no restrictions on the specific text values, in particular spaces can appear at the beginning or end of the note text (or both).
 
 E.g. before
 
@@ -830,7 +830,7 @@ and after
 8 4 0 World|
 ```
 
-are treated the same. (the `|` is used to mark the end of the line for visualization purposes in the above example)
+are semantically equivalent. (the `|` is used to mark the end of the line for visualization purposes in the above example)
 
 
 #### 3.1.1. Regular Notes `:`
