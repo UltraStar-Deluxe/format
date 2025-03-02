@@ -213,7 +213,8 @@ Supported audio formats are an implementation detail.
 Required: Yes
 ```
 
-The `#TITLE` header indicates the title of the song.
+The `TITLE` header contains the title of the song. Additional information such as recording specification or
+categorization is provided using dedicated headers like `RENDITION`, `EDITION`, and `TAGS`.
 
 #### 3.3.5. The `#ARTIST` Header
 
@@ -544,6 +545,23 @@ Syntax: URL
 The `#AUDIOURL`, `#VIDEOURL`, `#COVERURL` and `#BACKGROUNDURL` contain URLs according to [RFC 1738](https://datatracker.ietf.org/doc/html/rfc1738).
 Implementations MAY use the values of these headers to locate missing file references.
 
+### A.15. The `RENDITION` Header
+
+The `RENDITION` header allows a song to be precisely associated with a specific recording.
+Artist and title information alone are insufficient, as multiple performances of the same song by
+the same artist—or even different edits of the same performance—are common.
+
+Examples:
+
+-   video version
+-   album version
+-   live
+-   live (Malmö 2024)
+-   radio edit
+-   extended version
+-   uncensored
+
 ## Revision History
 
 - yyyy-mm-dd: First revision of this document
+- 2025-04-20: The `RENDITION` header

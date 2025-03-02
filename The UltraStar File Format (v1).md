@@ -214,7 +214,8 @@ Supported audio formats are an implementation detail.
 Required: Yes
 ```
 
-The `#TITLE` header indicates the title of the song.
+The `TITLE` header contains the title of the song. Additional information such as recording specification or
+categorization is provided using dedicated headers like `RENDITION`, `EDITION`, and `TAGS`.
 
 #### 3.3.5. The `#ARTIST` Header
 
@@ -556,6 +557,22 @@ Syntax: URL
 The `#AUDIOURL`, `#VIDEOURL`, `#COVERURL` and `#BACKGROUNDURL` contain URLs according to [RFC 1738](https://datatracker.ietf.org/doc/html/rfc1738).
 Implementations MAY use the values of these headers to locate missing file references.
 
+### A.16. The `RENDITION` Header
+
+The `RENDITION` header allows a song to be precisely associated with a specific recording.
+Artist and title information alone are insufficient, as multiple performances of the same song by
+the same artist—or even different edits of the same performance—are common.
+
+Examples:
+
+-   video version
+-   album version
+-   live
+-   live (Malmö 2024)
+-   radio edit
+-   extended version
+-   uncensored
+
 ## Revision History
 
 - 2023-12-01: Publication of the UltraStar file format v1.0.0
@@ -564,3 +581,4 @@ Implementations MAY use the values of these headers to locate missing file refer
 - 2025-01-22: Some paragraphs have been rewritten for clarification
 - 2025-02-01: Standardization of application-specific headers
 - 2025-03-07: Major revision wrt wording and structure
+- 2025-04-20: The `RENDITION` header
