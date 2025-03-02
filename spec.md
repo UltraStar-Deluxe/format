@@ -308,7 +308,9 @@ Multi-Valued: No
 Since:        0.1.0
 ```
 
-The `TITLE` header contains the title of the song.
+The `TITLE` header contains the title of the song. It SHOULD NOT include any additional
+information. Details such as recording specification or categorization SHOULD be provided using
+dedicated headers like `RENDITION`, `EDITION`, and `TAGS`.
 
 ### 3.8. The `ARTIST` Header
 
@@ -747,6 +749,28 @@ Since:        1.2.0
 ```
 
 The `AUDIOURL`, `VIDEOURL`, `COVERURL` and `BACKGROUNDURL` headers are OPTIONAL. They MAY be used to refer to online ressources, webservices or online stores for various reasons. Each implementation or game implementation MUST define use cases on their own discretion. Value MUST be a complete URL.
+
+### 3.32. The `RENDITION` Header
+
+```
+Required:     No
+Multi-Valued: No
+Since:        1.2.0
+```
+
+The `RENDITION` header SHOULD be included to precisely associate a song with a specific recording.
+Artist and title information alone are insufficient, as multiple performances of the same song by
+the same artist—or even different edits of the same performance—are common.
+
+Examples:
+
+-   video version
+-   album version
+-   live
+-   live (Malmö 2024)
+-   radio edit
+-   extended version
+-   uncensored
 
 ## 3. The File Body
 
