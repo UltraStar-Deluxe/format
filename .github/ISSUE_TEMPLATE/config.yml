@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Visit the Website
+    url: https://usdx.eu/format/
+    about: The website contains a high-level overview over the song format. If you are new here it's best to start there.
+  - name: UltraStar Discord Server
+    url: https://discord.gg/NS3m3ad
+    about: "Please ask questions in our Discord in the channel #song-format."
