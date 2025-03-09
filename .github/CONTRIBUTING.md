@@ -16,6 +16,7 @@ The community looks forward to your contributions. 🎉
 
 ## Table of Contents
 
+- [Code of Conduct](#code-of-conduct)
 - [I Have a Question](#i-have-a-question)
 - [I Want To Contribute](#i-want-to-contribute)
     - [Join the Discussion & Vote](#join-the-discussion-vote)
@@ -28,6 +29,12 @@ The community looks forward to your contributions. 🎉
     - [Terminology](#terminology)
     - [Commit Messages](#commit-messages)
 
+## Code of Conduct
+
+Please review our [Code of Conduct](https://github.com/ultrastar-deluxe/format/blob/main/CODE_OF_CONDUCT.md).
+It is in effect at all times.
+We expect it to be honored by everyone who contributes to this project.
+Acting like an asshole will not be tolerated.
 
 ## I Have a Question
 
