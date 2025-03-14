@@ -1,0 +1,24 @@
+name: Question
+description: Ask a question about the song format.
+labels: ["Question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        #### Before you Ask
+
+        - Search existing issues in this repo to see if your question has already been asked.
+        - If your question concerns a specific game or application, consider asking your question there.
+        - Consider asking on the `song-format` [Discord channel](https://discord.gg/tNEXZw2QJX).
+  - type: textarea
+    attributes:
+      label: Question
+      description: What do you want to know?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional Context
+      description: Provide additional context such as screenshots or console output (if applicable).
+    validations:
+      required: false

@@ -1,21 +1,39 @@
-name: New Header(s)
-description: Suggest the introduction of a new header for the UltraStar file format.
-title: "New Header: `#HEADER`"
+# TODO: Template for New Note Type
+# TODO: Template for questions
+
+name: Header-related Change
+description: Suggest the introduction of a new header or changes to existing headers.
+title: "`#HEADER`: Change XYZ (or New Header: `#HEADER`)"
 labels: ["Specification"]
 # FIXME: Add to project board?
 body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Issue Title
+
+        Please name the issue after one of these formats:
+        - For new headers: ``New Header `#HEADER`​``
+        - For changes to existing headers: ``​`#HEADER`: Change XYZ``
+
+        Substitute `#HEADER` for the header or headers affected by your suggestion.
+        Changes to existing headers do not have to start with the word "Change".
   - type: input
     attributes:
       label: Name of the Header(s)
-      description: What is the name of the header you want to introduce?
-      placeholder: Please include the name of the header in the issue title as well.
+      description: What are the names of the affected header(s)?
+      placeholder: |
+        Please include the name of the header in the issue title as well.
     validations:
       required: true
   - type: textarea
     attributes:
       label: Functionality
-      description: What does the header do?
-      placeholder: Describe what kind of values this header contains.
+      description: What does the header do? What changes compared to the current behavior of the header?
+      placeholder: |
+        For Changes: Describe the relevant parts of the current behavior and contrast it with your proposed change.
+
+        For new Headers: Describe how the header is supposed to work.
     validations:
       required: true
   - type: textarea
@@ -23,8 +41,11 @@ body:
       label: Syntax
       description: What are the valid values for this header? Please use the [ABNF](https://en.wikipedia.org/wiki/Augmented_Backus–Naur_form).
       placeholder: |
-        Describe the syntax of the header using ABNF.
+        Please include both the current syntax rules as well as the syntax wrt the proposed change.
+        You can omit this field if the syntax does not change.
       render: abnf
+    validations:
+      required: false
   - type: textarea
     attributes:
       label: Motivation
@@ -34,10 +55,25 @@ body:
       required: true
   - type: textarea
     attributes:
+      label: Implementation Considerations
+      description: How does this change impact existing and new implementations?
+      placeholder: |
+        Is this change backwards compatible?
+        How hard is it for developers to implemenet the change?
+        Are there conflicts with existing headers?
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Alternatives Considered
+      description: What alternative ways are there to achieve the same goal?
+      placeholder: |
+        Include possible alternatives to your suggestion. If you want you can give reasons why these are less prefereable to your suggestion.
+    validations:
+      required: false
+  - type: textarea
+    attributes:
       label: Additional Context
       description: Provide additional information that can be useful to understand your proposal.
-      placeholder: |
-        Are there conflicts with existing headers?
-        How does this header affect existing implementations?
-        Does this header change fundamental karaoke game mechanics?
-        Did you consider alternative ways to achieve the desired behavior?
+    validations:
+      required: false
