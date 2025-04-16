@@ -1,22 +1,39 @@
-# UltraStar Format Specification
-This specification contains a set of rules and requirements that dictate what an UltraStar textfile is and how each item should be interpreted.
+# The UltraStar File Format Specification
 
-## The problem
-The idea for this specification came up within the [UltraStar* Creators Community Discord](https://discord.gg/tNEXZw2QJX) as we've been roaming free following some guidelines posted at many places on the internet for over a decade.
-Many programs (creator software, website hosts and karaoke software) try their best effort to support the respective tags and NoteTypes to support all the features we want. But it's been long enough and we need to standardize things to sustain the future of our precious format.
+This project defines the UltraStar file format.
+The UltraStar file format is the standard file format for open source karaoke software.
 
-Currently there are thousands of textfiles laying around unversioned and some with problematic tags which are hard to comprehend or built support for.
-There are several communities out there who do not talk to eachother so it's hard to come up with a definitive system. Let's bond together and see if we can make the best out of this format we all love.
+## Motivation
 
-## The endgoal
-The endgoal for this project would be to:
-* [ ] Bring the different communities on par with eachother to increase the quality of the produced textfiles
-* [ ] Versionise the format so we can improve and add features to it
-* [ ] Give each Tag or NoteType a definition and how it should be working
+The UltraStar file format has been used by different karaoke applications for a long time.
+However, it was never formally standardized so each application interpreted the format in its own way, leading to fragmentation and differences in feature implementation.
+This project is an effort to unite developers in the open source karaoke ecosystem and standardize a common file format based on the original UltraStar file format.
+
+## Goals of this Project
+
+The main goal of this project is to define a standardized file format with clear extension points so that the multitude of different games and applications can be made interoperable.
+We aim to reduce the thousands of UltraStar songs that use proprietary or undefined headers or features and make the songs accessible to everyone in the karaoke community.
+We hope that this can be a step to unite the various communities that currently each "do their own thing". Let's bond together and see if we can make the best out of this format we all love.
+
+- [x] Formally standardize the format widely used by karaoke games. See [The UltraStar File Format (Unversioned).md](https://github.com/Ultrastar-Deluxe/format/blob/main/The%20UltraStar%20File%20Format%20(Unversioned).md).
+- [x] Introduce a versioning strategy for the file format as well as processes for the standardization of new features.
+- [ ] Be the authoritative source of the standardized features (headers, note types, ...) of the UltraStar file format.
+- [ ] Standardize a modern variant of the format that solves long-standing shortcomings of the original UltraStar format.
+- [ ] Unite the fragmented community over a common file format, ensuring interoperability between the various karaoke games and supporting software.
+
+## Join the Discussion
+
+If you are interest in contributing to the karaoke community, you might want to check out the [UltraStar* Creators Community Discord](https://discord.gg/tNEXZw2QJX).
+If you want to contribute to this project, check out [CONTRIBUTING.md](https://github.com/UltraStar-Deluxe/format/blob/main/.github/CONTRIBUTING.md).
+We are looking forward to your input.
+
+You can also check out our [public status and release board](https://github.com/orgs/UltraStar-Deluxe/projects/3/views/1) and [milestones](https://github.com/UltraStar-Deluxe/format/milestones)!
 
 ## Involved parties
-Since the text format was introduced a little bit more than a decade ago alot of projects got to know and support it.
-We'd like to give these projects a little bit of appreciation by linking to their respective GitHub page or website.
+
+There is a lot of software support for the original UltraStar file format.
+This overview is not exhaustive, feel free to open a PR to add any missing project.
+We always appreciate from the maintainers of projects in the karaoke community looking to improve the file format together.
 
 ### Karaoke software
 * [UltraStar Online](http://ultrastaronline.com/)
@@ -42,7 +59,3 @@ We'd like to give these projects a little bit of appreciation by linking to thei
 ### Management Software
 * [USDB Syncer](https://github.com/bohning/usdb_syncer)
 * [UltraStar Manager](https://github.com/UltraStar-Deluxe/UltraStar-Manager)
-
-## Public Status Board
-Do you wanna take part? Or monitor the progress?
-Then check out our [public status and release board](https://github.com/orgs/UltraStar-Deluxe/projects/3/views/1) and [milestones](https://github.com/UltraStar-Deluxe/format/milestones)!
