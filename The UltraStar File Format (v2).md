@@ -318,7 +318,7 @@ So a pitch of `5` represent an `F4` and a pitch of `-2` represents an `A#3`.
 >
 > The pitches in this paragraph use [scientific pitch notation](https://en.wikipedia.org/wiki/Scientific_pitch_notation).
 
-The text of a note contain the spoken words of that note (usually a single syllable). There are no restrictions on the specific text values, in particular spaces can appear at the beginning or end of the note text (or both).
+The text of a note contains the spoken words of that note (usually a single syllable). There are no restrictions on the specific text values, in particular spaces can appear at the beginning or end of the note text (or both).
 
 E.g. before
 
