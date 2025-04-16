@@ -317,6 +317,25 @@ So a pitch of `5` represent an `F4` and a pitch of `-2` represents an `A#3`.
 >
 > The pitches in this paragraph use [scientific pitch notation](https://en.wikipedia.org/wiki/Scientific_pitch_notation).
 
+The text of a note contains the spoken words of that note (usually a single syllable). There are no restrictions on the specific text values, in particular spaces can appear at the beginning or end of the note text (or both).
+
+E.g. before
+
+```abnf
+0 4 0 Hello|
+8 4 0  World|
+```
+
+and after
+
+```abnf
+0 4 0 Hello |
+8 4 0 World|
+```
+
+are semantically equivalent. (the `|` is used to mark the end of the line for visualization purposes in the above example)
+
+
 #### 4.1.1. Regular Notes `:`
 
 A regular note is indicated by the note type `:` (colon, `%x3A`).
@@ -582,3 +601,4 @@ Examples:
 - 2025-02-01: Standardization of application-specific headers
 - 2025-03-07: Major revision wrt wording and structure
 - 2025-04-20: The `RENDITION` header
+- 2025-04-22: Clarification of the meaning of spaces before/after syllables
