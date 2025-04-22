@@ -258,7 +258,7 @@ Required: Yes for multi-voice songs, No for single-voice songs
 ```
 
 The headers `#P1`, `#P2`, …, `#P9` indicate the names of the voices of a song.
-These names correspond to the voices indicated by the `P1`, `P2`, …, `P9` voice changes (see [section 3.3](#33-voice-changes)).
+These names correspond to the voices indicated by the `P1`, `P2`, …, `P9` voice changes (see [Section 4.3](#43-voice-changes)).
 If the voices correspond to different singers in the original song, the header values often indicate the names of the original singers.
 
 The association of header values to voices is defined by the numerical value after each `P` respectively,
@@ -409,7 +409,7 @@ To improve readability notes for different voices should not be interlaced.
 > A voice change does NOT implicitly add an end-of-phrase indicator.
 
 Voice changes SHOULD appear in ascending order of `voice-number` and there SHOULD be no gaps (i.e. a song having notes for `P1` and `P3`, but not `P2`).
-The exact `voice-number` carries no semantics other than its relative order with other `voice-number` and its association with the corresponding header (see (see [Section 3.3.8](#338-the-p1-thru-p9-headers)).
+The exact `voice-number` carries no semantics other than its relative order with other `voice-number` and its association with the corresponding header (see [Section 3.3.8](#338-the-p1-thru-p9-headers)).
 In particular a file that uses `P3` and `P5` can be rewritten using `P1` and `P2` with no change in semantics.
 
 > [!TIP]

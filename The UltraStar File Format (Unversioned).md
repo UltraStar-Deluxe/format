@@ -164,7 +164,7 @@ The value of this tag is arbitrary in the sense that it is usually 1 to 2 times 
 Required: Yes
 ```
 
-The `MP3` header contains a file reference (as defined in [Section 3.1.](#31-file-references)) to an audio file.
+The `MP3` header contains a file reference (as defined in [Section 3.1](#31-file-references)) to an audio file.
 Supported audio formats are an implementation detail.
 
 ### 3.5. The `#TITLE` Header
@@ -299,7 +299,7 @@ Required: No
 ```
 
 The headers `#P1` and `#P2` indicate the names of the voices of a song.
-These names correspond to the voices indicated by the `#P1` and `#P2` voice changes (see [Section 3.3](#33-voice-changes)).
+These names correspond to the voices indicated by the `#P1` and `#P2` voice changes (see [Section 4.3](#43-voice-changes)).
 If the voices correspond to different singers in the original song, the header values often indicate the names of the original singers.
 
 > [!NOTE]
@@ -498,7 +498,7 @@ Each voice change SHOULD only appear once in ascending order of `voice-number`.
 ### A. Relative Mode
 
 Relative mode is a special input mode that affects parsing and interpreting songs significantly.
-Relative mode is enabled by the [`#RELATIVE`](#330-the-relative-header) header being set to `yes` (case-insensitive).
+Relative mode is enabled by the [`#RELATIVE`](#322-the-relative-header) header being set to `yes` (case-insensitive).
 
 #### Syntax
 
@@ -534,3 +534,4 @@ The `rel` value for a voice does not reset when a voice change is encountered.
 ## Revision History
 
 - 2025-03-07: First revision
+- 2025-04-22: Fixed section linking
