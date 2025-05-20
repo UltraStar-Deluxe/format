@@ -304,6 +304,8 @@ minus   = %x2D  ; -
 
 The note type indicates how singing the correct or wrong note should affect scoring.
 The following sections define standard note types.
+Implementations MAY substitute unknown note types with freestyle notes (`F`).
+Implementations MUST NOT attach semantics to note types not covered by this specification.
 
 The start beat and duration define the time when a note appears in a song.
 Both are indicated in beats relative to offset indicated by the `#GAP` header.
@@ -603,3 +605,4 @@ Examples:
 - 2025-04-20: The `RENDITION` header
 - 2025-04-22: Clarification of the meaning of spaces before/after syllables
 - 2025-04-22: Fixed section linking
+- 2025-05-20: Clarify handling of unknown note types
