@@ -377,15 +377,18 @@ End-of-Phrase markers are indicated by a `-` character (hyphen/minus, `%x2D`).
 
 ```abnf
 end-of-phrase = %x2D  ; -
-                WSP start-beat
+                [ WSP start-beat ]
                 *WSP line-break
 ```
 
 An end-of-phrase marker carries no musical information but indicates the end of a phrase in the song.
 This is usually interpreted as a line break in the lyrics.
 
+If the `start-beat` of an end-of-phrase marker is omitted, the phrase ends between the last beat of the previous note and the start beat of the subsequent note.
+The exact beat is an implementation detail.
+If the `start-beat` is present, implementations SHOULD end the phrase at the specified beat.
 An end-of-phrase SHOULD NOT appear between the start beat (inclusive) of a note and its end beat (exclusive).
-An end-of-phrase marker SHOULD NOT appear before the start time of the first note or after the start time of the last note.
+An end-of-phrase marker SHOULD NOT appear before the start beat of the first note or after the start beat of the last note.
 
 An end-of-phrase marker MUST NOT immediately follow another end-of-phrase marker.
 In the interests of interoperability implementations MAY ignore subsequent end-of-phrase markers.
