@@ -1,0 +1,61 @@
+name: Specification Improvement
+description: Suggest an improvement or a change to the specification.
+labels: ["Specification"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Guidelines für Specification Changes
+
+        When proposing general changes to the specification, please respect the following guidelines:
+
+        - Be specific: Suggest a concrete change to the specification.
+          General topics and opinions are much better discussed on [Discord](https://discord.gg/tNEXZw2QJX).
+          If possible you can include the suggested wording in your suggestion.
+        - One thing at a time: Restrict your suggestion to a single thing.
+          Do not include multiple independent changes in a single issue.
+        - Be actionable: We want to bring each suggested change to a clear decision whether it should be implemented or not.
+          If there are more than 3 paths how a change can be implemented, it can be hard to reach a consensus.
+
+        By making speciifc, actionable suggestions that focus on one thing you can help the community to reach better decisions.
+        If you are unsure, don't hesitate to ask in the `song-format` channel on [Discord](https://discord.gg/tNEXZw2QJX).
+  - type: textarea
+    attributes:
+      label: Describe the Change
+      description: What change do you want to suggest?
+      placeholder: |
+        Try to describe your proposal as concise as possible. Be specific and describe only one change at a time!
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Motivation
+      description: Why is this change beneficial for the file format? What is the use case?
+      placeholder: |
+        Describe why this change is needed and how users (or developers) would benefit.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Implementation Considerations
+      description: How does this change impact existing and new implementations?
+      placeholder: |
+        Is the change backwards compatible?
+        How hard is it for developers to implemenet the change?
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Alternatives Considered
+      description: What alternatives are there to your suggestion?
+      placeholder: |
+        Include possible alternatives to your suggestion.
+        If you want you can give reasons why these are less prefereable to your suggestion.
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: Provide additional information that can be useful to understand your proposal.
+    validations:
+      required: false
