@@ -220,8 +220,15 @@ Required: No
 Syntax:   1*DIGIT [ (period / comma) 1*DIGIT ]
 ```
 
-The `#START` and `#END` header specify two time points in seconds relative to the start of the audio data that indicate a start and end point for the song.
+The `#START` and `#END` header specify two time points relative to the start of the audio data that indicate a start and end point for the song.
+`#START` is specified as a decimal value in seconds.
+`#END` is specified as a decimal value in milliseconds.
 Game implementations SHOULD start and end the song at the specified points and scale scoring accordingly.
+
+> [!NOTE]
+>
+> There are known implementations that only support integer values for `#END`.
+> In the interest of compatibility it is recommended to restrict values to integers.
 
 > [!NOTE]
 >
@@ -535,3 +542,4 @@ The `rel` value for a voice does not reset when a voice change is encountered.
 
 - 2025-03-07: First revision
 - 2025-04-22: Fixed section linking
+- 2025-05-23: Fix time unit for `#END` header
