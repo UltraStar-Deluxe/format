@@ -1,0 +1,25 @@
+name: Website Change
+description: Suggest improvements for the UltraStar format website at https://usdx.eu/format.
+labels: ["Website"]
+body:
+  - type: textarea
+    attributes:
+      label: Suggestion
+      description: What change do you want to suggest?
+      placeholder: |
+        Please be specific and give a detailed overview of the change you want to see.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Use Case
+      description: Why is this change beneficial?
+      placeholder: How does this change improve the website?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional Context
+      description: Provide additional context such as screenshots.
+    validations:
+      required: false
