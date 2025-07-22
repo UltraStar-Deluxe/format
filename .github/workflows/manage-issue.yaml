@@ -1,0 +1,31 @@
+name: Manage Issues
+
+on:
+  issues:
+    types: [closed, reopened]
+
+permissions:
+  issues: write
+
+jobs:
+  label-reject:
+    name: Manage 'Rejected' Label
+    if: github.event.action == 'closed' || github.event.action == 'reopened'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add Rejected Label
+        if: github.event.issue.state_reason == 'not_planned'
+        run: gh issue edit "$ISSUE" --add-label "$LABEL"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          ISSUE: ${{ github.event.issue.number }}
+          LABEL: Rejected
+      - name: Remove Rejected Label
+        if: github.event.issue.state_reason != 'not_planned'
+        run: gh issue edit "$ISSUE" --remove-label "$LABEL"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          ISSUE: ${{ github.event.issue.number }}
+          LABEL: Rejected
