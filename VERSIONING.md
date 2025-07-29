@@ -68,10 +68,12 @@ In face of changes to the format and new features being added this header basica
 
 Implementations may safely load any song that uses a major version of the file format known to the implementation.
 The following guarantees are upheld by the specification team:
+
 - Revisions to a published version of the UltraStar file format will only make backwards-compatible changes.
 - Minor versions of the UltraStar file format will only introduce backward-compatible changes compared to the respective major version.
 
 Backward-compatible changes include (but are not limited to):
+
 - Editorial changes
 - Standardization of metadata headers
 - Increasing the strictness on syntax requirements

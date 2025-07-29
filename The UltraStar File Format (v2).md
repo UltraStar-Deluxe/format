@@ -142,7 +142,6 @@ If an application-specific header at some point becomes standardized, the standa
 Implementations MUST ignore headers they do not recognize.
 The order of headers is irrelevant although standardized headers should precede any application-specific headers.
 
-
 ### 3.2. File References
 
 Some headers reference other files, most notably `#AUDIO`, `#VIDEO`, `#COVER`, and `#BACKGROUND`.
@@ -164,7 +163,7 @@ If no syntax is specified any valid `header-value` is valid.
 
 #### 3.3.1. The `#VERSION` Header
 
-```
+```text
 Required: Yes
 Syntax:   1*DIGIT period 1*DIGIT period 1*DIGIT
 ```
@@ -187,7 +186,7 @@ The `#VERSION` header SHOULD be the first header in a file.
 
 #### 3.3.2. The `#BPM` Header
 
-```
+```text
 Required: Yes
 Syntax:   1*DIGIT [ period 1*DIGIT ]
 ```
@@ -199,7 +198,7 @@ The value of this tag is arbitrary in the sense that it is usually 4 to 8 times 
 
 #### 3.3.3. The `#AUDIO` Header
 
-```
+```text
 Required: Yes
 ```
 
@@ -209,7 +208,7 @@ Supported audio formats are an implementation detail.
 
 #### 3.3.4. The `#TITLE` Header
 
-```
+```text
 Required: Yes
 ```
 
@@ -218,7 +217,7 @@ categorization is provided using dedicated headers like `RENDITION`, `EDITION`, 
 
 #### 3.3.5. The `#ARTIST` Header
 
-```
+```text
 Required: Yes
 ```
 
@@ -226,7 +225,7 @@ The `#ARTIST` header indicates the artist of the song.
 
 #### 3.3.6. The `#GAP` Header
 
-```
+```text
 Required: No
 Syntax:   1*DIGIT
 ```
@@ -237,7 +236,7 @@ The `GAP` value is an integer.
 
 #### 3.3.7. The `#START` and `#END` Headers
 
-```
+```text
 Required: No
 Syntax:   1*DIGIT
 ```
@@ -247,13 +246,12 @@ Game implementations SHOULD start and end the song at the specified points and s
 Both `#START` and `#END` values are integers.
 
 > [!NOTE]
->
 > The `#START` and `#END` values do not affect the placement of notes nor any other time codes relative to the audio.
 > They simply indicate that a song should be started or stopped a certain amount of time into the audio file.
 
 #### 3.3.8. The `#P1` thru `#P9` Headers
 
-```
+```text
 Required: Yes for multi-voice songs, No for single-voice songs
 ```
 
@@ -266,7 +264,6 @@ i.e. the header `#P2` indicates the name of the voice whose notes are introduced
 If a song uses the voice change `Pn` the corresponding `#Pn` header is required.
 
 > [!NOTE]
->
 > As `P0` is not a valid voice change, the header `#P0` is not specified.
 
 ## 4. The File Body
@@ -279,6 +276,7 @@ body = *( note /
           voice-change /
           empty-line )
 ```
+
 The sequence of notes and end-of-phrase markers for each voice MUST appear in ascending order by their start beats.
 
 ### 4.1. Notes
@@ -337,7 +335,6 @@ and after
 ```
 
 are semantically equivalent. (the `|` is used to mark the end of the line for visualization purposes in the above example)
-
 
 #### 4.1.1. Regular Notes `:`
 
@@ -440,12 +437,12 @@ Supported image and video formats are an implementation detail.
 
 The `#VOCALS` and `#INSTRUMENTAL` header contain file references to audio files (as defined in [Section 3.2](#32-file-references)).
 These files contain the a cappella and instrumental versions of the song respectively.
-Implementations MAY use these instead of [`#MP3`](#333-the-mp3-header)
+Implementations MAY use these instead of [`#AUDIO`](#333-the-audio-header)
 to give users the option of changing the volume of vocal and instrumental tracks separately.
 
 #### A.3. The `#VIDEOGAP` Header
 
-```
+```text
 Syntax: [ minus ] 1*DIGIT
 ```
 
@@ -454,7 +451,7 @@ Negative values indicate that the indicated amount of time should be skipped at 
 
 #### A.4. The `#PREVIEWSTART` Header
 
-```
+```text
 Syntax: 1*DIGIT
 ```
 
@@ -464,7 +461,7 @@ In its absence implementations SHOULD default to the start of the medley section
 
 #### A.5. The `#MEDLEYSTART` and `#MEDLEYEND` Headers
 
-```
+```text
 Syntax: 1*DIGIT
 ```
 
@@ -472,7 +469,7 @@ The `#MEDLEYSTART` and `#MEDLEYEND` headers indicate in milliseconds the start a
 
 #### A.6. The `#YEAR` Header
 
-```
+```text
 Syntax: 4DIGIT
 ```
 
@@ -532,9 +529,9 @@ The curated list contains:
 - Video Game
 - Viral Hit
 
-A list of eligable SingStar editions is available [here](https://github.com/bohning/usdb_syncer/wiki/SingStar-Editions).
-A list of eligable RockBand editions is available [here](https://github.com/bohning/usdb_syncer/wiki/RockBand-Editions).
-A list of eligable Guitar Hero editions is available [here](https://github.com/bohning/usdb_syncer/wiki/GuitarHero-Editions).
+A list of eligable SingStar editions is available [on GitHub](https://github.com/bohning/usdb_syncer/wiki/SingStar-Editions).
+A list of eligable RockBand editions is available [on GitHub](https://github.com/bohning/usdb_syncer/wiki/RockBand-Editions).
+A list of eligable Guitar Hero editions is available [on GitHub](https://github.com/bohning/usdb_syncer/wiki/GuitarHero-Editions).
 For arbitrary keywords see the [`TAGS`](#a10-the-tags-header) header.
 
 #### A.10. The `#TAGS` Header
@@ -562,7 +559,7 @@ Implementations MUST NOT assign semantics to the value of this header.
 
 #### A.14. The `#AUDIOURL`, `#VIDEOURL`, `#COVERURL` and `#BACKGROUNDURL` Header
 
-```
+```text
 Syntax: URL
 ```
 
@@ -577,13 +574,13 @@ the same artist—or even different edits of the same performance—are common.
 
 Examples:
 
--   video version
--   album version
--   live
--   live (Malmö 2024)
--   radio edit
--   extended version
--   uncensored
+- video version
+- album version
+- live
+- live (Malmö 2024)
+- radio edit
+- extended version
+- uncensored
 
 ## Revision History
 

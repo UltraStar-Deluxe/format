@@ -24,7 +24,6 @@ HOW TO WRITE A GOOD PULL REQUEST?
 
 <!-- What inspired you to submit this pull request? -->
 
-
 ### More
 
 - [ ] Added/updated documentation

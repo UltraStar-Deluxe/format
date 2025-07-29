@@ -10,7 +10,6 @@ This document aims to provide a reference for existing songs as well as a baseli
 Note that version 1.0.0 of the file format is generally backward-compatible and can be used in almost all legacy applications.
 
 > [!IMPORTANT]
->
 > The unversioned UltraStar file format is archived.
 > According to the [versioning policy](https://github.com/UltraStar-Deluxe/format/blob/main/VERSIONING.md) no new features and changes will be introduced into this document.
 
@@ -133,7 +132,6 @@ These file references are always relative to the song from which they are refere
 As a security measure implementations SHOULD NOT allow the use of absolute paths.
 
 > [!IMPORTANT]
->
 > In Windows file names are case-insensitive (i.e. there cannot be two files in a folder that differ only by their case).
 > Linux and macOS however, use fully case-sensitive file systems.
 > Implementations might need to pay special attention to this fact to ensure that files are compatible across all systems.
@@ -147,7 +145,7 @@ The presence of this header is enough to indicate that a specific file format ve
 
 ### 3.3. The `#BPM` Header
 
-```
+```text
 Required: Yes
 Syntax:   1*DIGIT [ (period / comma) 1*DIGIT ]
 ```
@@ -160,7 +158,7 @@ The value of this tag is arbitrary in the sense that it is usually 1 to 2 times 
 
 ### 3.4. The `#MP3` Header
 
-```
+```text
 Required: Yes
 ```
 
@@ -169,7 +167,7 @@ Supported audio formats are an implementation detail.
 
 ### 3.5. The `#TITLE` Header
 
-```
+```text
 Required: Yes
 ```
 
@@ -177,7 +175,7 @@ The `TITLE` header indicates the title of the song.
 
 ### 3.6. The `#ARTIST` Header
 
-```
+```text
 Required: Yes
 ```
 
@@ -185,7 +183,7 @@ The `ARTIST` header indicates the artist of the song.
 
 ### 3.7. The `#COVER`, `#BACKGROUND`, and `#VIDEO` Headers
 
-```
+```text
 Required: No
 ```
 
@@ -195,7 +193,7 @@ Supported image and video formats are an implementation detail.
 
 ### 3.8. The `#GAP` Header
 
-```
+```text
 Required: No
 Syntax:   1*DIGIT [ (period / comma) 1*DIGIT ]
 ```
@@ -205,7 +203,7 @@ This effectively offsets all notes in a song by this amount of time relative to 
 
 ### 3.9. The `#VIDEOGAP` Header
 
-```
+```text
 Required: No
 Syntax:   [ minus ] 1*DIGIT [ (period / comma) 1*DIGIT ]
 ```
@@ -215,7 +213,7 @@ Negative values indicate that the indicated amount of time should be skipped at 
 
 ### 3.10. The `#START` and `#END` Headers
 
-```
+```text
 Required: No
 Syntax:   1*DIGIT [ (period / comma) 1*DIGIT ]
 ```
@@ -226,18 +224,16 @@ The `#START` and `#END` header specify two time points relative to the start of 
 Game implementations SHOULD start and end the song at the specified points and scale scoring accordingly.
 
 > [!NOTE]
->
 > There are known implementations that only support integer values for `#END`.
 > In the interest of compatibility it is recommended to restrict values to integers.
 
 > [!NOTE]
->
 > The `#START` and `#END` values do not affect the placement of notes nor any other time codes relative to the audio.
 > They simply indicate that a song should be started or stopped a certain amount of time into the audio file.
 
 ### 3.11. The `#PREVIEWSTART` Header
 
-```
+```text
 Required: No
 Syntax:   1*DIGIT [ (period / comma) 1*DIGIT ]
 ```
@@ -248,7 +244,7 @@ In its absence implementations SHOULD default to the start of the medley section
 
 ### 3.12. The `#MEDLEYSTARTBEAT` and `#MEDLEYENDBEAT` Headers
 
-```
+```text
 Required: No
 Syntax:   1*DIGIT
 ```
@@ -258,7 +254,7 @@ Implementations MUST respect the `#GAP` value when calculating the medley start 
 
 ### 3.13. The `#YEAR` Header
 
-```
+```text
 Required: No
 Syntax:   4DIGIT
 ```
@@ -268,7 +264,7 @@ The value is a positive integer.
 
 ### 3.14. The `#GENRE` Header
 
-```
+```text
 Required: No
 ```
 
@@ -277,31 +273,29 @@ For consistency, it is usually best to capitalize genres.
 
 ### 3.15. The `#LANGUAGE` Header
 
-```
+```text
 Required: No
 ```
 
 The `#LANGUAGE` header indicates the spoken or sung language(s) of a song.
 
 > [!NOTE]
->
 > Later versions of the file format impose restrictions on the set of valid values for this header.
 
 ### 3.16. The `#EDITION` Header
 
-```
+```text
 Required: No
 ```
 
 The `#EDITION` is an arbitrary categorization value.
 
 > [!NOTE]
->
 > Later versions of the file format impose restrictions on the set of valid values for this header.
 
 ### 3.17. The `#P1` and `#P2` Headers
 
-```
+```text
 Required: No
 ```
 
@@ -310,12 +304,11 @@ These names correspond to the voices indicated by the `#P1` and `#P2` voice chan
 If the voices correspond to different singers in the original song, the header values often indicate the names of the original singers.
 
 > [!NOTE]
->
 > As `P0` is not a valid voice change, the header `P0` is not specified.
 
 ### 3.18. The `#DUETSINGERP1` and `#DUETSINGERP2` Headers
 
-```
+```text
 Required: No
 ```
 
@@ -324,7 +317,7 @@ If both are specified [`#P1` and `#P2`](#317-the-p1-and-p2-headers) take precede
 
 ### 3.19. The `#CREATOR` Header
 
-```
+```text
 Required: No
 ```
 
@@ -332,13 +325,12 @@ The `#CREATOR` indicates who created the UltraStar song.
 Values are usually usernames or gamer tags.
 
 > [!NOTE]
->
 > Some implementations are known to use an application-specific header `#AUTHOR` in place of `#CREATOR`.
 > The semantics of the `AUTHOR` header are not part of this specification.
 
 ### 3.20. The `#COMMENT` Header
 
-```
+```text
 Required: No
 ```
 
@@ -347,7 +339,7 @@ Implementations MUST NOT assign semantics to the value of this header.
 
 ### 3.21. The `#ENCODING` Header
 
-```
+```text
 Required: No
 Syntax:   "UTF-8" / "CP1252" / "CP1250"
 ```
@@ -358,18 +350,16 @@ Implementations MAY support additional encodings.
 Names of encodings are compared in a case-insensitive manner.
 
 > [!IMPORTANT]
->
 > Many implementations only apply the specified encoding to **subsequent** headers and note texts.
 > Although this is technically not spec-compliant it is usually best to put the `ENCODING` header first.
 
 > [!WARNING]
->
 > Use of the `#ENCODING` tag is highly discouraged.
 > Songs must always use the UTF-8 encoding.
 
 ### 3.22. The `#RELATIVE` Header
 
-```
+```text
 Required: No
 Syntax:   "yes" / "no"
 ```
@@ -386,6 +376,7 @@ body = *( note /
           voice-change /
           empty-line )
 ```
+
 The sequence of notes and end-of-phrase markers for each voice SHOULD appear in ascending order by their start beats.
 
 ### 4.1. Notes
@@ -422,7 +413,6 @@ The pitch of a note is encoded as the number of half-steps relative to `C4` (als
 So a pitch of `5` represent an `F4` and a pitch of `-2` represents an `A#3`.
 
 > [!NOTE]
->
 > The pitches in this paragraph use [scientific pitch notation](https://en.wikipedia.org/wiki/Scientific_pitch_notation).
 
 #### 4.1.1. Regular Notes `:`
@@ -493,11 +483,9 @@ To improve readability notes for different voices should not be interlaced.
 Each voice change SHOULD only appear once in ascending order of `voice-number`.
 
 > [!NOTE]
->
 > A voice change does NOT implicitly add an end-of-phrase indicator.
 
 > [!TIP]
->
 > A song that makes use of voice changes is referred to as a “duet”.
 
 ## Appendix
@@ -532,7 +520,6 @@ In relative mode the semantics of start times changes for notes and end-of-phras
   After the start time of the end-of-phrase marker has been interpreted, the `rel-offset` value is added to `rel` for subsequent lines.
 
 > [!IMPORTANT]
->
 > In relative mode the order of notes and end-of-phrase markers within a file is significant.
 
 In files with multiple voices each voice has its own `rel` value which is independent of other voices.

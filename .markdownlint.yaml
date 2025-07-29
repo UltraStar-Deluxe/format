@@ -1,0 +1,16 @@
+default: true
+
+# We have long lines due to semantic line breaks.
+MD013: false # line-length
+
+# GitHub understands subsequent blockquotes that are only separated by an empty line.
+# This is required when using subsequent NOTE/TIP/WARNING blocks.
+MD028: false # no-blanks-blockuote
+
+# We want to use GitHub's summary/details blocks.
+MD033: # no-inline-html
+  allowed_elements: [summary, details]
+
+# The PULL_REQUEST_TEMPLATE.md does not meet this rule.
+# We exclude linting on that file.
+# MD041: false # first-line-h1

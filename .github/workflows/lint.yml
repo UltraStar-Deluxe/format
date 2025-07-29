@@ -1,0 +1,19 @@
+name: Linting
+on:
+  push:
+  pull_request:
+
+jobs:
+  markdownlint:
+    name: Lint Markdown Files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Code
+        uses: actions/checkout@v4
+      - name: Run markdownlint-cli2
+        uses: DavidAnson/markdownlint-cli2-action@v20
+        with:
+          globs: |
+            **/*.md
+            !.github/PULL_REQUEST_TEMPLATE.md
+            !docs
