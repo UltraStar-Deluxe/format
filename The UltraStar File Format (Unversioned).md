@@ -100,7 +100,7 @@ Whitespace around key and value is ignored.
 
 ```abnf
 file-header  = *( header-line / empty-line )
-header-line  = hash *WSP header-key *WSP colon *WSP header-value *WSP line-break
+header-line  = hash *WSP header-key *WSP colon *WSP header-value *WSP end-of-line
 header-key   = 1*header-char
 header-value = *( header-char / colon )
 
@@ -399,7 +399,7 @@ note = note-type
        WSP duration
        WSP pitch
        WSP note-text
-       line-break
+       end-of-line
 
 note-type  = %x21-22 / %x24-7E  ; Visible ASCII-characters except space and #
 start-beat = 1*DIGIT
@@ -464,7 +464,7 @@ End-of-Phrase markers are indicated by a `-` character (hyphen/minus, `%x2D`).
 ```abnf
 end-of-phrase = %x2D  ; -
                 WSP start-beat
-                *WSP line-break
+                *WSP end-of-line
 ```
 
 An end-of-phrase marker carries no musical information but indicates the end of a phrase in the song.
@@ -482,7 +482,7 @@ A voice change (also referred to as a “player change”) is indicated by a `P`
 
 ```abnf
 voice-change   = p voice-numer
-                *WSP line-break
+                *WSP end-of-line
 p              = %x50  ; P
 voice-number   = %x31 / %x32  ; 1 / 2
 ```
@@ -515,7 +515,7 @@ When relative mode is enabled, the syntax of end-of-phrase markers changes:
 end-of-phrase =/ dash
                  WSP start-beat
                  WSP rel-offset
-                 *WSP line-break
+                 *WSP end-of-line
 rel-offset    = 1*DIGIT
 ```
 
@@ -543,3 +543,4 @@ The `rel` value for a voice does not reset when a voice change is encountered.
 - 2025-03-07: First revision
 - 2025-04-22: Fixed section linking
 - 2025-05-23: Fix time unit for `#END` header
+- 2025-07-25: Fix usage of `end-of-line` in grammar

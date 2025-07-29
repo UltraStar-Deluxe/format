@@ -97,7 +97,7 @@ Whitespace around key and value is ignored.
 
 ```abnf
 file-header  = *( header-line / empty-line )
-header-line  = hash *WSP header-key *WSP colon *WSP header-value *WSP line-break
+header-line  = hash *WSP header-key *WSP colon *WSP header-value *WSP end-of-line
 header-key   = 1*header-char
 header-value = *( header-char / colon )
 
@@ -292,7 +292,7 @@ note = note-type
        WSP duration
        WSP pitch
        WSP note-text
-       line-break
+       end-of-line
 
 note-type  = %x21-22 / %x24-7E  ; Visible ASCII-characters except space and #
 start-beat = 1*DIGIT
@@ -378,7 +378,7 @@ End-of-Phrase markers are indicated by a `-` character (hyphen/minus, `%x2D`).
 ```abnf
 end-of-phrase = %x2D  ; -
                 [ WSP start-beat ]
-                *WSP line-break
+                *WSP end-of-line
 ```
 
 An end-of-phrase marker carries no musical information but indicates the end of a phrase in the song.
@@ -399,7 +399,7 @@ A voice change (also referred to as a “player change”) is indicated by a `P`
 
 ```abnf
 voice-change   = p voice-numer
-                *WSP line-break
+                *WSP end-of-line
 p              = %x50  ; P
 voice-number   = DIGIT
 ```
