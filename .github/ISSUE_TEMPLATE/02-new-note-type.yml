@@ -1,0 +1,53 @@
+name: New note type
+description: Suggest the introduction of a new note type.
+title: "New Note Type: "
+labels: ["Specification"]
+body:
+  - type: textarea
+    attributes:
+      label: Note Type Description
+      description: What kind of note do you want to add? How is it different from existing note types?
+      placeholder: |
+        Give a clear description of the intended functionality.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Syntax
+      description: What is the syntax for the new note type? Please use the [ABNF](https://en.wikipedia.org/wiki/Augmented_Backus–Naur_form) according to [RFC 5234](https://datatracker.ietf.org/doc/html/rfc5234).
+      placeholder: |
+        Please include the full note syntax, even if it matches the syntax of existing note types.
+      render: abnf
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Motivation
+      description: Why is this note type needed? How does the Karaoke experience improve through this note type?
+      placeholder: If the note type introduces new sytax, please explain the reasoning as well.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Implementation Considerations
+      description: How does this change impact existing and new implementations?
+      placeholder: |
+        Is this change backwards compatible?
+        How hard is it for developers to implemenet the change?
+        Is the a conflicts with existing functionality?
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Alternatives Considered
+      description: What alternative ways are there to achieve the same goal?
+      placeholder: |
+        Include possible alternatives to your suggestion. If you want you can give reasons why these are less prefereable to your suggestion.
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Additional Context
+      description: Provide additional information that can be useful to understand your proposal.
+    validations:
+      required: false
